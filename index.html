@@ -554,8 +554,13 @@ function load() {
     const m = localStorage.getItem('meals');
     const c = localStorage.getItem('cart');
     const n = localStorage.getItem('counts');
-    // Les repas du fichier (DEFAULTS) sont déjà chargés — on écrase seulement si localStorage a quelque chose
-    if (m) meals  = JSON.parse(m);
+    if (m) {
+      const saved = JSON.parse(m);
+      const savedIds = new Set(saved.map(x => x.id));
+      // Ajoute les recettes du code qui manquent dans le cache
+      DEFAULTS.forEach(d => { if (!savedIds.has(d.id)) saved.push({...d}); });
+      meals = saved;
+    }
     if (c) cart   = JSON.parse(c);
     if (n) counts = JSON.parse(n);
   } catch { /* garde les DEFAULTS */ }
