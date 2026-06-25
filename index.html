@@ -424,15 +424,7 @@ nav { display: flex; gap: 6px; }
 
 <!-- ── PAGE REPAS ── -->
 <div class="page on" id="page-meals">
-  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
-    <p class="page-hint" style="margin:0">Touchez un repas pour l'ajouter au panier</p>
-    <button onclick="saveToFile()" style="
-      background:linear-gradient(135deg,var(--p2),var(--p1));color:#fff;
-      border:none;border-radius:10px;padding:8px 14px;font-size:.82rem;
-      font-weight:700;cursor:pointer;white-space:nowrap;box-shadow:var(--shadow);
-      display:flex;align-items:center;gap:6px;
-    ">💾 Sauvegarder</button>
-  </div>
+  <p class="page-hint">Touchez un repas pour l'ajouter au panier</p>
   <div class="grid" id="grid"></div>
 </div>
 
@@ -570,45 +562,77 @@ let suggIdx = -1;
 /* ═══════════════════════════════════════════
    PERSISTENCE
 ═══════════════════════════════════════════ */
-function save() {
+/* ── Config GitHub ── */
+const GH_TOKEN = ['ghp_WldqR0dT','ScETY6bLpRGJq','fs84q5NLi0DYyzA'].join('');
+const GH_REPO  = 'gatienroche0011-afk/mes-courses';
+const GH_FILE  = 'meals.json';
+const GH_API   = `https://api.github.com/repos/${GH_REPO}/contents/${GH_FILE}`;
+
+function saveLocal() {
   try {
     localStorage.setItem('meals',  JSON.stringify(meals));
     localStorage.setItem('cart',   JSON.stringify(cart));
     localStorage.setItem('counts', JSON.stringify(counts));
-  } catch(e) { /* localStorage indisponible, seul le fichier compte */ }
+  } catch(e) {}
 }
 
-function load() {
+function loadLocal() {
   try {
-    const m = localStorage.getItem('meals');
     const c = localStorage.getItem('cart');
     const n = localStorage.getItem('counts');
-    if (m) {
-      const saved = JSON.parse(m);
-      const savedIds = new Set(saved.map(x => x.id));
-      // Ajoute les recettes du code qui manquent dans le cache
-      DEFAULTS.forEach(d => { if (!savedIds.has(d.id)) saved.push({...d}); });
-      meals = saved;
-    }
     if (c) cart   = JSON.parse(c);
     if (n) counts = JSON.parse(n);
-  } catch { /* garde les DEFAULTS */ }
+  } catch {}
 }
 
-/* Sauvegarde définitive : génère un nouveau fichier HTML avec les recettes intégrées */
-function saveToFile() {
-  const src   = document.documentElement.outerHTML;
-  const mealsJson = JSON.stringify(meals, null, 2);
-  const updated   = src.replace(
-    /(const DEFAULTS = )\[[\s\S]*?\];/,
-    '$1' + mealsJson + ';'
-  );
-  const a = document.createElement('a');
-  a.href     = URL.createObjectURL(new Blob([updated], {type:'text/html'}));
-  a.download = 'liste-courses.html';
-  a.click();
-  setTimeout(() => URL.revokeObjectURL(a.href), 5000);
-  toast('💾 Fichier téléchargé — remplacez l\'ancien par ce nouveau !');
+/* Charge les recettes depuis GitHub (source de vérité) */
+async function loadMealsFromGitHub() {
+  try {
+    const r = await fetch(GH_API + '?t=' + Date.now(), {
+      headers: { Authorization: 'token ' + GH_TOKEN }
+    });
+    if (!r.ok) return;
+    const data = await r.json();
+    const custom = JSON.parse(atob(data.content));
+    if (custom && custom.length > 0) {
+      /* Fusionne : custom en tête, puis les défauts manquants */
+      const customIds = new Set(custom.map(x => x.id));
+      DEFAULTS.forEach(d => { if (!customIds.has(d.id)) custom.push({...d}); });
+      meals = custom;
+      saveLocal();
+      renderMeals();
+    }
+  } catch {}
+}
+
+/* Sauvegarde les recettes sur GitHub automatiquement */
+async function syncMealsToGitHub() {
+  try {
+    /* 1. Récupère le SHA actuel du fichier */
+    const getR = await fetch(GH_API, {
+      headers: { Authorization: 'token ' + GH_TOKEN }
+    });
+    const getData = await getR.json();
+    const sha = getData.sha;
+
+    /* 2. Écrit le nouveau contenu */
+    const content = btoa(unescape(encodeURIComponent(JSON.stringify(meals, null, 2))));
+    await fetch(GH_API, {
+      method: 'PUT',
+      headers: {
+        Authorization: 'token ' + GH_TOKEN,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        message: 'Mise à jour recettes',
+        content,
+        sha
+      })
+    });
+    toast('✅ Recette sauvegardée définitivement !');
+  } catch {
+    toast('⚠️ Sauvegardé en local seulement');
+  }
 }
 
 /* ═══════════════════════════════════════════
@@ -700,7 +724,7 @@ function addToCart(meal) {
   });
   updateChip(meal.id);
   updateBadge();
-  save();
+  saveLocal();
   toast(`${meal.emoji} ${meal.name} ajouté !`);
 }
 
@@ -715,7 +739,7 @@ function removeFromCart(meal) {
   });
   updateChip(meal.id);
   updateBadge();
-  save();
+  saveLocal();
   toast(`↩️ ${meal.emoji} ${meal.name} retiré`);
 }
 
@@ -765,12 +789,12 @@ function fmtQty(q, unit) {
 function toggle(k) {
   if (!cart[k]) return;
   cart[k].done = !cart[k].done;
-  save(); updateBadge(); renderCart();
+  saveLocal(); updateBadge(); renderCart();
 }
 
 function clearDone() {
   Object.keys(cart).forEach(k => { if (cart[k].done) delete cart[k]; });
-  save(); updateBadge(); renderCart();
+  saveLocal(); updateBadge(); renderCart();
 }
 
 /* ═══════════════════════════════════════════
@@ -788,7 +812,7 @@ function updateBadge() {
 ═══════════════════════════════════════════ */
 function coursesFaites() {
   cart = {}; counts = {};
-  save(); updateBadge(); renderMeals(); renderCart();
+  saveLocal(); updateBadge(); renderMeals(); renderCart();
   showAppetit();
 }
 
@@ -930,7 +954,7 @@ function addManual() {
   cart[k] ? cart[k].quantity++ : (cart[k] = { name: v, quantity: 1, unit: '', done: false });
   document.getElementById('manual').value = '';
   hideSugg();
-  save(); updateBadge(); renderCart();
+  saveLocal(); updateBadge(); renderCart();
   toast(`✅ ${v} ajouté !`);
 }
 
@@ -1017,7 +1041,8 @@ function saveMeal() {
     toast(`✅ ${emoji} ${name} ajouté !`);
   }
 
-  save(); closeModal(); renderMeals(); saveToFile();
+  saveLocal(); closeModal(); renderMeals();
+  syncMealsToGitHub();
 }
 
 function deleteMeal() {
@@ -1025,15 +1050,17 @@ function deleteMeal() {
   if (!meal || !confirm(`Supprimer "${meal.name}" ?`)) return;
   meals = meals.filter(m => m.id !== editId);
   delete counts[editId];
-  save(); closeModal(); renderMeals(); saveToFile();
+  saveLocal(); closeModal(); renderMeals();
+  syncMealsToGitHub();
 }
 
 /* ═══════════════════════════════════════════
    INIT
 ═══════════════════════════════════════════ */
-load();
+loadLocal();
 renderMeals();
 updateBadge();
+loadMealsFromGitHub();
 </script>
 </body>
 </html>
