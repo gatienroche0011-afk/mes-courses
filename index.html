@@ -767,12 +767,25 @@ async function loadMealsFromGitHub() {
     if (!r.ok) return;
     const data = await r.json();
     mealsSha = data.sha;
-    const custom = JSON.parse(atob(data.content));
+    const raw = atob(data.content.replace(/\s/g, ''));
+    const custom = JSON.parse(decodeURIComponent(escape(raw)));
     if (custom && custom.length > 0) {
+      const defMap = {};
+      DEFAULTS.forEach(d => { defMap[d.id] = d; });
+      /* Merge DEFAULTS: fix corruption and add missing defaults */
       const customIds = new Set(custom.map(x => x.id));
+      custom.forEach(m => {
+        const def = defMap[m.id];
+        if (def) {
+          /* Always use DEFAULT name/emoji/cat for built-in meals */
+          m.name  = def.name;
+          m.emoji = def.emoji;
+          m.cat   = def.cat;
+        } else if (!m.cat) {
+          m.cat = 'autre';
+        }
+      });
       DEFAULTS.forEach(d => { if (!customIds.has(d.id)) custom.push({...d}); });
-      /* Ensure all meals have a cat field */
-      custom.forEach(m => { if (!m.cat) m.cat = 'autre'; });
       meals = custom;
       saveLocal();
       renderMeals();
@@ -812,7 +825,7 @@ async function loadCartFromGitHub() {
     if (!r.ok) { setSyncStatus('err', 'Erreur de sync'); return; }
     const data = await r.json();
     cartSha = data.sha;
-    const remote = JSON.parse(atob(data.content));
+    const remote = JSON.parse(decodeURIComponent(escape(atob(data.content.replace(/\s/g,'')))));
     /* Only update if remote version is newer or different */
     const remoteStr = JSON.stringify({cart: remote.cart, counts: remote.counts});
     const localStr  = JSON.stringify({cart, counts});
