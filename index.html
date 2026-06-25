@@ -336,25 +336,53 @@ nav { display: flex; gap: 6px; }
 ══════════════════════════════════════════════ */
 #appetit {
   display: none; position: fixed; inset: 0; z-index: 999;
-  background: linear-gradient(135deg, var(--p2), var(--p1));
+  background: linear-gradient(135deg, #f48fb1, #e91e8c, #ad1457);
+  background-size: 300% 300%;
+  animation: bgShift 2s ease infinite alternate;
   flex-direction: column; align-items: center; justify-content: center;
   text-align: center; color: #fff;
+  overflow: hidden;
 }
 #appetit.show { display: flex; }
 
-.ap-emoji { font-size: 5.5rem; animation: bob .6s ease infinite alternate; margin-bottom: 16px; }
-.ap-title  { font-size: 2.4rem; font-weight: 900; animation: up .5s ease .1s both; }
-.ap-sub    { font-size: 1rem; opacity: .85; margin-top: 8px; animation: up .5s ease .2s both; }
-
-.confetti-wrap { position: fixed; inset: 0; pointer-events: none; overflow: hidden; }
-.confetti-dot {
-  position: absolute; border-radius: 2px;
-  animation: fall linear forwards;
+.ap-emoji {
+  font-size: 7rem;
+  animation: superBob .5s ease infinite alternate;
+  margin-bottom: 20px;
+  filter: drop-shadow(0 0 30px rgba(255,255,255,.6));
+}
+.ap-title {
+  font-size: 3rem; font-weight: 900; letter-spacing: -.02em;
+  animation: zoomIn .4s cubic-bezier(.17,.67,.35,1.4) both;
+  text-shadow: 0 4px 20px rgba(0,0,0,.2);
+}
+.ap-sub {
+  font-size: 1.1rem; opacity: .92; margin-top: 10px;
+  animation: up .5s ease .3s both;
+  background: rgba(255,255,255,.2); padding: 8px 20px;
+  border-radius: 99px; backdrop-filter: blur(6px);
+}
+.ap-tricount {
+  font-size: 1rem; margin-top: 14px; opacity: .85;
+  animation: up .5s ease .5s both;
+  display: flex; align-items: center; gap: 8px;
 }
 
-@keyframes bob  { to { transform: translateY(-18px) rotate(6deg); } }
-@keyframes up   { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:none; } }
-@keyframes fall { to   { transform: translateY(110vh) rotate(720deg); opacity: 0; } }
+/* Étoiles flottantes */
+.ap-star {
+  position: absolute; font-size: 2rem; pointer-events: none;
+  animation: floatStar linear forwards;
+}
+
+.confetti-wrap { position: fixed; inset: 0; pointer-events: none; overflow: hidden; }
+.confetti-dot  { position: absolute; animation: fall linear forwards; }
+
+@keyframes bgShift   { to { background-position: 100% 100%; } }
+@keyframes superBob  { from { transform: translateY(0) rotate(-8deg) scale(1); } to { transform: translateY(-28px) rotate(8deg) scale(1.1); } }
+@keyframes zoomIn    { from { opacity:0; transform: scale(.4) rotate(-10deg); } to { opacity:1; transform: scale(1) rotate(0deg); } }
+@keyframes up        { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:none; } }
+@keyframes fall      { to { transform: translateY(110vh) rotate(900deg); opacity: 0; } }
+@keyframes floatStar { 0% { transform: translateY(110vh) rotate(0deg); opacity:1; } 100% { transform: translateY(-20vh) rotate(720deg); opacity:0; } }
 
 /* ══════════════════════════════════════════════
    TOAST
@@ -471,6 +499,7 @@ nav { display: flex; gap: 6px; }
   <div class="ap-emoji">🍽️</div>
   <div class="ap-title">Bon appétit !</div>
   <div class="ap-sub">Vos courses sont prêtes 🎉</div>
+  <div class="ap-tricount">💸 N'oublie pas le Tricount !</div>
 </div>
 
 <div id="toast"></div>
@@ -767,31 +796,59 @@ function showAppetit() {
   const el = document.getElementById('appetit');
   el.classList.add('show');
   launchConfetti();
+  launchStars();
   setTimeout(() => {
     el.classList.remove('show');
     document.getElementById('confetti').innerHTML = '';
     goPage('meals', document.querySelector('.tab'));
     document.querySelector('.tab').classList.add('on');
-  }, 3500);
+  }, 5000);
 }
 
 function launchConfetti() {
   const wrap = document.getElementById('confetti');
   wrap.innerHTML = '';
-  const cols = ['#f48fb1','#e91e8c','#f06292','#fce4ec','#ff80ab','#f8bbd9','#fff','#ad1457'];
-  for (let i = 0; i < 80; i++) {
+  const cols = [
+    '#f48fb1','#e91e8c','#f06292','#fce4ec','#ff80ab',
+    '#f8bbd9','#fff','#ad1457','#ffcdd2','#ff4081',
+    '#ff80ab','#c51162','#ffd6e7','#ff6090'
+  ];
+  for (let i = 0; i < 220; i++) {
     const d = document.createElement('div');
     d.className = 'confetti-dot';
+    const size = 5 + Math.random() * 14;
     Object.assign(d.style, {
-      left: Math.random()*100+'%', top: '-20px',
+      left:   Math.random()*110 - 5 + '%',
+      top:    '-30px',
       background: cols[Math.random()*cols.length|0],
-      width:  (6+Math.random()*10)+'px',
-      height: (6+Math.random()*10)+'px',
-      borderRadius: Math.random()>.5 ? '50%' : '2px',
-      animationDuration: (1.5+Math.random()*2)+'s',
-      animationDelay:    (Math.random()*1.5)+'s',
+      width:  size + 'px',
+      height: size * (Math.random() > .4 ? 1 : 2.5) + 'px',
+      borderRadius: Math.random() > .4 ? '50%' : '3px',
+      transform: `rotate(${Math.random()*360}deg)`,
+      animationDuration: (1.2 + Math.random()*2.8) + 's',
+      animationDelay:    (Math.random()*2) + 's',
+      opacity: 0.8 + Math.random()*.2,
     });
     wrap.appendChild(d);
+  }
+}
+
+function launchStars() {
+  const el = document.getElementById('appetit');
+  const emojis = ['⭐','🌟','✨','💫','🎉','🎊','💖','🥳','🛒','🍾'];
+  for (let i = 0; i < 18; i++) {
+    const s = document.createElement('div');
+    s.className = 'ap-star';
+    s.textContent = emojis[Math.random()*emojis.length|0];
+    Object.assign(s.style, {
+      left:  Math.random()*100 + '%',
+      bottom: '-60px',
+      fontSize: (1.5 + Math.random()*2.5) + 'rem',
+      animationDuration: (2 + Math.random()*3) + 's',
+      animationDelay:    (Math.random()*2) + 's',
+    });
+    el.appendChild(s);
+    setTimeout(() => s.remove(), 6000);
   }
 }
 
