@@ -1,1 +1,494 @@
-[]
+[
+  {
+    "id": 1,
+    "emoji": "🍝",
+    "name": "Pâtes Carbonara",
+    "ingredients": [
+      {
+        "name": "Pâtes",
+        "quantity": 0.5,
+        "unit": "paquet"
+      },
+      {
+        "name": "Allumettes de bacon fumé",
+        "quantity": 1,
+        "unit": "boîte"
+      },
+      {
+        "name": "Crème fraîche",
+        "quantity": 1,
+        "unit": "pot (10cl)"
+      },
+      {
+        "name": "Œufs",
+        "quantity": 2,
+        "unit": ""
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "emoji": "🥗",
+    "name": "Salade de pois chiche",
+    "ingredients": [
+      {
+        "name": "Pois chiche",
+        "quantity": 1,
+        "unit": "boîte"
+      },
+      {
+        "name": "Roquette",
+        "quantity": 1,
+        "unit": "sachet"
+      },
+      {
+        "name": "Tomate cerise",
+        "quantity": 1,
+        "unit": "barquette"
+      },
+      {
+        "name": "Avocat",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Mozza",
+        "quantity": 1,
+        "unit": "boule"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "emoji": "🌮",
+    "name": "Fajitas",
+    "ingredients": [
+      {
+        "name": "Wrap",
+        "quantity": 1,
+        "unit": "paquet"
+      },
+      {
+        "name": "Poivrons",
+        "quantity": 2,
+        "unit": ""
+      },
+      {
+        "name": "Grand Gruyère",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Avocats",
+        "quantity": 2,
+        "unit": ""
+      },
+      {
+        "name": "Épices fajitas",
+        "quantity": 1,
+        "unit": "sachet"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "emoji": "🥑",
+    "name": "Avocado Toast",
+    "ingredients": [
+      {
+        "name": "Avocat",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Saint Moret",
+        "quantity": 1,
+        "unit": "pot"
+      },
+      {
+        "name": "Œufs",
+        "quantity": 12,
+        "unit": ""
+      },
+      {
+        "name": "Boule de pain",
+        "quantity": 1,
+        "unit": ""
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "emoji": "🫓",
+    "name": "Galettes Bretonnes",
+    "ingredients": [
+      {
+        "name": "Galettes",
+        "quantity": 6,
+        "unit": ""
+      },
+      {
+        "name": "Jambon",
+        "quantity": 1,
+        "unit": "paquet"
+      },
+      {
+        "name": "Gruyère",
+        "quantity": 1,
+        "unit": "paquet"
+      },
+      {
+        "name": "Œufs",
+        "quantity": 6,
+        "unit": ""
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "emoji": "🍅",
+    "name": "Bruschetta",
+    "ingredients": [
+      {
+        "name": "Tomate cerise",
+        "quantity": 1,
+        "unit": "barquette"
+      },
+      {
+        "name": "Pesto vert",
+        "quantity": 1,
+        "unit": "pot"
+      },
+      {
+        "name": "Mozza",
+        "quantity": 2,
+        "unit": "boules"
+      },
+      {
+        "name": "Boule de pain",
+        "quantity": 1,
+        "unit": ""
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "emoji": "🍅",
+    "name": "Tomates Farcies d'Été",
+    "ingredients": [
+      {
+        "name": "Grosses tomates",
+        "quantity": 4,
+        "unit": ""
+      },
+      {
+        "name": "Thon",
+        "quantity": 1,
+        "unit": "boîte"
+      },
+      {
+        "name": "Avocat",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Œufs",
+        "quantity": 2,
+        "unit": ""
+      },
+      {
+        "name": "Fromage blanc",
+        "quantity": 1,
+        "unit": "pot"
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "emoji": "🫕",
+    "name": "Lasagne d'Été",
+    "ingredients": [
+      {
+        "name": "Pâtes à lasagne",
+        "quantity": 1,
+        "unit": "paquet"
+      },
+      {
+        "name": "Aubergine",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Courgette",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Tomate cerise",
+        "quantity": 1,
+        "unit": "barquette"
+      },
+      {
+        "name": "Ricotta",
+        "quantity": 1,
+        "unit": "pot"
+      },
+      {
+        "name": "Pesto rouge",
+        "quantity": 1,
+        "unit": "pot"
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "emoji": "🌯",
+    "name": "Wrap Poulet Tzatziki",
+    "ingredients": [
+      {
+        "name": "Wrap",
+        "quantity": 1,
+        "unit": "paquet"
+      },
+      {
+        "name": "Poulet",
+        "quantity": 1,
+        "unit": "filet"
+      },
+      {
+        "name": "Concombre",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Fromage blanc",
+        "quantity": 1,
+        "unit": "pot"
+      },
+      {
+        "name": "Tomate cerise",
+        "quantity": 1,
+        "unit": "barquette"
+      },
+      {
+        "name": "Radis",
+        "quantity": 1,
+        "unit": "botte"
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "emoji": "🥗",
+    "name": "Salade de Pâtes Estivale",
+    "ingredients": [
+      {
+        "name": "Pâtes",
+        "quantity": 1,
+        "unit": "paquet"
+      },
+      {
+        "name": "Tomate cerise",
+        "quantity": 1,
+        "unit": "barquette"
+      },
+      {
+        "name": "Tomates séchées",
+        "quantity": 1,
+        "unit": "bocal"
+      },
+      {
+        "name": "Roquette",
+        "quantity": 1,
+        "unit": "sachet"
+      },
+      {
+        "name": "Burrata",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Pesto vert",
+        "quantity": 1,
+        "unit": "pot"
+      },
+      {
+        "name": "Jambon de parme",
+        "quantity": 1,
+        "unit": "paquet"
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "emoji": "🥗",
+    "name": "Salade de Pâtes Méditerranée",
+    "ingredients": [
+      {
+        "name": "Pâtes",
+        "quantity": 1,
+        "unit": "paquet"
+      },
+      {
+        "name": "Pois chiche",
+        "quantity": 1,
+        "unit": "boîte"
+      },
+      {
+        "name": "Concombre",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Mozza",
+        "quantity": 1,
+        "unit": "boule"
+      },
+      {
+        "name": "Olives",
+        "quantity": 1,
+        "unit": "bocal"
+      },
+      {
+        "name": "Tomate cerise",
+        "quantity": 1,
+        "unit": "barquette"
+      },
+      {
+        "name": "Maïs",
+        "quantity": 1,
+        "unit": "boîte"
+      },
+      {
+        "name": "Œufs",
+        "quantity": 2,
+        "unit": ""
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "emoji": "🍝",
+    "name": "Pâtes Carbo Parmesan",
+    "ingredients": [
+      {
+        "name": "Pâtes",
+        "quantity": 1,
+        "unit": "paquet"
+      },
+      {
+        "name": "Allumettes de bacon",
+        "quantity": 1,
+        "unit": "barquette"
+      },
+      {
+        "name": "Parmesan",
+        "quantity": 1,
+        "unit": "paquet"
+      },
+      {
+        "name": "Crème fraîche",
+        "quantity": 1,
+        "unit": "pot"
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "emoji": "🍗",
+    "name": "Melon Tenders Party",
+    "ingredients": [
+      {
+        "name": "Melon",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Œufs",
+        "quantity": 2,
+        "unit": ""
+      },
+      {
+        "name": "Poulet",
+        "quantity": 1,
+        "unit": "filet"
+      },
+      {
+        "name": "Chapelure",
+        "quantity": 1,
+        "unit": "paquet"
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "emoji": "🍝",
+    "name": "Pâtes Jambon Burrata",
+    "ingredients": [
+      {
+        "name": "Pâtes",
+        "quantity": 1,
+        "unit": "paquet"
+      },
+      {
+        "name": "Jambon de parme",
+        "quantity": 1,
+        "unit": "paquet"
+      },
+      {
+        "name": "Burrata",
+        "quantity": 1,
+        "unit": ""
+      }
+    ]
+  },
+  {
+    "id": 15,
+    "emoji": "🍝",
+    "name": "Pâtes Chorizo Boursin",
+    "ingredients": [
+      {
+        "name": "Pâtes",
+        "quantity": 1,
+        "unit": "paquet"
+      },
+      {
+        "name": "Chorizo",
+        "quantity": 1,
+        "unit": "paquet"
+      },
+      {
+        "name": "Boursin",
+        "quantity": 1,
+        "unit": "pot"
+      }
+    ]
+  },
+  {
+    "id": 16,
+    "emoji": "🍜",
+    "name": "Poulet Sauce Cacahuète",
+    "ingredients": [
+      {
+        "name": "Poulet",
+        "quantity": 2,
+        "unit": "filet"
+      },
+      {
+        "name": "Cacahuètes",
+        "quantity": 1,
+        "unit": "paquet"
+      },
+      {
+        "name": "Riz",
+        "quantity": 1,
+        "unit": "paquet"
+      },
+      {
+        "name": "Poivrons",
+        "quantity": 2,
+        "unit": ""
+      }
+    ]
+  }
+]
