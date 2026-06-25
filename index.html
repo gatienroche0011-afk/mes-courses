@@ -532,9 +532,9 @@ const COMMON = [
 /* ═══════════════════════════════════════════
    STATE
 ═══════════════════════════════════════════ */
-let meals = [];
-let cart  = {};   // key → {name, quantity, unit, done}
-let counts = {};  // mealId → nb fois ajouté
+let meals  = DEFAULTS.map(d => ({...d}));
+let cart   = {};
+let counts = {};
 let editId = null;
 let suggIdx = -1;
 
