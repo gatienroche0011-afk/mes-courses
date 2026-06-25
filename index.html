@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Mes Courses 🛒</title>
+<style>
+/* ══════════════════════════════════════════════
+   RESET & VARIABLES
+══════════════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --p1: #e91e8c;
+  --p2: #f48fb1;
+  --p3: #fce4ec;
+  --p4: #ad1457;
+  --p5: #fff0f7;
+  --text: #3d0c2e;
+  --muted: #b06090;
+  --shadow: 0 4px 18px rgba(233,30,140,.12);
+  --r: 14px;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  background: var(--p3);
+  color: var(--text);
+  min-height: 100dvh;
+  padding-bottom: 30px;
+}
+
+/* ══════════════════════════════════════════════
+   HEADER & TABS
+══════════════════════════════════════════════ */
+header {
+  background: linear-gradient(135deg, var(--p2), var(--p1));
+  color: #fff;
+  padding: 18px 20px 0;
+  position: sticky; top: 0; z-index: 100;
+  box-shadow: 0 2px 16px rgba(233,30,140,.25);
+}
+
+header h1 { font-size: 1.4rem; font-weight: 800; margin-bottom: 14px; letter-spacing: -.01em; }
+
+nav { display: flex; gap: 6px; }
+
+.tab {
+  flex: 1; padding: 10px 6px;
+  background: rgba(255,255,255,.18);
+  border: none; border-radius: 10px 10px 0 0;
+  color: rgba(255,255,255,.75);
+  font-size: .9rem; font-weight: 700;
+  cursor: pointer; transition: all .2s;
+  position: relative;
+}
+.tab.on { background: var(--p3); color: var(--p1); }
+
+.badge {
+  position: absolute; top: 5px; right: 7px;
+  background: var(--p4); color: #fff;
+  font-size: .6rem; font-weight: 800;
+  min-width: 17px; height: 17px; border-radius: 99px; padding: 0 4px;
+  display: none; align-items: center; justify-content: center;
+}
+.badge.show { display: flex; }
+
+/* ══════════════════════════════════════════════
+   PAGES
+══════════════════════════════════════════════ */
+.page { display: none; padding: 18px 16px; }
+.page.on { display: block; }
+
+.page-hint {
+  font-size: .78rem; font-weight: 700; color: var(--muted);
+  text-transform: uppercase; letter-spacing: .08em;
+  margin-bottom: 14px;
+}
+
+/* ══════════════════════════════════════════════
+   GRILLE REPAS
+══════════════════════════════════════════════ */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(148px, 1fr));
+  gap: 12px;
+}
+
+/* ── Carte repas ── */
+.card {
+  background: var(--p5);
+  border-radius: var(--r);
+  padding: 16px 12px 12px;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  position: relative; overflow: hidden;
+  user-select: none;
+  transition: transform .13s, box-shadow .13s;
+}
+.card:hover  { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(233,30,140,.18); }
+.card:active { transform: scale(.95); }
+
+.card-emoji { font-size: 2.5rem; display: block; margin-bottom: 8px; }
+.card-name  { font-size: .85rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+.card-hint  { font-size: .7rem; color: var(--muted); }
+
+/* Chip panier */
+.card-chip {
+  display: inline-flex; align-items: center; gap: 5px;
+  background: var(--p1); color: #fff;
+  font-size: .7rem; font-weight: 800;
+  padding: 3px 5px 3px 9px; border-radius: 99px;
+  margin-bottom: 6px;
+  opacity: 0; pointer-events: none;
+  transition: opacity .2s;
+}
+.card-chip.show { opacity: 1; pointer-events: auto; }
+
+.chip-minus {
+  background: rgba(255,255,255,.28);
+  border: none; border-radius: 50%;
+  width: 17px; height: 17px; flex-shrink: 0;
+  color: #fff; font-size: 1rem; line-height: 1;
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  transition: background .15s;
+}
+.chip-minus:hover { background: rgba(255,255,255,.5); }
+
+/* Bouton édition */
+.card-edit {
+  position: absolute; top: 7px; right: 7px;
+  background: rgba(233,30,140,.1);
+  border: none; border-radius: 8px;
+  width: 27px; height: 27px; font-size: .8rem;
+  color: var(--p1); cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background .15s;
+}
+.card-edit:hover { background: rgba(233,30,140,.22); }
+
+/* Ripple */
+.ripple {
+  position: absolute; border-radius: 50%;
+  background: rgba(233,30,140,.13);
+  transform: scale(0); animation: ripple .5s linear; pointer-events: none;
+}
+@keyframes ripple { to { transform: scale(4); opacity: 0; } }
+
+/* ── Bouton ajouter repas ── */
+.card-add {
+  background: var(--p5);
+  border: 2px dashed var(--p2);
+  border-radius: var(--r);
+  min-height: 140px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 2rem; color: var(--p2);
+  cursor: pointer; transition: all .2s;
+}
+.card-add:hover { border-color: var(--p1); color: var(--p1); }
+
+/* ══════════════════════════════════════════════
+   PANIER
+══════════════════════════════════════════════ */
+.cart-toolbar {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+/* Ajout manuel */
+.manual-box {
+  background: var(--p5);
+  border-radius: var(--r);
+  padding: 13px 14px;
+  margin-bottom: 16px;
+  box-shadow: var(--shadow);
+  position: relative;
+}
+.manual-label {
+  font-size: .75rem; font-weight: 700; color: var(--muted);
+  text-transform: uppercase; letter-spacing: .07em;
+  margin-bottom: 10px; display: block;
+}
+.manual-row { display: flex; gap: 8px; }
+
+.manual-input {
+  flex: 1; padding: 9px 13px;
+  border: 2px solid var(--p2); border-radius: 10px;
+  font-size: .93rem; outline: none; color: var(--text);
+  background: #fff; transition: border-color .2s;
+}
+.manual-input:focus { border-color: var(--p1); }
+
+.manual-add {
+  background: linear-gradient(135deg, var(--p2), var(--p1));
+  color: #fff; border: none; border-radius: 10px;
+  width: 40px; height: 40px; font-size: 1.4rem;
+  cursor: pointer; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  transition: opacity .15s;
+}
+.manual-add:hover { opacity: .85; }
+
+/* Dropdown suggestions */
+.suggestions {
+  display: none;
+  position: absolute; left: 14px; right: 14px; top: calc(100% - 8px);
+  background: #fff; border-radius: 12px;
+  box-shadow: 0 8px 28px rgba(233,30,140,.2);
+  border: 1.5px solid var(--p2);
+  max-height: 210px; overflow-y: auto; z-index: 60;
+}
+.sugg-item {
+  padding: 10px 14px; display: flex; align-items: center; gap: 10px;
+  font-size: .9rem; color: var(--text);
+  border-bottom: 1px solid var(--p3); cursor: pointer;
+  transition: background .1s;
+}
+.sugg-item:last-child { border-bottom: none; }
+.sugg-item:hover, .sugg-item.hi { background: var(--p3); }
+.sugg-hl { color: var(--p1); font-weight: 800; }
+
+/* Items panier */
+.cart-empty {
+  text-align: center; padding: 50px 20px; color: var(--muted);
+}
+.cart-empty-icon { font-size: 3.5rem; margin-bottom: 12px; }
+.cart-empty-title { font-size: 1rem; font-weight: 700; margin-bottom: 6px; }
+
+.cart-item {
+  background: var(--p5); border-radius: 12px;
+  padding: 13px 15px; margin-bottom: 8px;
+  display: flex; align-items: center; gap: 12px;
+  box-shadow: var(--shadow); cursor: pointer;
+  transition: opacity .25s;
+}
+.cart-item.done { opacity: .42; }
+.cart-item.done .ci-name { text-decoration: line-through; }
+
+.ci-check {
+  width: 23px; height: 23px; flex-shrink: 0;
+  border: 2.5px solid var(--p2); border-radius: 6px;
+  background: #fff; display: flex; align-items: center; justify-content: center;
+  font-size: .8rem; transition: all .15s;
+}
+.cart-item.done .ci-check { background: var(--p1); border-color: var(--p1); color: #fff; }
+
+.ci-name { flex: 1; font-weight: 600; font-size: .93rem; }
+
+.ci-qty {
+  background: linear-gradient(135deg, var(--p2), var(--p1));
+  color: #fff; font-size: .72rem; font-weight: 800;
+  padding: 3px 10px; border-radius: 99px; white-space: nowrap;
+}
+
+/* Bouton courses faites */
+.done-btn {
+  width: 100%; margin-top: 18px; padding: 15px;
+  background: linear-gradient(135deg, var(--p2), var(--p1));
+  color: #fff; border: none; border-radius: var(--r);
+  font-size: 1rem; font-weight: 800; cursor: pointer;
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  box-shadow: 0 4px 18px rgba(233,30,140,.3); transition: all .2s;
+}
+.done-btn:hover  { transform: translateY(-2px); box-shadow: 0 8px 26px rgba(233,30,140,.4); }
+.done-btn:active { transform: scale(.98); }
+
+/* ══════════════════════════════════════════════
+   MODAL
+══════════════════════════════════════════════ */
+.overlay {
+  display: none; position: fixed; inset: 0;
+  background: rgba(60,10,46,.45); z-index: 200;
+  align-items: center; justify-content: center; padding: 14px;
+}
+.overlay.open { display: flex; }
+
+.modal {
+  background: #fff; border-radius: 20px;
+  padding: 22px; width: 100%; max-width: 460px;
+  max-height: 88dvh; overflow-y: auto;
+}
+.modal-head {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 18px;
+}
+.modal-head h2 { font-size: 1.1rem; font-weight: 800; }
+.modal-close {
+  background: var(--p3); border: none; border-radius: 9px;
+  width: 30px; height: 30px; font-size: 1rem;
+  color: var(--p1); cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+}
+
+.field { margin-bottom: 13px; }
+.field label { display: block; font-size: .78rem; font-weight: 700; color: var(--muted); margin-bottom: 5px; }
+.field input {
+  width: 100%; padding: 9px 13px;
+  border: 2px solid var(--p2); border-radius: 9px;
+  font-size: .93rem; outline: none; color: var(--text);
+  transition: border-color .2s;
+}
+.field input:focus { border-color: var(--p1); }
+
+.ing-cols {
+  display: grid; grid-template-columns: 2fr 1fr 1.4fr auto;
+  gap: 6px; margin-bottom: 6px; align-items: center;
+}
+.ing-cols input {
+  padding: 7px 9px; border: 2px solid var(--p2);
+  border-radius: 8px; font-size: .85rem;
+  outline: none; color: var(--text); transition: border-color .2s;
+}
+.ing-cols input:focus { border-color: var(--p1); }
+.ing-del {
+  background: var(--p3); border: none; border-radius: 8px;
+  width: 33px; height: 33px; color: var(--p1);
+  font-size: 1.1rem; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+}
+
+.modal-foot { display: flex; gap: 8px; margin-top: 18px; flex-wrap: wrap; }
+
+.btn {
+  padding: 10px 18px; border: none; border-radius: 9px;
+  font-size: .9rem; font-weight: 700; cursor: pointer; transition: opacity .15s;
+}
+.btn:hover { opacity: .88; }
+.btn-pink { background: linear-gradient(135deg, var(--p2), var(--p1)); color: #fff; }
+.btn-ghost { background: var(--p3); color: var(--muted); }
+.btn-del   { background: var(--p3); color: var(--p4); margin-left: auto; }
+.btn-sm    { padding: 7px 13px; font-size: .82rem; }
+
+/* ══════════════════════════════════════════════
+   BON APPÉTIT
+══════════════════════════════════════════════ */
+#appetit {
+  display: none; position: fixed; inset: 0; z-index: 999;
+  background: linear-gradient(135deg, var(--p2), var(--p1));
+  flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; color: #fff;
+}
+#appetit.show { display: flex; }
+
+.ap-emoji { font-size: 5.5rem; animation: bob .6s ease infinite alternate; margin-bottom: 16px; }
+.ap-title  { font-size: 2.4rem; font-weight: 900; animation: up .5s ease .1s both; }
+.ap-sub    { font-size: 1rem; opacity: .85; margin-top: 8px; animation: up .5s ease .2s both; }
+
+.confetti-wrap { position: fixed; inset: 0; pointer-events: none; overflow: hidden; }
+.confetti-dot {
+  position: absolute; border-radius: 2px;
+  animation: fall linear forwards;
+}
+
+@keyframes bob  { to { transform: translateY(-18px) rotate(6deg); } }
+@keyframes up   { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:none; } }
+@keyframes fall { to   { transform: translateY(110vh) rotate(720deg); opacity: 0; } }
+
+/* ══════════════════════════════════════════════
+   TOAST
+══════════════════════════════════════════════ */
+#toast {
+  position: fixed; bottom: 22px; left: 50%;
+  transform: translateX(-50%) translateY(70px);
+  background: var(--p1); color: #fff;
+  padding: 9px 20px; border-radius: 99px;
+  font-size: .88rem; font-weight: 700;
+  box-shadow: 0 4px 18px rgba(0,0,0,.18);
+  white-space: nowrap; z-index: 400;
+  transition: transform .28s;
+  pointer-events: none;
+}
+#toast.show { transform: translateX(-50%) translateY(0); }
+
+/* ══════════════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════════════ */
+@media (max-width: 400px) {
+  .grid { grid-template-columns: repeat(2, 1fr); }
+  .ap-title { font-size: 1.9rem; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🛒 Mes Courses</h1>
+  <nav>
+    <button class="tab on"  onclick="goPage('meals', this)">🍽️ Repas</button>
+    <button class="tab"     onclick="goPage('cart',  this)">
+      🧺 Panier
+      <span class="badge" id="badge">0</span>
+    </button>
+  </nav>
+</header>
+
+<!-- ── PAGE REPAS ── -->
+<div class="page on" id="page-meals">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+    <p class="page-hint" style="margin:0">Touchez un repas pour l'ajouter au panier</p>
+    <button onclick="saveToFile()" style="
+      background:linear-gradient(135deg,var(--p2),var(--p1));color:#fff;
+      border:none;border-radius:10px;padding:8px 14px;font-size:.82rem;
+      font-weight:700;cursor:pointer;white-space:nowrap;box-shadow:var(--shadow);
+      display:flex;align-items:center;gap:6px;
+    ">💾 Sauvegarder</button>
+  </div>
+  <div class="grid" id="grid"></div>
+</div>
+
+<!-- ── PAGE PANIER ── -->
+<div class="page" id="page-cart">
+  <div class="cart-toolbar">
+    <span class="page-hint" style="margin:0">Ma liste</span>
+    <button class="btn btn-ghost btn-sm" onclick="clearDone()">Supprimer cochés</button>
+  </div>
+
+  <div class="manual-box">
+    <span class="manual-label">✏️ Ajouter un article</span>
+    <div class="manual-row">
+      <input id="manual" class="manual-input" type="text"
+        placeholder="huile d'olive, javel…" autocomplete="off"
+        oninput="onInput()" onkeydown="onKey(event)"/>
+      <button class="manual-add" onclick="addManual()" title="Ajouter">+</button>
+    </div>
+    <div class="suggestions" id="sugg"></div>
+  </div>
+
+  <div id="cart-list"></div>
+</div>
+
+<!-- ── MODAL ── -->
+<div class="overlay" id="overlay">
+  <div class="modal">
+    <div class="modal-head">
+      <h2 id="modal-ttl">Nouveau repas</h2>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+
+    <div class="field">
+      <label>Nom du repas</label>
+      <input id="f-name" type="text" placeholder="Ex : Poulet rôti"/>
+    </div>
+    <div class="field">
+      <label>Emoji</label>
+      <input id="f-emoji" type="text" placeholder="🍽️" style="width:72px"/>
+    </div>
+    <div class="field">
+      <label>Ingrédients</label>
+      <div style="display:grid;grid-template-columns:2fr 1fr 1.4fr auto;gap:6px;margin-bottom:8px">
+        <small style="color:var(--muted);font-weight:700">Nom</small>
+        <small style="color:var(--muted);font-weight:700">Qté</small>
+        <small style="color:var(--muted);font-weight:700">Unité</small>
+        <span></span>
+      </div>
+      <div id="ing-rows"></div>
+      <button class="btn btn-ghost btn-sm" style="margin-top:8px" onclick="addRow()">+ Ingrédient</button>
+    </div>
+
+    <div class="modal-foot">
+      <button class="btn btn-pink" onclick="saveMeal()">Enregistrer</button>
+      <button class="btn btn-ghost" onclick="closeModal()">Annuler</button>
+      <button class="btn btn-del btn-sm" id="del-btn" onclick="deleteMeal()">🗑 Supprimer</button>
+    </div>
+  </div>
+</div>
+
+<!-- ── BON APPÉTIT ── -->
+<div id="appetit">
+  <div class="confetti-wrap" id="confetti"></div>
+  <div class="ap-emoji">🍽️</div>
+  <div class="ap-title">Bon appétit !</div>
+  <div class="ap-sub">Vos courses sont prêtes 🎉</div>
+</div>
+
+<div id="toast"></div>
+
+<script>
+/* ═══════════════════════════════════════════
+   DONNÉES PAR DÉFAUT
+═══════════════════════════════════════════ */
+const V = '4';
+
+const DEFAULTS = [
+  { id:1,  emoji:'🍝', name:'Pâtes Carbonara',            ingredients:[{name:'Pâtes',quantity:.5,unit:'paquet'},{name:'Allumettes de bacon fumé',quantity:1,unit:'boîte'},{name:'Crème fraîche',quantity:1,unit:'pot (10cl)'},{name:'Œufs',quantity:2,unit:''}] },
+  { id:2,  emoji:'🥗', name:'Salade de pois chiche',       ingredients:[{name:'Pois chiche',quantity:1,unit:'boîte'},{name:'Roquette',quantity:1,unit:'sachet'},{name:'Tomate cerise',quantity:1,unit:'barquette'},{name:'Avocat',quantity:1,unit:''},{name:'Mozza',quantity:1,unit:'boule'}] },
+  { id:3,  emoji:'🌮', name:'Fajitas',                     ingredients:[{name:'Wrap',quantity:1,unit:'paquet'},{name:'Poivrons',quantity:2,unit:''},{name:'Grand Gruyère',quantity:1,unit:''},{name:'Avocats',quantity:2,unit:''},{name:'Épices fajitas',quantity:1,unit:'sachet'}] },
+  { id:4,  emoji:'🥑', name:'Avocado Toast',               ingredients:[{name:'Avocat',quantity:1,unit:''},{name:'Saint Moret',quantity:1,unit:'pot'},{name:'Œufs',quantity:12,unit:''},{name:'Boule de pain',quantity:1,unit:''}] },
+  { id:5,  emoji:'🫓', name:'Galettes Bretonnes',          ingredients:[{name:'Galettes',quantity:6,unit:''},{name:'Jambon',quantity:1,unit:'paquet'},{name:'Gruyère',quantity:1,unit:'paquet'},{name:'Œufs',quantity:6,unit:''}] },
+  { id:6,  emoji:'🍅', name:'Bruschetta',                  ingredients:[{name:'Tomate cerise',quantity:1,unit:'barquette'},{name:'Pesto vert',quantity:1,unit:'pot'},{name:'Mozza',quantity:2,unit:'boules'},{name:'Boule de pain',quantity:1,unit:''}] },
+  { id:7,  emoji:'🍅', name:'Tomates Farcies d\'Été',      ingredients:[{name:'Grosses tomates',quantity:4,unit:''},{name:'Thon',quantity:1,unit:'boîte'},{name:'Avocat',quantity:1,unit:''},{name:'Œufs',quantity:2,unit:''},{name:'Fromage blanc',quantity:1,unit:'pot'}] },
+  { id:8,  emoji:'🫕', name:'Lasagne d\'Été',              ingredients:[{name:'Pâtes à lasagne',quantity:1,unit:'paquet'},{name:'Aubergine',quantity:1,unit:''},{name:'Courgette',quantity:1,unit:''},{name:'Tomate cerise',quantity:1,unit:'barquette'},{name:'Ricotta',quantity:1,unit:'pot'},{name:'Pesto rouge',quantity:1,unit:'pot'}] },
+  { id:9,  emoji:'🌯', name:'Wrap Poulet Tzatziki',        ingredients:[{name:'Wrap',quantity:1,unit:'paquet'},{name:'Poulet',quantity:1,unit:'filet'},{name:'Concombre',quantity:1,unit:''},{name:'Fromage blanc',quantity:1,unit:'pot'},{name:'Tomate cerise',quantity:1,unit:'barquette'},{name:'Radis',quantity:1,unit:'botte'}] },
+  { id:10, emoji:'🥗', name:'Salade de Pâtes Estivale',    ingredients:[{name:'Pâtes',quantity:1,unit:'paquet'},{name:'Tomate cerise',quantity:1,unit:'barquette'},{name:'Tomates séchées',quantity:1,unit:'bocal'},{name:'Roquette',quantity:1,unit:'sachet'},{name:'Burrata',quantity:1,unit:''},{name:'Pesto vert',quantity:1,unit:'pot'},{name:'Jambon de parme',quantity:1,unit:'paquet'}] },
+  { id:11, emoji:'🥗', name:'Salade de Pâtes Méditerranée',ingredients:[{name:'Pâtes',quantity:1,unit:'paquet'},{name:'Pois chiche',quantity:1,unit:'boîte'},{name:'Concombre',quantity:1,unit:''},{name:'Mozza',quantity:1,unit:'boule'},{name:'Olives',quantity:1,unit:'bocal'},{name:'Tomate cerise',quantity:1,unit:'barquette'},{name:'Maïs',quantity:1,unit:'boîte'},{name:'Œufs',quantity:2,unit:''}] },
+  { id:12, emoji:'🍝', name:'Pâtes Carbo Parmesan',        ingredients:[{name:'Pâtes',quantity:1,unit:'paquet'},{name:'Allumettes de bacon',quantity:1,unit:'barquette'},{name:'Parmesan',quantity:1,unit:'paquet'},{name:'Crème fraîche',quantity:1,unit:'pot'}] },
+  { id:13, emoji:'🍗', name:'Melon Tenders Party',         ingredients:[{name:'Melon',quantity:1,unit:''},{name:'Œufs',quantity:2,unit:''},{name:'Poulet',quantity:1,unit:'filet'},{name:'Chapelure',quantity:1,unit:'paquet'}] },
+  { id:14, emoji:'🍝', name:'Pâtes Jambon Burrata',        ingredients:[{name:'Pâtes',quantity:1,unit:'paquet'},{name:'Jambon de parme',quantity:1,unit:'paquet'},{name:'Burrata',quantity:1,unit:''}] },
+  { id:15, emoji:'🍝', name:'Pâtes Chorizo Boursin',       ingredients:[{name:'Pâtes',quantity:1,unit:'paquet'},{name:'Chorizo',quantity:1,unit:'paquet'},{name:'Boursin',quantity:1,unit:'pot'}] },
+  { id:16, emoji:'🍜', name:'Poulet Sauce Cacahuète',      ingredients:[{name:'Poulet',quantity:1,unit:'filet'},{name:'Cacahuètes',quantity:1,unit:'paquet'},{name:'Riz',quantity:1,unit:'paquet'},{name:'Poivrons',quantity:2,unit:''}] },
+];
+
+const COMMON = [
+  {n:"Huile d'olive",i:"🫒"},{n:"Huile de tournesol",i:"🌻"},{n:"Beurre",i:"🧈"},
+  {n:"Sel",i:"🧂"},{n:"Poivre",i:"🫙"},{n:"Sucre",i:"🍬"},{n:"Farine",i:"🌾"},
+  {n:"Lait",i:"🥛"},{n:"Yaourt",i:"🥛"},{n:"Fromage blanc",i:"🥛"},
+  {n:"Crème fraîche",i:"🥛"},{n:"Œufs",i:"🥚"},{n:"Pain",i:"🍞"},{n:"Baguette",i:"🥖"},
+  {n:"Riz",i:"🍚"},{n:"Pâtes",i:"🍝"},{n:"Pomme de terre",i:"🥔"},
+  {n:"Oignon",i:"🧅"},{n:"Ail",i:"🧄"},{n:"Carotte",i:"🥕"},
+  {n:"Tomate",i:"🍅"},{n:"Tomate cerise",i:"🍅"},{n:"Salade",i:"🥬"},
+  {n:"Courgette",i:"🥒"},{n:"Aubergine",i:"🍆"},{n:"Poivron",i:"🫑"},
+  {n:"Champignon",i:"🍄"},{n:"Avocat",i:"🥑"},{n:"Citron",i:"🍋"},
+  {n:"Pomme",i:"🍎"},{n:"Banane",i:"🍌"},{n:"Fraise",i:"🍓"},
+  {n:"Melon",i:"🍈"},{n:"Raisin",i:"🍇"},
+  {n:"Poulet",i:"🍗"},{n:"Bœuf haché",i:"🥩"},{n:"Steak",i:"🥩"},
+  {n:"Saumon",i:"🐟"},{n:"Thon en boîte",i:"🐟"},{n:"Crevettes",i:"🦐"},
+  {n:"Jambon",i:"🥩"},{n:"Lardons",i:"🥓"},{n:"Chorizo",i:"🌶️"},
+  {n:"Gruyère",i:"🧀"},{n:"Parmesan",i:"🧀"},{n:"Mozzarella",i:"🧀"},
+  {n:"Feta",i:"🧀"},{n:"Camembert",i:"🧀"},{n:"Boursin",i:"🧀"},
+  {n:"Ketchup",i:"🍅"},{n:"Moutarde",i:"🟡"},{n:"Mayonnaise",i:"🫙"},
+  {n:"Sauce soja",i:"🫙"},{n:"Vinaigre",i:"🫙"},{n:"Pesto",i:"🫙"},
+  {n:"Concentré de tomate",i:"🫙"},{n:"Bouillon",i:"🍲"},
+  {n:"Eau",i:"💧"},{n:"Jus d'orange",i:"🍊"},{n:"Café",i:"☕"},{n:"Thé",i:"🍵"},
+  {n:"Chocolat",i:"🍫"},{n:"Chips",i:"🥔"},{n:"Biscuits",i:"🍪"},
+  {n:"Confiture",i:"🍓"},{n:"Miel",i:"🍯"},
+  {n:"Javel",i:"🧴"},{n:"Liquide vaisselle",i:"🧴"},{n:"Éponge",i:"🧽"},
+  {n:"Essuie-tout",i:"🧻"},{n:"Papier toilette",i:"🧻"},{n:"Sacs poubelle",i:"🗑️"},
+  {n:"Savon",i:"🧼"},{n:"Shampoing",i:"🧴"},{n:"Gel douche",i:"🧴"},
+  {n:"Dentifrice",i:"🪥"},{n:"Lessive",i:"🧺"},
+];
+
+/* ═══════════════════════════════════════════
+   STATE
+═══════════════════════════════════════════ */
+let meals = [];
+let cart  = {};   // key → {name, quantity, unit, done}
+let counts = {};  // mealId → nb fois ajouté
+let editId = null;
+let suggIdx = -1;
+
+/* ═══════════════════════════════════════════
+   PERSISTENCE
+═══════════════════════════════════════════ */
+function save() {
+  try {
+    localStorage.setItem('meals',  JSON.stringify(meals));
+    localStorage.setItem('cart',   JSON.stringify(cart));
+    localStorage.setItem('counts', JSON.stringify(counts));
+  } catch(e) { /* localStorage indisponible, seul le fichier compte */ }
+}
+
+function load() {
+  try {
+    const m = localStorage.getItem('meals');
+    const c = localStorage.getItem('cart');
+    const n = localStorage.getItem('counts');
+    // Les repas du fichier (DEFAULTS) sont déjà chargés — on écrase seulement si localStorage a quelque chose
+    if (m) meals  = JSON.parse(m);
+    if (c) cart   = JSON.parse(c);
+    if (n) counts = JSON.parse(n);
+  } catch { /* garde les DEFAULTS */ }
+}
+
+/* Sauvegarde définitive : génère un nouveau fichier HTML avec les recettes intégrées */
+function saveToFile() {
+  const src   = document.documentElement.outerHTML;
+  const mealsJson = JSON.stringify(meals, null, 2);
+  const updated   = src.replace(
+    /(const DEFAULTS = )\[[\s\S]*?\];/,
+    '$1' + mealsJson + ';'
+  );
+  const a = document.createElement('a');
+  a.href     = URL.createObjectURL(new Blob([updated], {type:'text/html'}));
+  a.download = 'liste-courses.html';
+  a.click();
+  setTimeout(() => URL.revokeObjectURL(a.href), 5000);
+  toast('💾 Fichier téléchargé — remplacez l\'ancien par ce nouveau !');
+}
+
+/* ═══════════════════════════════════════════
+   NAVIGATION
+═══════════════════════════════════════════ */
+function goPage(id, tab) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('on'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('on'));
+  document.getElementById('page-' + id).classList.add('on');
+  tab.classList.add('on');
+  if (id === 'cart') renderCart();
+}
+
+/* ═══════════════════════════════════════════
+   REPAS — RENDU
+═══════════════════════════════════════════ */
+function renderMeals() {
+  const g = document.getElementById('grid');
+  g.innerHTML = '';
+
+  meals.forEach(meal => {
+    const n = counts[meal.id] || 0;
+    const card = el('div', 'card');
+
+    // bouton édition
+    const editBtn = el('button', 'card-edit');
+    editBtn.textContent = '✏️';
+    editBtn.title = 'Modifier';
+    editBtn.addEventListener('click', e => { e.stopPropagation(); openEdit(meal.id); });
+
+    // emoji + nom
+    const emoji = el('span', 'card-emoji'); emoji.textContent = meal.emoji;
+    const name  = el('div',  'card-name');  name.textContent  = meal.name;
+
+    // chip compteur
+    const chip  = el('div', 'card-chip' + (n > 0 ? ' show' : ''));
+    chip.id = 'chip-' + meal.id;
+    chip.appendChild(document.createTextNode('×' + n + ' '));
+    const minus = el('button', 'chip-minus');
+    minus.textContent = '−';
+    minus.title = 'Retirer ce repas';
+    minus.addEventListener('click', e => { e.stopPropagation(); removeFromCart(meal); });
+    chip.appendChild(minus);
+
+    const hint = el('div', 'card-hint'); hint.textContent = 'Toucher pour ajouter';
+
+    card.append(editBtn, emoji, name, chip, hint);
+
+    card.addEventListener('click', e => { addToCart(meal); doRipple(card, e); });
+    g.appendChild(card);
+  });
+
+  // bouton "+"
+  const plus = el('div', 'card-add');
+  plus.textContent = '+';
+  plus.title = 'Ajouter un repas';
+  plus.onclick = openAdd;
+  g.appendChild(plus);
+}
+
+function el(tag, cls) {
+  const e = document.createElement(tag);
+  if (cls) e.className = cls;
+  return e;
+}
+
+function doRipple(card, e) {
+  const r = el('span', 'ripple');
+  const rect = card.getBoundingClientRect();
+  const s = Math.max(rect.width, rect.height);
+  Object.assign(r.style, {
+    width: s+'px', height: s+'px',
+    left: (e.clientX - rect.left - s/2)+'px',
+    top:  (e.clientY - rect.top  - s/2)+'px',
+  });
+  card.appendChild(r);
+  setTimeout(() => r.remove(), 520);
+}
+
+/* ═══════════════════════════════════════════
+   PANIER — AJOUT / RETRAIT REPAS
+═══════════════════════════════════════════ */
+function addToCart(meal) {
+  counts[meal.id] = (counts[meal.id] || 0) + 1;
+  meal.ingredients.forEach(ing => {
+    const k = ing.name.toLowerCase().trim();
+    cart[k] ? (cart[k].quantity += ing.quantity)
+            : (cart[k] = { name: ing.name, quantity: ing.quantity, unit: ing.unit, done: false });
+  });
+  updateChip(meal.id);
+  updateBadge();
+  save();
+  toast(`${meal.emoji} ${meal.name} ajouté !`);
+}
+
+function removeFromCart(meal) {
+  if (!(counts[meal.id] > 0)) return;
+  counts[meal.id]--;
+  meal.ingredients.forEach(ing => {
+    const k = ing.name.toLowerCase().trim();
+    if (!cart[k]) return;
+    cart[k].quantity -= ing.quantity;
+    if (cart[k].quantity <= 0.001) delete cart[k];
+  });
+  updateChip(meal.id);
+  updateBadge();
+  save();
+  toast(`↩️ ${meal.emoji} ${meal.name} retiré`);
+}
+
+function updateChip(id) {
+  const chip = document.getElementById('chip-' + id);
+  if (!chip) return;
+  const n = counts[id] || 0;
+  chip.firstChild.textContent = '×' + n + ' ';
+  chip.classList.toggle('show', n > 0);
+}
+
+/* ═══════════════════════════════════════════
+   PANIER — RENDU
+═══════════════════════════════════════════ */
+function renderCart() {
+  const el = document.getElementById('cart-list');
+  const items = Object.entries(cart);
+
+  if (!items.length) {
+    el.innerHTML = `
+      <div class="cart-empty">
+        <div class="cart-empty-icon">🧺</div>
+        <div class="cart-empty-title">Panier vide</div>
+        <div style="font-size:.85rem">Ajoutez des repas depuis l'onglet Repas</div>
+      </div>`;
+    return;
+  }
+
+  items.sort((a, b) => (a[1].done ? 1 : 0) - (b[1].done ? 1 : 0));
+
+  el.innerHTML = items.map(([k, item]) => {
+    const qty = fmtQty(item.quantity, item.unit);
+    return `
+      <div class="cart-item ${item.done ? 'done' : ''}" onclick="toggle('${k.replace(/'/g,"\\'")}')">
+        <div class="ci-check">${item.done ? '✓' : ''}</div>
+        <div class="ci-name">${item.name}</div>
+        <div class="ci-qty">${qty}</div>
+      </div>`;
+  }).join('') + `<button class="done-btn" onclick="coursesFaites()">✅ Courses faites !</button>`;
+}
+
+function fmtQty(q, unit) {
+  const s = q === 0.5 ? '½' : q % 1 !== 0 ? q.toFixed(1) : String(q);
+  return unit ? `${s} ${unit}` : `×${s}`;
+}
+
+function toggle(k) {
+  if (!cart[k]) return;
+  cart[k].done = !cart[k].done;
+  save(); updateBadge(); renderCart();
+}
+
+function clearDone() {
+  Object.keys(cart).forEach(k => { if (cart[k].done) delete cart[k]; });
+  save(); updateBadge(); renderCart();
+}
+
+/* ═══════════════════════════════════════════
+   BADGE
+═══════════════════════════════════════════ */
+function updateBadge() {
+  const n = Object.values(cart).filter(i => !i.done).length;
+  const b = document.getElementById('badge');
+  b.textContent = n;
+  b.classList.toggle('show', n > 0);
+}
+
+/* ═══════════════════════════════════════════
+   COURSES FAITES
+═══════════════════════════════════════════ */
+function coursesFaites() {
+  cart = {}; counts = {};
+  save(); updateBadge(); renderMeals(); renderCart();
+  showAppetit();
+}
+
+function showAppetit() {
+  const el = document.getElementById('appetit');
+  el.classList.add('show');
+  launchConfetti();
+  setTimeout(() => {
+    el.classList.remove('show');
+    document.getElementById('confetti').innerHTML = '';
+    goPage('meals', document.querySelector('.tab'));
+    document.querySelector('.tab').classList.add('on');
+  }, 3500);
+}
+
+function launchConfetti() {
+  const wrap = document.getElementById('confetti');
+  wrap.innerHTML = '';
+  const cols = ['#f48fb1','#e91e8c','#f06292','#fce4ec','#ff80ab','#f8bbd9','#fff','#ad1457'];
+  for (let i = 0; i < 80; i++) {
+    const d = document.createElement('div');
+    d.className = 'confetti-dot';
+    Object.assign(d.style, {
+      left: Math.random()*100+'%', top: '-20px',
+      background: cols[Math.random()*cols.length|0],
+      width:  (6+Math.random()*10)+'px',
+      height: (6+Math.random()*10)+'px',
+      borderRadius: Math.random()>.5 ? '50%' : '2px',
+      animationDuration: (1.5+Math.random()*2)+'s',
+      animationDelay:    (Math.random()*1.5)+'s',
+    });
+    wrap.appendChild(d);
+  }
+}
+
+/* ═══════════════════════════════════════════
+   AJOUT MANUEL + AUTOCOMPLETE
+═══════════════════════════════════════════ */
+function mealIngredients() {
+  const seen = new Set(), out = [];
+  meals.forEach(m => m.ingredients.forEach(ing => {
+    const k = ing.name.toLowerCase();
+    if (!seen.has(k)) { seen.add(k); out.push({n: ing.name, i: m.emoji}); }
+  }));
+  return out;
+}
+
+function norm(s) { return s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,''); }
+
+function getSugg(q) {
+  if (!q) return [];
+  const nq = norm(q);
+  const all = [...mealIngredients(), ...COMMON];
+  const seen = new Set(), starts = [], contains = [];
+  all.forEach(({n, i}) => {
+    const nn = norm(n);
+    if (seen.has(nn)) return; seen.add(nn);
+    if (nn.startsWith(nq))  starts.push({n, i});
+    else if (nn.includes(nq)) contains.push({n, i});
+  });
+  return [...starts, ...contains].slice(0, 8);
+}
+
+function hl(text, q) {
+  return text.replace(new RegExp('('+q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','gi'),
+    '<span class="sugg-hl">$1</span>');
+}
+
+function onInput() {
+  const v = document.getElementById('manual').value.trim();
+  suggIdx = -1;
+  if (!v) return hideSugg();
+  const results = getSugg(v);
+  if (!results.length) return hideSugg();
+
+  const box = document.getElementById('sugg');
+  box.innerHTML = results.map((r, i) =>
+    `<div class="sugg-item" data-name="${r.n.replace(/"/g,'&quot;')}"
+      onmousedown="pickSugg('${r.n.replace(/'/g,"\\'")}', event)"
+      onmouseover="hlSugg(${i})">
+       <span>${r.i}</span><span>${hl(r.n, v)}</span>
+     </div>`
+  ).join('');
+  box.style.display = 'block';
+}
+
+function onKey(e) {
+  const items = document.querySelectorAll('.sugg-item');
+  if (e.key === 'ArrowDown') { e.preventDefault(); suggIdx = Math.min(suggIdx+1, items.length-1); highlightSugg(items); }
+  else if (e.key === 'ArrowUp') { e.preventDefault(); suggIdx = Math.max(suggIdx-1, -1); highlightSugg(items); }
+  else if (e.key === 'Enter') { e.preventDefault(); suggIdx >= 0 && items[suggIdx] ? pickSugg(items[suggIdx].dataset.name) : addManual(); }
+  else if (e.key === 'Escape') hideSugg();
+}
+
+function hlSugg(i) { suggIdx = i; highlightSugg(document.querySelectorAll('.sugg-item')); }
+function highlightSugg(items) { items.forEach((el, i) => el.classList.toggle('hi', i === suggIdx)); }
+
+function pickSugg(name, e) {
+  if (e) e.preventDefault();
+  document.getElementById('manual').value = name;
+  hideSugg();
+  addManual();
+}
+
+function hideSugg() { document.getElementById('sugg').style.display = 'none'; suggIdx = -1; }
+
+function addManual() {
+  const v = document.getElementById('manual').value.trim();
+  if (!v) return;
+  const k = v.toLowerCase().trim();
+  cart[k] ? cart[k].quantity++ : (cart[k] = { name: v, quantity: 1, unit: '', done: false });
+  document.getElementById('manual').value = '';
+  hideSugg();
+  save(); updateBadge(); renderCart();
+  toast(`✅ ${v} ajouté !`);
+}
+
+document.addEventListener('click', e => { if (!e.target.closest('.manual-box')) hideSugg(); });
+
+/* ═══════════════════════════════════════════
+   TOAST
+═══════════════════════════════════════════ */
+let toastT;
+function toast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastT);
+  toastT = setTimeout(() => t.classList.remove('show'), 2200);
+}
+
+/* ═══════════════════════════════════════════
+   MODAL REPAS
+═══════════════════════════════════════════ */
+function openAdd() {
+  editId = null;
+  document.getElementById('modal-ttl').textContent = '➕ Nouveau repas';
+  document.getElementById('del-btn').style.display = 'none';
+  document.getElementById('f-name').value = '';
+  document.getElementById('f-emoji').value = '🍽️';
+  document.getElementById('ing-rows').innerHTML = '';
+  addRow();
+  document.getElementById('overlay').classList.add('open');
+}
+
+function openEdit(id) {
+  const meal = meals.find(m => m.id === id);
+  if (!meal) return;
+  editId = id;
+  document.getElementById('modal-ttl').textContent = '✏️ Modifier le repas';
+  document.getElementById('del-btn').style.display = 'block';
+  document.getElementById('f-name').value  = meal.name;
+  document.getElementById('f-emoji').value = meal.emoji;
+  const rows = document.getElementById('ing-rows');
+  rows.innerHTML = '';
+  meal.ingredients.forEach(ing => addRow(ing.name, ing.quantity, ing.unit));
+  document.getElementById('overlay').classList.add('open');
+}
+
+function closeModal() {
+  document.getElementById('overlay').classList.remove('open');
+  editId = null;
+}
+
+function addRow(name='', qty=1, unit='') {
+  const row = document.createElement('div');
+  row.className = 'ing-cols';
+  row.innerHTML = `
+    <input type="text"   class="r-name" placeholder="Ingrédient"  value="${esc(name)}"/>
+    <input type="number" class="r-qty"  placeholder="Qté" step=".5" min="0" value="${qty}"/>
+    <input type="text"   class="r-unit" placeholder="Unité"        value="${esc(unit)}"/>
+    <button class="ing-del" onclick="this.closest('.ing-cols').remove()">×</button>`;
+  document.getElementById('ing-rows').appendChild(row);
+}
+
+function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;'); }
+
+function saveMeal() {
+  const name  = document.getElementById('f-name').value.trim();
+  const emoji = document.getElementById('f-emoji').value.trim() || '🍽️';
+  if (!name) { alert('Donnez un nom au repas.'); return; }
+
+  const ingredients = [];
+  document.querySelectorAll('#ing-rows .ing-cols').forEach(row => {
+    const n = row.querySelector('.r-name').value.trim();
+    const q = parseFloat(row.querySelector('.r-qty').value) || 1;
+    const u = row.querySelector('.r-unit').value.trim();
+    if (n) ingredients.push({ name: n, quantity: q, unit: u });
+  });
+  if (!ingredients.length) { alert('Ajoutez au moins un ingrédient.'); return; }
+
+  if (editId !== null) {
+    const i = meals.findIndex(m => m.id === editId);
+    if (i >= 0) meals[i] = { ...meals[i], name, emoji, ingredients };
+    toast(`✅ ${emoji} ${name} mis à jour !`);
+  } else {
+    meals.push({ id: Date.now(), name, emoji, ingredients });
+    toast(`✅ ${emoji} ${name} ajouté !`);
+  }
+
+  save(); closeModal(); renderMeals(); saveToFile();
+}
+
+function deleteMeal() {
+  const meal = meals.find(m => m.id === editId);
+  if (!meal || !confirm(`Supprimer "${meal.name}" ?`)) return;
+  meals = meals.filter(m => m.id !== editId);
+  delete counts[editId];
+  save(); closeModal(); renderMeals(); saveToFile();
+}
+
+/* ═══════════════════════════════════════════
+   INIT
+═══════════════════════════════════════════ */
+load();
+renderMeals();
+updateBadge();
+</script>
+</body>
+</html>
