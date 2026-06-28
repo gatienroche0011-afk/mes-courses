@@ -1,1 +1,1 @@
-{"cart":{},"counts":{"1":0,"3":0,"4":0,"14":0}}
+{"cart":{"wrap":{"name":"Wrap","quantity":1,"unit":"paquet","done":false},"poivrons":{"name":"Poivrons","quantity":2,"unit":"","done":false},"grand gruyère":{"name":"Grand Gruyère","quantity":1,"unit":"","done":false},"avocats":{"name":"Avocats","quantity":2,"unit":"","done":false},"épices fajitas":{"name":"Épices fajitas","quantity":1,"unit":"sachet","done":false}},"counts":{"1":0,"3":1,"4":0,"14":0}}
