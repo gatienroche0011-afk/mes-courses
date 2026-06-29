@@ -1241,8 +1241,18 @@ function saveMeal() {
   if (!name){alert('Donnez un nom au repas.');return;}
   const ingredients=[]; document.querySelectorAll('#ing-rows .ing-cols').forEach(row=>{ const n=row.querySelector('.r-name').value.trim(); const q=parseFloat(row.querySelector('.r-qty').value)||1; const u=row.querySelector('.r-unit').value.trim(); if(n)ingredients.push({name:n,quantity:q,unit:u}); });
   if (!ingredients.length){alert('Ajoutez au moins un ingrédient.');return;}
-  if (editId!==null) { const i=meals.findIndex(m=>m.id===editId); if (i>=0) meals[i]={...meals[i],name,emoji,cat,ingredients}; toast(`✅ ${emoji} ${name} mis à jour !`); }
-  else { meals.push({id:Date.now(),name,emoji,cat,desc:'',author:currentUser||DEFAULT_AUTHOR,authorColor:currentUserColor,ingredients}); toast(`✅ ${emoji} ${name} ajouté !`); }
+  if (editId!==null) {
+    const i=meals.findIndex(m=>m.id===editId);
+    if (i>=0) {
+      const isDefault = DEFAULTS.some(d=>d.id===editId);
+      const prevAuthor = meals[i].author||DEFAULT_AUTHOR;
+      const claim = !isDefault && prevAuthor===DEFAULT_AUTHOR;
+      meals[i]={...meals[i],name,emoji,cat,ingredients,
+        author: claim?(currentUser||DEFAULT_AUTHOR):prevAuthor,
+        authorColor: claim?currentUserColor:(meals[i].authorColor||DEFAULT_AUTHOR_COLOR)};
+    }
+    toast(`✅ ${emoji} ${name} mis à jour !`);
+  } else { meals.push({id:Date.now(),name,emoji,cat,desc:'',author:currentUser||DEFAULT_AUTHOR,authorColor:currentUserColor,ingredients}); toast(`✅ ${emoji} ${name} ajouté !`); }
   saveLocal(); closeModal(); renderMeals(); syncMeals();
 }
 function deleteMeal() {
