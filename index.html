@@ -733,7 +733,6 @@ let mealsSha = null;
 let cartSha  = null;
 let cartPollInterval = null;
 let cartDebounceTimer = null;
-let cartDirty = false; /* true = changements locaux non encore envoyés à GitHub */
 
 /* ═══════════════════════════════════════════
    PERSISTENCE — LOCAL
@@ -817,7 +816,8 @@ async function syncMealsToGitHub() {
    PERSISTENCE — GITHUB CART (partage temps réel)
 ═══════════════════════════════════════════ */
 async function loadCartFromGitHub() {
-  if (!navigator.onLine || cartDirty) return;
+  /* Ne pas écraser le panier si une synchro est en attente */
+  if (!navigator.onLine || cartDebounceTimer !== null) return;
   try {
     const r = await fetch(GH_CART_API + '?t=' + Date.now(), {
       headers: { Authorization: 'token ' + GH_TOKEN }
@@ -825,19 +825,16 @@ async function loadCartFromGitHub() {
     if (r.status === 404) { setSyncStatus('live', 'Panier partagé actif'); return; }
     if (!r.ok) { setSyncStatus('err', 'Erreur de sync'); return; }
     const data = await r.json();
-    cartSha = data.sha;
+    const newSha = data.sha;
+    if (newSha === cartSha) { setSyncStatus('live', 'Panier partagé actif'); return; } /* Aucun changement distant */
+    cartSha = newSha;
     const remote = JSON.parse(decodeURIComponent(escape(atob(data.content.replace(/\s/g,'')))));
-    /* Only update if remote version is newer or different */
-    const remoteStr = JSON.stringify({cart: remote.cart, counts: remote.counts});
-    const localStr  = JSON.stringify({cart, counts});
-    if (remoteStr !== localStr) {
-      cart   = remote.cart   || {};
-      counts = remote.counts || {};
-      saveLocal(); updateBadge();
-      const page = document.getElementById('page-cart');
-      if (page.classList.contains('on')) renderCart();
-      renderMeals();
-    }
+    cart   = remote.cart   || {};
+    counts = remote.counts || {};
+    saveLocal(); updateBadge();
+    const page = document.getElementById('page-cart');
+    if (page.classList.contains('on')) renderCart();
+    renderMeals();
     setSyncStatus('live', 'Panier partagé actif');
   } catch {
     setSyncStatus('err', 'Hors-ligne');
@@ -845,9 +842,11 @@ async function loadCartFromGitHub() {
 }
 
 function scheduleSyncCart() {
-  cartDirty = true;
   clearTimeout(cartDebounceTimer);
-  cartDebounceTimer = setTimeout(syncCartToGitHub, 2000);
+  cartDebounceTimer = setTimeout(async () => {
+    cartDebounceTimer = null;
+    await syncCartToGitHub();
+  }, 2000);
 }
 
 async function syncCartToGitHub() {
@@ -866,7 +865,7 @@ async function syncCartToGitHub() {
       headers: { Authorization: 'token ' + GH_TOKEN, 'Content-Type': 'application/json' },
       body: JSON.stringify(body)
     });
-    if (r.ok) { const d = await r.json(); cartSha = d.content?.sha || cartSha; cartDirty = false; }
+    if (r.ok) { const d = await r.json(); cartSha = d.content?.sha || cartSha; }
   } catch {}
 }
 
