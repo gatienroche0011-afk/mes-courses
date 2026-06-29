@@ -491,6 +491,16 @@
         "name": "Burrata",
         "quantity": 1,
         "unit": ""
+      },
+      {
+        "name": "Pesto vert",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Concentré de tomate",
+        "quantity": 1,
+        "unit": ""
       }
     ],
     "cat": "pâtes",
