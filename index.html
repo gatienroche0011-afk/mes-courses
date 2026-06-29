@@ -768,7 +768,7 @@ async function loadHistory() {
     if (!data) return;
     historySha = data.sha;
     const h = JSON.parse(b64dec(data.content));
-    if (h && h.length) { history = h; saveLocal(); }
+    if (h && h.length) { history = h; saveLocal(); renderHistory(); }
   } catch {}
 }
 
