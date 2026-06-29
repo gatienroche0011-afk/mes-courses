@@ -515,6 +515,74 @@ nav { display: flex; gap: 6px; }
 #toast.show { transform: translateX(-50%) translateY(0); }
 
 /* ══════════════════════════════════════════════
+   MODAL INFO RECETTE
+══════════════════════════════════════════════ */
+#info-overlay {
+  display: none; position: fixed; inset: 0;
+  background: rgba(60,10,46,.45); z-index: 200;
+  align-items: flex-end; justify-content: center; padding: 0;
+}
+#info-overlay.open { display: flex; }
+
+.info-sheet {
+  background: #fff; border-radius: 22px 22px 0 0;
+  width: 100%; max-width: 560px; max-height: 85dvh;
+  padding: 22px 22px 36px; overflow-y: auto;
+  animation: slideUp .25s ease;
+}
+@keyframes slideUp { from { transform: translateY(60px); opacity:0; } to { transform: none; opacity:1; } }
+
+.info-head {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 18px;
+}
+.info-emoji { font-size: 2.5rem; }
+.info-name  { font-size: 1.15rem; font-weight: 800; flex: 1; }
+.info-close {
+  background: var(--p3); border: none; border-radius: 9px;
+  width: 30px; height: 30px; font-size: 1rem;
+  color: var(--p1); cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+}
+
+.info-desc {
+  font-size: .93rem; line-height: 1.7; color: var(--text);
+  white-space: pre-wrap; min-height: 80px;
+}
+
+.info-textarea {
+  width: 100%; min-height: 180px;
+  border: 2px solid var(--p2); border-radius: 10px;
+  padding: 12px 14px; font-size: .92rem; line-height: 1.7;
+  color: var(--text); outline: none; resize: vertical;
+  font-family: inherit; transition: border-color .2s;
+}
+.info-textarea:focus { border-color: var(--p1); }
+
+.info-actions { display: flex; gap: 8px; margin-top: 16px; }
+
+.card-info {
+  position: absolute; top: 7px; left: 7px;
+  background: rgba(233,30,140,.1);
+  border: none; border-radius: 8px;
+  width: 27px; height: 27px; font-size: .8rem;
+  color: var(--p1); cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background .15s;
+}
+.card-info:hover { background: rgba(233,30,140,.22); }
+
+/* Suppression article panier */
+.ci-del {
+  background: var(--p3); border: none; border-radius: 8px;
+  width: 32px; height: 32px; flex-shrink: 0;
+  color: var(--p4); font-size: .85rem; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background .15s;
+}
+.ci-del:hover { background: #ffcdd2; }
+
+/* ══════════════════════════════════════════════
    RESPONSIVE
 ══════════════════════════════════════════════ */
 @media (max-width: 400px) {
@@ -622,6 +690,23 @@ nav { display: flex; gap: 6px; }
   </div>
 </div>
 
+<!-- ── MODAL INFO RECETTE ── -->
+<div id="info-overlay" onclick="closeInfo(event)">
+  <div class="info-sheet" id="info-sheet">
+    <div class="info-head">
+      <span class="info-emoji" id="info-emoji"></span>
+      <span class="info-name"  id="info-name"></span>
+      <button class="info-close" onclick="closeInfo()">✕</button>
+    </div>
+    <div id="info-body">
+      <div class="info-desc" id="info-desc"></div>
+      <div class="info-actions">
+        <button class="btn btn-ghost btn-sm" onclick="startEditDesc()">✏️ Modifier</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- ── BON APPÉTIT ── -->
 <div id="appetit">
   <div class="confetti-wrap" id="confetti"></div>
@@ -652,22 +737,54 @@ nav { display: flex; gap: 6px; }
    DONNÉES PAR DÉFAUT
 ═══════════════════════════════════════════ */
 const DEFAULTS = [
-  { id:1,  emoji:'🍝', name:'Pâtes Carbonara',            cat:'pâtes',   ingredients:[{name:'Pâtes',quantity:.5,unit:'paquet'},{name:'Allumettes de bacon fumé',quantity:1,unit:'boîte'},{name:'Crème fraîche',quantity:1,unit:'pot (10cl)'},{name:'Œufs',quantity:2,unit:''}] },
-  { id:2,  emoji:'🥗', name:'Salade de pois chiche',       cat:'salades', ingredients:[{name:'Pois chiche',quantity:1,unit:'boîte'},{name:'Roquette',quantity:1,unit:'sachet'},{name:'Tomate cerise',quantity:1,unit:'barquette'},{name:'Avocat',quantity:1,unit:''},{name:'Mozza',quantity:1,unit:'boule'}] },
-  { id:3,  emoji:'🌮', name:'Fajitas',                     cat:'wraps',   ingredients:[{name:'Wrap',quantity:1,unit:'paquet'},{name:'Poivrons',quantity:2,unit:''},{name:'Grand Gruyère',quantity:1,unit:''},{name:'Avocats',quantity:2,unit:''},{name:'Épices fajitas',quantity:1,unit:'sachet'}] },
-  { id:4,  emoji:'🥑', name:'Avocado Toast',               cat:'autre',   ingredients:[{name:'Avocat',quantity:1,unit:''},{name:'Saint Moret',quantity:1,unit:'pot'},{name:'Œufs',quantity:12,unit:''},{name:'Boule de pain',quantity:1,unit:''}] },
-  { id:5,  emoji:'🫓', name:'Galettes Bretonnes',          cat:'autre',   ingredients:[{name:'Galettes',quantity:6,unit:''},{name:'Jambon',quantity:1,unit:'paquet'},{name:'Gruyère',quantity:1,unit:'paquet'},{name:'Œufs',quantity:6,unit:''}] },
-  { id:6,  emoji:'🍅', name:'Bruschetta',                  cat:'autre',   ingredients:[{name:'Tomate cerise',quantity:1,unit:'barquette'},{name:'Pesto vert',quantity:1,unit:'pot'},{name:'Mozza',quantity:2,unit:'boules'},{name:'Boule de pain',quantity:1,unit:''}] },
-  { id:7,  emoji:'🍅', name:'Tomates Farcies d\'Été',      cat:'autre',   ingredients:[{name:'Grosses tomates',quantity:4,unit:''},{name:'Thon',quantity:1,unit:'boîte'},{name:'Avocat',quantity:1,unit:''},{name:'Œufs',quantity:2,unit:''},{name:'Fromage blanc',quantity:1,unit:'pot'}] },
-  { id:8,  emoji:'🫕', name:'Lasagne d\'Été',              cat:'autre',   ingredients:[{name:'Pâtes à lasagne',quantity:1,unit:'paquet'},{name:'Aubergine',quantity:1,unit:''},{name:'Courgette',quantity:1,unit:''},{name:'Tomate cerise',quantity:1,unit:'barquette'},{name:'Ricotta',quantity:1,unit:'pot'},{name:'Pesto rouge',quantity:1,unit:'pot'}] },
-  { id:9,  emoji:'🌯', name:'Wrap Poulet Tzatziki',        cat:'wraps',   ingredients:[{name:'Wrap',quantity:1,unit:'paquet'},{name:'Poulet',quantity:1,unit:'filet'},{name:'Concombre',quantity:1,unit:''},{name:'Fromage blanc',quantity:1,unit:'pot'},{name:'Tomate cerise',quantity:1,unit:'barquette'},{name:'Radis',quantity:1,unit:'botte'}] },
-  { id:10, emoji:'🥗', name:'Salade de Pâtes Estivale',    cat:'salades', ingredients:[{name:'Pâtes',quantity:1,unit:'paquet'},{name:'Tomate cerise',quantity:1,unit:'barquette'},{name:'Tomates séchées',quantity:1,unit:'bocal'},{name:'Roquette',quantity:1,unit:'sachet'},{name:'Burrata',quantity:1,unit:''},{name:'Pesto vert',quantity:1,unit:'pot'},{name:'Jambon de parme',quantity:1,unit:'paquet'}] },
-  { id:11, emoji:'🥗', name:'Salade de Pâtes Méditerranée',cat:'salades', ingredients:[{name:'Pâtes',quantity:1,unit:'paquet'},{name:'Pois chiche',quantity:1,unit:'boîte'},{name:'Concombre',quantity:1,unit:''},{name:'Mozza',quantity:1,unit:'boule'},{name:'Olives',quantity:1,unit:'bocal'},{name:'Tomate cerise',quantity:1,unit:'barquette'},{name:'Maïs',quantity:1,unit:'boîte'},{name:'Œufs',quantity:2,unit:''}] },
-  { id:12, emoji:'🍝', name:'Pâtes Carbo Parmesan',        cat:'pâtes',   ingredients:[{name:'Pâtes',quantity:1,unit:'paquet'},{name:'Allumettes de bacon',quantity:1,unit:'barquette'},{name:'Parmesan',quantity:1,unit:'paquet'},{name:'Crème fraîche',quantity:1,unit:'pot'}] },
-  { id:13, emoji:'🍗', name:'Melon Tenders Party',         cat:'viande',  ingredients:[{name:'Melon',quantity:1,unit:''},{name:'Œufs',quantity:2,unit:''},{name:'Poulet',quantity:1,unit:'filet'},{name:'Chapelure',quantity:1,unit:'paquet'}] },
-  { id:14, emoji:'🍝', name:'Pâtes Jambon Burrata',        cat:'pâtes',   ingredients:[{name:'Pâtes',quantity:1,unit:'paquet'},{name:'Jambon de parme',quantity:1,unit:'paquet'},{name:'Burrata',quantity:1,unit:''}] },
-  { id:15, emoji:'🍝', name:'Pâtes Chorizo Boursin',       cat:'pâtes',   ingredients:[{name:'Pâtes',quantity:1,unit:'paquet'},{name:'Chorizo',quantity:1,unit:'paquet'},{name:'Boursin',quantity:1,unit:'pot'}] },
-  { id:16, emoji:'🍜', name:'Poulet Sauce Cacahuète',      cat:'viande',  ingredients:[{name:'Poulet',quantity:1,unit:'filet'},{name:'Cacahuètes',quantity:1,unit:'paquet'},{name:'Riz',quantity:1,unit:'paquet'},{name:'Poivrons',quantity:2,unit:''}] },
+  { id:1,  emoji:'🍝', name:'Pâtes Carbonara', cat:'pâtes',
+    desc:'1. Faire revenir les allumettes de bacon dans une poêle sans matière grasse jusqu\'à ce qu\'elles soient dorées.\n2. Cuire les pâtes al dente dans de l\'eau bouillante salée.\n3. Dans un bol, mélanger les œufs battus avec la crème fraîche, sel et poivre.\n4. Égoutter les pâtes en gardant un peu d\'eau de cuisson. Hors du feu, mélanger rapidement avec le bacon et la sauce.\n5. Ajouter un peu d\'eau de cuisson si nécessaire pour lier. Servir immédiatement.',
+    ingredients:[{name:'Pâtes',quantity:.5,unit:'paquet'},{name:'Allumettes de bacon fumé',quantity:1,unit:'boîte'},{name:'Crème fraîche',quantity:1,unit:'pot (10cl)'},{name:'Œufs',quantity:2,unit:''}] },
+  { id:2,  emoji:'🥗', name:'Salade de pois chiche', cat:'salades',
+    desc:'1. Égoutter et rincer les pois chiches.\n2. Couper les tomates cerises en deux, l\'avocat en dés.\n3. Disposer la roquette dans un grand bol, ajouter les pois chiches, les tomates et l\'avocat.\n4. Déchirer la mozza et l\'ajouter par-dessus.\n5. Assaisonner d\'huile d\'olive, jus de citron, sel et poivre. Mélanger délicatement.',
+    ingredients:[{name:'Pois chiche',quantity:1,unit:'boîte'},{name:'Roquette',quantity:1,unit:'sachet'},{name:'Tomate cerise',quantity:1,unit:'barquette'},{name:'Avocat',quantity:1,unit:''},{name:'Mozza',quantity:1,unit:'boule'}] },
+  { id:3,  emoji:'🌮', name:'Fajitas', cat:'wraps',
+    desc:'1. Couper les poivrons en fines lanières.\n2. Les faire revenir à feu vif avec un filet d\'huile et les épices fajitas pendant 8 min.\n3. Écraser les avocats à la fourchette avec sel, jus de citron (guacamole rapide).\n4. Réchauffer les wraps à la poêle ou au micro-ondes.\n5. Garnir chaque wrap de poivrons, guacamole et gruyère râpé. Rouler et déguster.',
+    ingredients:[{name:'Wrap',quantity:1,unit:'paquet'},{name:'Poivrons',quantity:2,unit:''},{name:'Grand Gruyère',quantity:1,unit:''},{name:'Avocats',quantity:2,unit:''},{name:'Épices fajitas',quantity:1,unit:'sachet'}] },
+  { id:4,  emoji:'🥑', name:'Avocado Toast', cat:'autre',
+    desc:'1. Faire cuire les œufs selon votre goût (brouillés ou au plat).\n2. Toaster généreusement des tranches de pain.\n3. Tartiner chaque tranche d\'une épaisse couche de Saint Moret.\n4. Trancher l\'avocat finement et le disposer sur le pain.\n5. Poser les œufs par-dessus. Finir avec sel, poivre et piment en option.',
+    ingredients:[{name:'Avocat',quantity:1,unit:''},{name:'Saint Moret',quantity:1,unit:'pot'},{name:'Œufs',quantity:12,unit:''},{name:'Boule de pain',quantity:1,unit:''}] },
+  { id:5,  emoji:'🫓', name:'Galettes Bretonnes', cat:'autre',
+    desc:'1. Faire chauffer une poêle à feu moyen avec un peu de beurre.\n2. Déposer une galette bien à plat.\n3. Casser un œuf au centre, ajouter une tranche de jambon autour.\n4. Parsemer de gruyère râpé sur tout le dessus.\n5. Replier les 4 bords de la galette vers le centre. Cuire jusqu\'à ce que l\'œuf soit pris. Répéter.',
+    ingredients:[{name:'Galettes',quantity:6,unit:''},{name:'Jambon',quantity:1,unit:'paquet'},{name:'Gruyère',quantity:1,unit:'paquet'},{name:'Œufs',quantity:6,unit:''}] },
+  { id:6,  emoji:'🍅', name:'Bruschetta', cat:'autre',
+    desc:'1. Couper les tomates cerises en deux et les assaisonner d\'huile d\'olive, sel, poivre et basilic.\n2. Toaster les tranches de pain au four ou au grille-pain.\n3. Tartiner généreusement chaque tranche de pesto vert.\n4. Déposer des tranches de mozza fraîche par-dessus.\n5. Ajouter les tomates assaisonnées. Servir frais.',
+    ingredients:[{name:'Tomate cerise',quantity:1,unit:'barquette'},{name:'Pesto vert',quantity:1,unit:'pot'},{name:'Mozza',quantity:2,unit:'boules'},{name:'Boule de pain',quantity:1,unit:''}] },
+  { id:7,  emoji:'🍅', name:'Tomates Farcies d\'Été', cat:'autre',
+    desc:'1. Couper le chapeau des tomates et les évider à la cuillère. Garder la pulpe.\n2. Faire cuire les œufs durs 10 min, les écaler et les couper en petits dés.\n3. Égoutter le thon. Écraser l\'avocat à la fourchette.\n4. Mélanger thon, avocat, œufs, fromage blanc, pulpe de tomate, sel et poivre.\n5. Farcir les tomates, remettre le chapeau. Réfrigérer 30 min avant de servir.',
+    ingredients:[{name:'Grosses tomates',quantity:4,unit:''},{name:'Thon',quantity:1,unit:'boîte'},{name:'Avocat',quantity:1,unit:''},{name:'Œufs',quantity:2,unit:''},{name:'Fromage blanc',quantity:1,unit:'pot'}] },
+  { id:8,  emoji:'🫕', name:'Lasagne d\'Été', cat:'autre',
+    desc:'1. Couper l\'aubergine et la courgette en petits dés, faire revenir à la poêle avec huile, sel et poivre.\n2. Ajouter les tomates cerises coupées en deux et le pesto rouge. Cuire 5 min.\n3. Dans un plat à gratin, alterner : couche de pâtes à lasagne, légumes, ricotta.\n4. Répéter 3 fois. Terminer par une couche de ricotta.\n5. Cuire au four à 180°C pendant 30 à 35 min.',
+    ingredients:[{name:'Pâtes à lasagne',quantity:1,unit:'paquet'},{name:'Aubergine',quantity:1,unit:''},{name:'Courgette',quantity:1,unit:''},{name:'Tomate cerise',quantity:1,unit:'barquette'},{name:'Ricotta',quantity:1,unit:'pot'},{name:'Pesto rouge',quantity:1,unit:'pot'}] },
+  { id:9,  emoji:'🌯', name:'Wrap Poulet Tzatziki', cat:'wraps',
+    desc:'1. Faire griller le poulet en lamelles à la poêle avec sel, poivre et paprika.\n2. Râper le concombre, bien l\'essorer dans un torchon, mélanger avec le fromage blanc, ail en option, sel. C\'est le tzatziki.\n3. Couper les tomates cerises en deux, trancher les radis finement.\n4. Réchauffer les wraps.\n5. Garnir : tzatziki d\'abord, puis poulet, tomates et radis. Rouler serré.',
+    ingredients:[{name:'Wrap',quantity:1,unit:'paquet'},{name:'Poulet',quantity:1,unit:'filet'},{name:'Concombre',quantity:1,unit:''},{name:'Fromage blanc',quantity:1,unit:'pot'},{name:'Tomate cerise',quantity:1,unit:'barquette'},{name:'Radis',quantity:1,unit:'botte'}] },
+  { id:10, emoji:'🥗', name:'Salade de Pâtes Estivale', cat:'salades',
+    desc:'1. Cuire les pâtes al dente, les rincer à l\'eau froide.\n2. Dans un grand saladier, mélanger les pâtes froides avec les tomates cerises, les tomates séchées coupées et le pesto vert.\n3. Ajouter la roquette et le jambon de parme déchiré en morceaux.\n4. Poser la burrata entière au centre au moment de servir.\n5. Un filet d\'huile d\'olive, poivre, et déguster aussitôt.',
+    ingredients:[{name:'Pâtes',quantity:1,unit:'paquet'},{name:'Tomate cerise',quantity:1,unit:'barquette'},{name:'Tomates séchées',quantity:1,unit:'bocal'},{name:'Roquette',quantity:1,unit:'sachet'},{name:'Burrata',quantity:1,unit:''},{name:'Pesto vert',quantity:1,unit:'pot'},{name:'Jambon de parme',quantity:1,unit:'paquet'}] },
+  { id:11, emoji:'🥗', name:'Salade de Pâtes Méditerranée', cat:'salades',
+    desc:'1. Cuire les pâtes al dente, rincer à l\'eau froide.\n2. Faire cuire les œufs durs 10 min, les couper en quartiers.\n3. Dans un saladier, mélanger pâtes, pois chiches, concombre en dés, tomates cerises, maïs et olives.\n4. Ajouter la mozza déchirée et les œufs.\n5. Assaisonner d\'huile d\'olive, herbes de Provence, sel et poivre. Bien mélanger et réfrigérer.',
+    ingredients:[{name:'Pâtes',quantity:1,unit:'paquet'},{name:'Pois chiche',quantity:1,unit:'boîte'},{name:'Concombre',quantity:1,unit:''},{name:'Mozza',quantity:1,unit:'boule'},{name:'Olives',quantity:1,unit:'bocal'},{name:'Tomate cerise',quantity:1,unit:'barquette'},{name:'Maïs',quantity:1,unit:'boîte'},{name:'Œufs',quantity:2,unit:''}] },
+  { id:12, emoji:'🍝', name:'Pâtes Carbo Parmesan', cat:'pâtes',
+    desc:'1. Faire revenir les allumettes de bacon à sec jusqu\'à ce qu\'elles soient bien dorées et croustillantes.\n2. Cuire les pâtes al dente.\n3. Dans un bol, mélanger la crème fraîche avec la moitié du parmesan râpé, sel, poivre.\n4. Égoutter les pâtes, mélanger hors du feu avec le bacon et la crème au parmesan.\n5. Servir avec le reste du parmesan râpé généreusement par-dessus.',
+    ingredients:[{name:'Pâtes',quantity:1,unit:'paquet'},{name:'Allumettes de bacon',quantity:1,unit:'barquette'},{name:'Parmesan',quantity:1,unit:'paquet'},{name:'Crème fraîche',quantity:1,unit:'pot'}] },
+  { id:13, emoji:'🍗', name:'Melon Tenders Party', cat:'viande',
+    desc:'1. Couper le poulet en lanières régulières.\n2. Battre les œufs dans un bol avec sel et poivre.\n3. Tremper chaque lanière dans l\'œuf battu puis rouler dans la chapelure en appuyant bien.\n4. Faire frire dans une poêle avec un bon fond d\'huile, 3-4 min de chaque côté jusqu\'à dorure.\n5. Égoutter sur du papier absorbant. Couper le melon en tranches fraîches. Servir ensemble.',
+    ingredients:[{name:'Melon',quantity:1,unit:''},{name:'Œufs',quantity:2,unit:''},{name:'Poulet',quantity:1,unit:'filet'},{name:'Chapelure',quantity:1,unit:'paquet'}] },
+  { id:14, emoji:'🍝', name:'Pâtes Jambon Burrata', cat:'pâtes',
+    desc:'1. Cuire les pâtes al dente dans de l\'eau bien salée.\n2. Égoutter en gardant une louche d\'eau de cuisson.\n3. Remettre les pâtes dans la casserole hors du feu, ajouter un filet d\'huile d\'olive et un peu d\'eau de cuisson.\n4. Déchirer le jambon de parme en morceaux et le mélanger aux pâtes.\n5. Couper la burrata en deux et la déposer sur les pâtes chaudes. Poivre, basilic.',
+    ingredients:[{name:'Pâtes',quantity:1,unit:'paquet'},{name:'Jambon de parme',quantity:1,unit:'paquet'},{name:'Burrata',quantity:1,unit:''}] },
+  { id:15, emoji:'🍝', name:'Pâtes Chorizo Boursin', cat:'pâtes',
+    desc:'1. Couper le chorizo en rondelles et le faire revenir à sec dans une poêle (il rend son huile).\n2. Cuire les pâtes al dente.\n3. Égoutter les pâtes en gardant une tasse d\'eau de cuisson.\n4. Ajouter le Boursin directement dans les pâtes chaudes avec 3-4 cuillères d\'eau de cuisson.\n5. Bien mélanger pour créer une sauce crémeuse, ajouter le chorizo. Servir avec un peu de poivre.',
+    ingredients:[{name:'Pâtes',quantity:1,unit:'paquet'},{name:'Chorizo',quantity:1,unit:'paquet'},{name:'Boursin',quantity:1,unit:'pot'}] },
+  { id:16, emoji:'🍜', name:'Poulet Sauce Cacahuète', cat:'viande',
+    desc:'1. Cuire le riz selon les instructions. Faire sauter les poivrons en lanières à la poêle.\n2. Couper le poulet en morceaux et le faire dorer dans une poêle huilée bien chaude.\n3. Préparer la sauce : 3 c. à soupe de beurre de cacahuète + 2 c. à soupe de sauce soja + 1 c. à soupe de miel + eau chaude pour diluer.\n4. Verser la sauce sur le poulet, laisser mijoter 3 min.\n5. Servir le poulet nappé de sauce sur le riz, avec les poivrons à côté.',
+    ingredients:[{name:'Poulet',quantity:1,unit:'filet'},{name:'Cacahuètes',quantity:1,unit:'paquet'},{name:'Riz',quantity:1,unit:'paquet'},{name:'Poivrons',quantity:2,unit:''}] },
 ];
 
 const CAT_ORDER = ['pâtes','salades','wraps','viande','autre'];
@@ -784,12 +901,14 @@ async function loadMealsFromGitHub() {
       custom.forEach(m => {
         const def = defMap[m.id];
         if (def) {
-          /* Always use DEFAULT name/emoji/cat for built-in meals */
           m.name  = def.name;
           m.emoji = def.emoji;
           m.cat   = def.cat;
-        } else if (!m.cat) {
-          m.cat = 'autre';
+          /* Utilise la desc DEFAULT uniquement si le custom n'en a pas encore */
+          if (!m.desc) m.desc = def.desc || '';
+        } else {
+          if (!m.cat)  m.cat  = 'autre';
+          if (!m.desc) m.desc = '';
         }
       });
       DEFAULTS.forEach(d => { if (!customIds.has(d.id)) custom.push({...d}); });
@@ -995,6 +1114,11 @@ function mkCard(meal) {
   const n = counts[meal.id] || 0;
   const card = el('div', 'card');
 
+  const infoBtn = el('button', 'card-info');
+  infoBtn.textContent = 'ℹ️';
+  infoBtn.title = 'Voir la recette';
+  infoBtn.addEventListener('click', e => { e.stopPropagation(); openInfo(meal.id); });
+
   const editBtn = el('button', 'card-edit');
   editBtn.textContent = '✏️';
   editBtn.title = 'Modifier';
@@ -1014,7 +1138,7 @@ function mkCard(meal) {
 
   const hint = el('div', 'card-hint'); hint.textContent = 'Toucher pour ajouter';
 
-  card.append(editBtn, emoji, name, chip, hint);
+  card.append(infoBtn, editBtn, emoji, name, chip, hint);
   card.addEventListener('click', e => { addToCart(meal); doRipple(card, e); });
   return card;
 }
@@ -1144,11 +1268,18 @@ function cartItemHtml(k, item) {
   const qty = fmtQty(item.quantity, item.unit);
   const ks = k.replace(/'/g,"\\'");
   return `
-    <div class="cart-item ${item.done ? 'done' : ''}" onclick="toggle('${ks}')">
-      <div class="ci-check">${item.done ? '✓' : ''}</div>
-      <div class="ci-name">${item.name}</div>
-      <div class="ci-qty">${qty}</div>
+    <div class="cart-item ${item.done ? 'done' : ''}">
+      <div class="ci-check" onclick="toggle('${ks}')">${item.done ? '✓' : ''}</div>
+      <div class="ci-name"  onclick="toggle('${ks}')">${item.name}</div>
+      <div class="ci-qty"   onclick="toggle('${ks}')">${qty}</div>
+      <button class="ci-del" onclick="deleteCartItem('${ks}')" title="Supprimer">🗑</button>
     </div>`;
+}
+
+function deleteCartItem(k) {
+  delete cart[k];
+  saveLocal(); updateBadge(); renderCart();
+  scheduleSyncCart();
 }
 
 function fmtQty(q, unit) {
@@ -1445,14 +1576,63 @@ function saveMeal() {
 
   if (editId !== null) {
     const i = meals.findIndex(m => m.id === editId);
-    if (i >= 0) meals[i] = { ...meals[i], name, emoji, cat, ingredients };
+    if (i >= 0) meals[i] = { ...meals[i], name, emoji, cat, ingredients }; /* desc préservée via spread */
     toast(`✅ ${emoji} ${name} mis à jour !`);
   } else {
-    meals.push({ id: Date.now(), name, emoji, cat, ingredients });
+    meals.push({ id: Date.now(), name, emoji, cat, desc: '', ingredients });
     toast(`✅ ${emoji} ${name} ajouté !`);
   }
 
   saveLocal(); closeModal(); renderMeals();
+  syncMealsToGitHub();
+}
+
+/* ═══════════════════════════════════════════
+   MODAL INFO RECETTE
+═══════════════════════════════════════════ */
+let infoId = null;
+
+function openInfo(id) {
+  const meal = meals.find(m => m.id === id);
+  if (!meal) return;
+  infoId = id;
+  document.getElementById('info-emoji').textContent = meal.emoji;
+  document.getElementById('info-name').textContent  = meal.name;
+  document.getElementById('info-desc').textContent  = meal.desc || 'Aucune recette renseignée.';
+  document.getElementById('info-body').innerHTML = `
+    <div class="info-desc" id="info-desc">${(meal.desc || 'Aucune recette renseignée.').replace(/</g,'&lt;')}</div>
+    <div class="info-actions">
+      <button class="btn btn-ghost btn-sm" onclick="startEditDesc()">✏️ Modifier la recette</button>
+    </div>`;
+  document.getElementById('info-overlay').classList.add('open');
+}
+
+function closeInfo(e) {
+  if (e && e.target !== document.getElementById('info-overlay')) return;
+  document.getElementById('info-overlay').classList.remove('open');
+  infoId = null;
+}
+
+function startEditDesc() {
+  const meal = meals.find(m => m.id === infoId);
+  if (!meal) return;
+  document.getElementById('info-body').innerHTML = `
+    <textarea class="info-textarea" id="info-ta">${(meal.desc || '').replace(/</g,'&lt;')}</textarea>
+    <div class="info-actions">
+      <button class="btn btn-pink btn-sm" onclick="saveDesc()">💾 Sauvegarder</button>
+      <button class="btn btn-ghost btn-sm" onclick="openInfo(${infoId})">Annuler</button>
+    </div>`;
+  document.getElementById('info-ta').focus();
+}
+
+function saveDesc() {
+  const ta = document.getElementById('info-ta');
+  if (!ta) return;
+  const i = meals.findIndex(m => m.id === infoId);
+  if (i < 0) return;
+  meals[i].desc = ta.value.trim();
+  saveLocal();
+  openInfo(infoId);
   syncMealsToGitHub();
 }
 
