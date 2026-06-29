@@ -151,6 +151,16 @@ nav{display:flex;gap:5px}
   min-height:138px;display:flex;align-items:center;justify-content:center;
   font-size:2rem;color:var(--p2);cursor:pointer;transition:all .2s;
 }
+/* ── FILTRES AUTEUR ── */
+.author-filters{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.author-chip{
+  display:flex;align-items:center;gap:5px;
+  padding:5px 12px;border-radius:99px;border:2px solid transparent;
+  font-size:.75rem;font-weight:700;cursor:pointer;
+  background:var(--p5);color:var(--text);transition:all .18s;
+}
+.author-chip.active{color:#fff}
+.author-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
 .card-add:hover{border-color:var(--p1);color:var(--p1)}
 
 /* ── PANIER ── */
@@ -352,6 +362,7 @@ nav{display:flex;gap:5px}
     <input type="text" id="search-input" placeholder="Rechercher un repas…" oninput="onSearch()" autocomplete="off"/>
     <button class="search-clear" id="search-clear" onclick="clearSearch()">✕</button>
   </div>
+  <div class="author-filters" id="author-filters"></div>
   <div id="grid-wrap"></div>
 </div>
 
@@ -568,6 +579,7 @@ let editId      = null;
 let infoId      = null;
 let suggIdx     = -1;
 let searchQ     = '';
+let filterAuthor = null;
 
 let mealsSha    = null;
 let cartSha     = null;
@@ -832,12 +844,42 @@ function clearSearch() {
 /* ═══════════════════════════════════════════════════════
    REPAS — RENDU
 ═══════════════════════════════════════════════════════ */
+function renderAuthorFilters() {
+  const bar = document.getElementById('author-filters');
+  if (!bar) return;
+  /* Collecte les auteurs uniques */
+  const seen = new Map();
+  meals.forEach(m => {
+    const a = m.author || DEFAULT_AUTHOR;
+    if (!seen.has(a)) seen.set(a, m.authorColor || DEFAULT_AUTHOR_COLOR);
+  });
+  if (seen.size <= 1) { bar.innerHTML = ''; return; }
+  let html = `<button class="author-chip${!filterAuthor?' active':''}" style="${!filterAuthor?`background:var(--p1);border-color:var(--p1)`:''}" onclick="setAuthorFilter(null)">Tous</button>`;
+  seen.forEach((color, author) => {
+    const active = filterAuthor === author;
+    html += `<button class="author-chip${active?' active':''}"
+      style="border-color:${color};${active?`background:${color}`:''}"
+      onclick="setAuthorFilter('${author.replace(/'/g,"\\'")}')">
+      <span class="author-dot" style="background:${color}"></span>${author}
+    </button>`;
+  });
+  bar.innerHTML = html;
+}
+
+function setAuthorFilter(author) {
+  filterAuthor = author;
+  renderAuthorFilters();
+  renderMeals();
+}
+
 function renderMeals() {
   const wrap = document.getElementById('grid-wrap'); wrap.innerHTML = '';
+  renderAuthorFilters();
   let filtered = meals;
-  if (searchQ) { const nq = norm(searchQ); filtered = meals.filter(m => norm(m.name).includes(nq)); }
+  if (filterAuthor) filtered = filtered.filter(m => (m.author||DEFAULT_AUTHOR) === filterAuthor);
+  if (searchQ) { const nq = norm(searchQ); filtered = filtered.filter(m => norm(m.name).includes(nq)); }
   if (!filtered.length) { wrap.innerHTML = `<div style="text-align:center;color:var(--muted);padding:40px 20px">Aucun repas trouvé 😔</div>`; return; }
-  if (searchQ) {
+  if (searchQ || filterAuthor) {
     const g = mkGrid(); filtered.forEach(m => g.appendChild(mkCard(m))); wrap.appendChild(g);
   } else {
     CAT_ORDER.forEach(cat => {
