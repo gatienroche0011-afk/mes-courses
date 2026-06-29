@@ -733,6 +733,7 @@ let mealsSha = null;
 let cartSha  = null;
 let cartPollInterval = null;
 let cartDebounceTimer = null;
+let cartDirty = false; /* true = changements locaux non encore envoyés à GitHub */
 
 /* ═══════════════════════════════════════════
    PERSISTENCE — LOCAL
@@ -816,7 +817,7 @@ async function syncMealsToGitHub() {
    PERSISTENCE — GITHUB CART (partage temps réel)
 ═══════════════════════════════════════════ */
 async function loadCartFromGitHub() {
-  if (!navigator.onLine) return;
+  if (!navigator.onLine || cartDirty) return;
   try {
     const r = await fetch(GH_CART_API + '?t=' + Date.now(), {
       headers: { Authorization: 'token ' + GH_TOKEN }
@@ -844,6 +845,7 @@ async function loadCartFromGitHub() {
 }
 
 function scheduleSyncCart() {
+  cartDirty = true;
   clearTimeout(cartDebounceTimer);
   cartDebounceTimer = setTimeout(syncCartToGitHub, 2000);
 }
@@ -864,7 +866,7 @@ async function syncCartToGitHub() {
       headers: { Authorization: 'token ' + GH_TOKEN, 'Content-Type': 'application/json' },
       body: JSON.stringify(body)
     });
-    if (r.ok) { const d = await r.json(); cartSha = d.content?.sha || cartSha; }
+    if (r.ok) { const d = await r.json(); cartSha = d.content?.sha || cartSha; cartDirty = false; }
   } catch {}
 }
 
