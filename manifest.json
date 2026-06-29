@@ -1,0 +1,25 @@
+{
+  "name": "Mes Courses",
+  "short_name": "Courses",
+  "description": "Liste de courses partagée",
+  "start_url": "/mes-courses/",
+  "scope": "/mes-courses/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#fce4ec",
+  "theme_color": "#e91e8c",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ]
+}
