@@ -573,14 +573,15 @@ nav { display: flex; gap: 6px; }
 .card-info:hover { background: rgba(233,30,140,.22); }
 
 /* Suppression article panier */
-.ci-del {
+.ci-del, .ci-minus {
   background: var(--p3); border: none; border-radius: 8px;
   width: 32px; height: 32px; flex-shrink: 0;
-  color: var(--p4); font-size: .85rem; cursor: pointer;
+  color: var(--p4); font-size: .95rem; font-weight: 700; cursor: pointer;
   display: flex; align-items: center; justify-content: center;
   transition: background .15s;
 }
-.ci-del:hover { background: #ffcdd2; }
+.ci-del:hover   { background: #ffcdd2; }
+.ci-minus:hover { background: var(--p2); color: #fff; }
 
 /* ══════════════════════════════════════════════
    RESPONSIVE
@@ -1272,8 +1273,17 @@ function cartItemHtml(k, item) {
       <div class="ci-check" onclick="toggle('${ks}')">${item.done ? '✓' : ''}</div>
       <div class="ci-name"  onclick="toggle('${ks}')">${item.name}</div>
       <div class="ci-qty"   onclick="toggle('${ks}')">${qty}</div>
-      <button class="ci-del" onclick="deleteCartItem('${ks}')" title="Supprimer">🗑</button>
+      <button class="ci-minus" onclick="decrementCartItem('${ks}')" title="Enlever 1">−</button>
+      <button class="ci-del"   onclick="deleteCartItem('${ks}')"    title="Supprimer tout">🗑</button>
     </div>`;
+}
+
+function decrementCartItem(k) {
+  if (!cart[k]) return;
+  cart[k].quantity -= 1;
+  if (cart[k].quantity <= 0) delete cart[k];
+  saveLocal(); updateBadge(); renderCart();
+  scheduleSyncCart();
 }
 
 function deleteCartItem(k) {
