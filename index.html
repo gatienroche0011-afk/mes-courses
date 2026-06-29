@@ -116,11 +116,13 @@ nav{display:flex;gap:5px}
   text-align:center;cursor:pointer;box-shadow:var(--shadow);
   position:relative;overflow:hidden;user-select:none;
   transition:transform .13s,box-shadow .13s;
+  border-top:3.5px solid var(--card-color,var(--p2));
 }
 .card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(233,30,140,.18)}
 .card:active{transform:scale(.95)}
 .card-emoji{font-size:2.4rem;display:block;margin-bottom:8px}
-.card-name{font-size:.83rem;font-weight:700;line-height:1.3;margin-bottom:8px}
+.card-name{font-size:.83rem;font-weight:700;line-height:1.3;margin-bottom:5px}
+.card-author{font-size:.65rem;color:var(--card-color,var(--muted));font-weight:700;margin-bottom:6px;opacity:.85}
 .card-hint{font-size:.68rem;color:var(--muted)}
 .card-chip{
   display:inline-flex;align-items:center;gap:5px;background:var(--p1);color:#fff;
@@ -454,6 +456,17 @@ nav{display:flex;gap:5px}
 
 <script>
 /* ═══════════════════════════════════════════════════════
+   COULEURS UTILISATEURS
+═══════════════════════════════════════════════════════ */
+const USER_COLORS = [
+  '#3498DB','#2ECC71','#E67E22','#9B59B6','#1ABC9C',
+  '#E74C3C','#F39C12','#5B4EE8','#00BCD4','#8BC34A',
+  '#FF5722','#607D8B','#795548','#009688','#673AB7',
+];
+const DEFAULT_AUTHOR       = 'Gatien et Margot';
+const DEFAULT_AUTHOR_COLOR = '#e91e8c';
+
+/* ═══════════════════════════════════════════════════════
    DONNÉES PAR DÉFAUT
 ═══════════════════════════════════════════════════════ */
 const DEFAULTS = [
@@ -507,6 +520,8 @@ const DEFAULTS = [
     ingredients:[{name:'Poulet',quantity:1,unit:'filet'},{name:'Cacahuètes',quantity:1,unit:'paquet'},{name:'Riz',quantity:1,unit:'paquet'},{name:'Poivrons',quantity:2,unit:''}] },
 ];
 
+DEFAULTS.forEach(d => { d.author = DEFAULT_AUTHOR; d.authorColor = DEFAULT_AUTHOR_COLOR; });
+
 const CAT_ORDER  = ['pâtes','salades','wraps','viande','autre'];
 const CAT_LABELS = { pâtes:'🍝 Pâtes', salades:'🥗 Salades', wraps:'🌮 Wraps', viande:'🍗 Viande', autre:'✨ Autre' };
 
@@ -547,7 +562,8 @@ let meals       = DEFAULTS.map(d => ({...d}));
 let cart        = {};
 let counts      = {};
 let history     = [];
-let currentUser = null;   /* prénom de l'utilisateur connecté */
+let currentUser      = null;
+let currentUserColor = DEFAULT_AUTHOR_COLOR;
 let editId      = null;
 let infoId      = null;
 let suggIdx     = -1;
@@ -604,9 +620,17 @@ function doLogin() {
   const val = document.getElementById('login-input').value.trim();
   if (!val) { document.getElementById('login-input').focus(); return; }
   currentUser = val;
+  /* Couleur : récupère la couleur existante ou en attribue une au hasard */
+  let color = localStorage.getItem('mc_color_'+slug(val));
+  if (!color) {
+    color = USER_COLORS[Math.floor(Math.random() * USER_COLORS.length)];
+    localStorage.setItem('mc_color_'+slug(val), color);
+  }
+  currentUserColor = color;
   localStorage.setItem('mc_user', val);
   document.getElementById('login-screen').classList.remove('show');
   document.getElementById('user-name-display').textContent = val;
+  document.getElementById('user-chip').style.borderColor = color;
   loadUserData();
 }
 
@@ -664,8 +688,8 @@ async function loadMeals() {
     const customIds = new Set(custom.map(x => x.id));
     custom.forEach(m => {
       const def = defMap[m.id];
-      if (def) { m.name = def.name; m.emoji = def.emoji; m.cat = def.cat; if (!m.desc) m.desc = def.desc||''; }
-      else { if (!m.cat) m.cat='autre'; if (!m.desc) m.desc=''; }
+      if (def) { m.name=def.name; m.emoji=def.emoji; m.cat=def.cat; if (!m.desc) m.desc=def.desc||''; if (!m.author) { m.author=DEFAULT_AUTHOR; m.authorColor=DEFAULT_AUTHOR_COLOR; } }
+      else { if (!m.cat) m.cat='autre'; if (!m.desc) m.desc=''; if (!m.author) { m.author=DEFAULT_AUTHOR; m.authorColor=DEFAULT_AUTHOR_COLOR; } }
     });
     DEFAULTS.forEach(d => { if (!customIds.has(d.id)) custom.push({...d}); });
     meals = custom;
@@ -829,20 +853,27 @@ function mkGrid() { const g = document.createElement('div'); g.className='grid';
 
 function mkCard(meal) {
   const n = counts[meal.id] || 0;
+  const color = meal.authorColor || DEFAULT_AUTHOR_COLOR;
   const card = el('div','card');
+  card.style.setProperty('--card-color', color);
+
   const infoBtn = el('button','card-info'); infoBtn.textContent='ℹ️'; infoBtn.title='Voir la recette';
   infoBtn.addEventListener('click', e => { e.stopPropagation(); openInfo(meal.id); });
   const editBtn = el('button','card-edit'); editBtn.textContent='✏️'; editBtn.title='Modifier';
   editBtn.addEventListener('click', e => { e.stopPropagation(); openEdit(meal.id); });
-  const emoji = el('span','card-emoji'); emoji.textContent = meal.emoji;
-  const name  = el('div','card-name');  name.textContent  = meal.name;
+
+  const emoji  = el('span','card-emoji');  emoji.textContent  = meal.emoji;
+  const name   = el('div','card-name');    name.textContent   = meal.name;
+  const author = el('div','card-author');  author.textContent = '✍️ '+(meal.author||DEFAULT_AUTHOR);
+
   const chip  = el('div','card-chip'+(n>0?' show':'')); chip.id='chip-'+meal.id;
   chip.appendChild(document.createTextNode('×'+n+' '));
   const minus = el('button','chip-minus'); minus.textContent='−'; minus.title='Retirer ce repas';
   minus.addEventListener('click', e => { e.stopPropagation(); removeFromCart(meal); });
   chip.appendChild(minus);
+
   const hint = el('div','card-hint'); hint.textContent='Toucher pour ajouter';
-  card.append(infoBtn, editBtn, emoji, name, chip, hint);
+  card.append(infoBtn, editBtn, emoji, name, author, chip, hint);
   card.addEventListener('click', e => { addToCart(meal); doRipple(card, e); });
   return card;
 }
@@ -1107,7 +1138,9 @@ function openInfo(id) {
   infoId=id;
   document.getElementById('info-emoji').textContent=meal.emoji;
   document.getElementById('info-name').textContent=meal.name;
+  const authorColor = meal.authorColor || DEFAULT_AUTHOR_COLOR;
   document.getElementById('info-body').innerHTML=`
+    <div style="font-size:.75rem;font-weight:700;color:${authorColor};margin-bottom:14px">✍️ ${meal.author||DEFAULT_AUTHOR}</div>
     <div class="info-desc">${(meal.desc||'Aucune recette renseignée.').replace(/</g,'&lt;')}</div>
     <div class="info-actions"><button class="btn btn-ghost btn-sm" onclick="startEditDesc()">✏️ Modifier la recette</button></div>`;
   document.getElementById('info-overlay').classList.add('open');
@@ -1167,7 +1200,7 @@ function saveMeal() {
   const ingredients=[]; document.querySelectorAll('#ing-rows .ing-cols').forEach(row=>{ const n=row.querySelector('.r-name').value.trim(); const q=parseFloat(row.querySelector('.r-qty').value)||1; const u=row.querySelector('.r-unit').value.trim(); if(n)ingredients.push({name:n,quantity:q,unit:u}); });
   if (!ingredients.length){alert('Ajoutez au moins un ingrédient.');return;}
   if (editId!==null) { const i=meals.findIndex(m=>m.id===editId); if (i>=0) meals[i]={...meals[i],name,emoji,cat,ingredients}; toast(`✅ ${emoji} ${name} mis à jour !`); }
-  else { meals.push({id:Date.now(),name,emoji,cat,desc:'',ingredients}); toast(`✅ ${emoji} ${name} ajouté !`); }
+  else { meals.push({id:Date.now(),name,emoji,cat,desc:'',author:currentUser||DEFAULT_AUTHOR,authorColor:currentUserColor,ingredients}); toast(`✅ ${emoji} ${name} ajouté !`); }
   saveLocal(); closeModal(); renderMeals(); syncMeals();
 }
 function deleteMeal() {
@@ -1184,6 +1217,11 @@ updateOfflineUI();
 const savedUser = localStorage.getItem('mc_user');
 if (savedUser) {
   currentUser = savedUser;
+  const savedColor = localStorage.getItem('mc_color_'+slug(savedUser));
+  if (savedColor) {
+    currentUserColor = savedColor;
+    document.getElementById('user-chip').style.borderColor = savedColor;
+  }
   document.getElementById('user-name-display').textContent = savedUser;
   loadUserData();
 } else {
