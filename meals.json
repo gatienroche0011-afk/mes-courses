@@ -26,7 +26,9 @@
       }
     ],
     "cat": "pâtes",
-    "desc": "1. Faire revenir les allumettes de bacon dans une poêle sans matière grasse jusqu'à ce qu'elles soient dorées.\n2. Cuire les pâtes al dente dans de l'eau bouillante salée.\n3. Dans un bol, mélanger les œufs battus avec la crème fraîche, sel et poivre.\n4. Égoutter les pâtes en gardant un peu d'eau de cuisson. Hors du feu, mélanger rapidement avec le bacon et la sauce.\n5. Ajouter un peu d'eau de cuisson si nécessaire pour lier. Servir immédiatement."
+    "desc": "1. Faire revenir les allumettes de bacon dans une poêle sans matière grasse jusqu'à ce qu'elles soient dorées.\n2. Cuire les pâtes al dente dans de l'eau bouillante salée.\n3. Dans un bol, mélanger les œufs battus avec la crème fraîche, sel et poivre.\n4. Égoutter les pâtes en gardant un peu d'eau de cuisson. Hors du feu, mélanger rapidement avec le bacon et la sauce.\n5. Ajouter un peu d'eau de cuisson si nécessaire pour lier. Servir immédiatement.",
+    "author": "Gatien et Margot",
+    "authorColor": "#e91e8c"
   },
   {
     "id": 2,
@@ -60,7 +62,9 @@
       }
     ],
     "cat": "salades",
-    "desc": "1. Égoutter et rincer les pois chiches.\n2. Couper les tomates cerises en deux, l'avocat en dés.\n3. Disposer la roquette dans un grand bol, ajouter les pois chiches, les tomates et l'avocat.\n4. Déchirer la mozza et l'ajouter par-dessus.\n5. Assaisonner d'huile d'olive, jus de citron, sel et poivre."
+    "desc": "1. Égoutter et rincer les pois chiches.\n2. Couper les tomates cerises en deux, l'avocat en dés.\n3. Disposer la roquette dans un grand bol, ajouter les pois chiches, les tomates et l'avocat.\n4. Déchirer la mozza et l'ajouter par-dessus.\n5. Assaisonner d'huile d'olive, jus de citron, sel et poivre.",
+    "author": "Gatien et Margot",
+    "authorColor": "#e91e8c"
   },
   {
     "id": 3,
@@ -94,7 +98,9 @@
       }
     ],
     "cat": "wraps",
-    "desc": "1. Couper les poivrons en fines lanières.\n2. Les faire revenir à feu vif avec huile et épices fajitas pendant 8 min.\n3. Écraser les avocats à la fourchette avec sel et jus de citron (guacamole rapide).\n4. Réchauffer les wraps à la poêle.\n5. Garnir chaque wrap de poivrons, guacamole et gruyère râpé. Rouler et déguster."
+    "desc": "1. Couper les poivrons en fines lanières.\n2. Les faire revenir à feu vif avec huile et épices fajitas pendant 8 min.\n3. Écraser les avocats à la fourchette avec sel et jus de citron (guacamole rapide).\n4. Réchauffer les wraps à la poêle.\n5. Garnir chaque wrap de poivrons, guacamole et gruyère râpé. Rouler et déguster.",
+    "author": "Gatien et Margot",
+    "authorColor": "#e91e8c"
   },
   {
     "id": 4,
@@ -123,7 +129,9 @@
       }
     ],
     "cat": "autre",
-    "desc": "1. Faire cuire les œufs selon votre goût (brouillés ou au plat).\n2. Toaster généreusement des tranches de pain.\n3. Tartiner chaque tranche d'une épaisse couche de Saint Moret.\n4. Trancher l'avocat finement et le disposer sur le pain.\n5. Poser les œufs par-dessus. Finir avec sel, poivre et piment en option."
+    "desc": "1. Faire cuire les œufs selon votre goût (brouillés ou au plat).\n2. Toaster généreusement des tranches de pain.\n3. Tartiner chaque tranche d'une épaisse couche de Saint Moret.\n4. Trancher l'avocat finement et le disposer sur le pain.\n5. Poser les œufs par-dessus. Finir avec sel, poivre et piment en option.",
+    "author": "Gatien et Margot",
+    "authorColor": "#e91e8c"
   },
   {
     "id": 5,
@@ -152,7 +160,9 @@
       }
     ],
     "cat": "autre",
-    "desc": "1. Faire chauffer une poêle à feu moyen avec un peu de beurre.\n2. Déposer une galette bien à plat.\n3. Casser un œuf au centre, ajouter une tranche de jambon autour.\n4. Parsemer de gruyère râpé sur tout le dessus.\n5. Replier les 4 bords vers le centre. Cuire jusqu'à ce que l'œuf soit pris. Répéter."
+    "desc": "1. Faire chauffer une poêle à feu moyen avec un peu de beurre.\n2. Déposer une galette bien à plat.\n3. Casser un œuf au centre, ajouter une tranche de jambon autour.\n4. Parsemer de gruyère râpé sur tout le dessus.\n5. Replier les 4 bords vers le centre. Cuire jusqu'à ce que l'œuf soit pris. Répéter.",
+    "author": "Gatien et Margot",
+    "authorColor": "#e91e8c"
   },
   {
     "id": 6,
@@ -181,7 +191,9 @@
       }
     ],
     "cat": "autre",
-    "desc": "1. Couper les tomates cerises en deux et assaisonner d'huile d'olive, sel, poivre et basilic.\n2. Toaster les tranches de pain.\n3. Tartiner généreusement chaque tranche de pesto vert.\n4. Déposer des tranches de mozza fraîche par-dessus.\n5. Ajouter les tomates assaisonnées. Servir frais."
+    "desc": "1. Couper les tomates cerises en deux et assaisonner d'huile d'olive, sel, poivre et basilic.\n2. Toaster les tranches de pain.\n3. Tartiner généreusement chaque tranche de pesto vert.\n4. Déposer des tranches de mozza fraîche par-dessus.\n5. Ajouter les tomates assaisonnées. Servir frais.",
+    "author": "Gatien et Margot",
+    "authorColor": "#e91e8c"
   },
   {
     "id": 7,
@@ -215,7 +227,9 @@
       }
     ],
     "cat": "autre",
-    "desc": "1. Couper le chapeau des tomates et les évider à la cuillère. Garder la pulpe.\n2. Faire cuire les œufs durs 10 min, les couper en petits dés.\n3. Égoutter le thon. Écraser l'avocat à la fourchette.\n4. Mélanger thon, avocat, œufs, fromage blanc, pulpe de tomate, sel et poivre.\n5. Farcir les tomates, remettre le chapeau. Réfrigérer 30 min avant de servir."
+    "desc": "1. Couper le chapeau des tomates et les évider à la cuillère. Garder la pulpe.\n2. Faire cuire les œufs durs 10 min, les couper en petits dés.\n3. Égoutter le thon. Écraser l'avocat à la fourchette.\n4. Mélanger thon, avocat, œufs, fromage blanc, pulpe de tomate, sel et poivre.\n5. Farcir les tomates, remettre le chapeau. Réfrigérer 30 min avant de servir.",
+    "author": "Gatien et Margot",
+    "authorColor": "#e91e8c"
   },
   {
     "id": 8,
@@ -254,7 +268,9 @@
       }
     ],
     "cat": "autre",
-    "desc": "1. Couper aubergine et courgette en dés, faire revenir à la poêle avec huile, sel et poivre.\n2. Ajouter les tomates cerises coupées en deux et le pesto rouge. Cuire 5 min.\n3. Dans un plat, alterner : couche de pâtes à lasagne, légumes, ricotta.\n4. Répéter 3 fois. Terminer par de la ricotta.\n5. Cuire au four à 180°C pendant 30 à 35 min."
+    "desc": "1. Couper aubergine et courgette en dés, faire revenir à la poêle avec huile, sel et poivre.\n2. Ajouter les tomates cerises coupées en deux et le pesto rouge. Cuire 5 min.\n3. Dans un plat, alterner : couche de pâtes à lasagne, légumes, ricotta.\n4. Répéter 3 fois. Terminer par de la ricotta.\n5. Cuire au four à 180°C pendant 30 à 35 min.",
+    "author": "Gatien et Margot",
+    "authorColor": "#e91e8c"
   },
   {
     "id": 9,
@@ -293,7 +309,9 @@
       }
     ],
     "cat": "wraps",
-    "desc": "1. Faire griller le poulet en lamelles avec sel, poivre et paprika.\n2. Râper le concombre, l'essorer dans un torchon, mélanger avec le fromage blanc et sel. C'est le tzatziki.\n3. Couper les tomates cerises en deux, trancher les radis.\n4. Réchauffer les wraps.\n5. Garnir : tzatziki d'abord, puis poulet, tomates et radis. Rouler serré."
+    "desc": "1. Faire griller le poulet en lamelles avec sel, poivre et paprika.\n2. Râper le concombre, l'essorer dans un torchon, mélanger avec le fromage blanc et sel. C'est le tzatziki.\n3. Couper les tomates cerises en deux, trancher les radis.\n4. Réchauffer les wraps.\n5. Garnir : tzatziki d'abord, puis poulet, tomates et radis. Rouler serré.",
+    "author": "Gatien et Margot",
+    "authorColor": "#e91e8c"
   },
   {
     "id": 10,
@@ -337,7 +355,9 @@
       }
     ],
     "cat": "salades",
-    "desc": "1. Cuire les pâtes al dente, les rincer à l'eau froide.\n2. Mélanger les pâtes avec les tomates cerises, les tomates séchées coupées et le pesto vert.\n3. Ajouter la roquette et le jambon de parme déchiré en morceaux.\n4. Poser la burrata entière au centre au moment de servir.\n5. Un filet d'huile d'olive, poivre, et déguster aussitôt."
+    "desc": "1. Cuire les pâtes al dente, les rincer à l'eau froide.\n2. Mélanger les pâtes avec les tomates cerises, les tomates séchées coupées et le pesto vert.\n3. Ajouter la roquette et le jambon de parme déchiré en morceaux.\n4. Poser la burrata entière au centre au moment de servir.\n5. Un filet d'huile d'olive, poivre, et déguster aussitôt.",
+    "author": "Gatien et Margot",
+    "authorColor": "#e91e8c"
   },
   {
     "id": 11,
@@ -386,7 +406,9 @@
       }
     ],
     "cat": "salades",
-    "desc": "1. Cuire les pâtes al dente, rincer à l'eau froide.\n2. Faire cuire les œufs durs 10 min, les couper en quartiers.\n3. Mélanger pâtes, pois chiches, concombre en dés, tomates cerises, maïs et olives.\n4. Ajouter la mozza déchirée et les œufs.\n5. Assaisonner d'huile d'olive, herbes de Provence, sel et poivre."
+    "desc": "1. Cuire les pâtes al dente, rincer à l'eau froide.\n2. Faire cuire les œufs durs 10 min, les couper en quartiers.\n3. Mélanger pâtes, pois chiches, concombre en dés, tomates cerises, maïs et olives.\n4. Ajouter la mozza déchirée et les œufs.\n5. Assaisonner d'huile d'olive, herbes de Provence, sel et poivre.",
+    "author": "Gatien et Margot",
+    "authorColor": "#e91e8c"
   },
   {
     "id": 12,
@@ -415,7 +437,9 @@
       }
     ],
     "cat": "pâtes",
-    "desc": "1. Faire revenir les allumettes de bacon à sec jusqu'à ce qu'elles soient croustillantes.\n2. Cuire les pâtes al dente.\n3. Mélanger la crème fraîche avec la moitié du parmesan râpé, sel, poivre.\n4. Égoutter les pâtes, mélanger hors du feu avec le bacon et la crème au parmesan.\n5. Servir avec le reste du parmesan généreusement râpé par-dessus."
+    "desc": "1. Faire revenir les allumettes de bacon à sec jusqu'à ce qu'elles soient croustillantes.\n2. Cuire les pâtes al dente.\n3. Mélanger la crème fraîche avec la moitié du parmesan râpé, sel, poivre.\n4. Égoutter les pâtes, mélanger hors du feu avec le bacon et la crème au parmesan.\n5. Servir avec le reste du parmesan généreusement râpé par-dessus.",
+    "author": "Gatien et Margot",
+    "authorColor": "#e91e8c"
   },
   {
     "id": 13,
@@ -444,7 +468,9 @@
       }
     ],
     "cat": "viande",
-    "desc": "1. Couper le poulet en lanières régulières.\n2. Battre les œufs dans un bol avec sel et poivre.\n3. Tremper chaque lanière dans l'œuf battu puis rouler dans la chapelure en appuyant bien.\n4. Faire frire dans une poêle avec un bon fond d'huile, 3-4 min de chaque côté jusqu'à dorure.\n5. Égoutter sur du papier absorbant. Couper le melon en tranches fraîches. Servir ensemble."
+    "desc": "1. Couper le poulet en lanières régulières.\n2. Battre les œufs dans un bol avec sel et poivre.\n3. Tremper chaque lanière dans l'œuf battu puis rouler dans la chapelure en appuyant bien.\n4. Faire frire dans une poêle avec un bon fond d'huile, 3-4 min de chaque côté jusqu'à dorure.\n5. Égoutter sur du papier absorbant. Couper le melon en tranches fraîches. Servir ensemble.",
+    "author": "Gatien et Margot",
+    "authorColor": "#e91e8c"
   },
   {
     "id": 14,
@@ -468,7 +494,9 @@
       }
     ],
     "cat": "pâtes",
-    "desc": "1. Cuire les pâtes al dente dans de l'eau bien salée.\n2. Égoutter en gardant une louche d'eau de cuisson.\n3. Remettre les pâtes hors du feu avec un filet d'huile d'olive et un peu d'eau de cuisson.\n4. Déchirer le jambon de parme en morceaux et le mélanger aux pâtes.\n5. Couper la burrata en deux et la déposer sur les pâtes chaudes. Poivre, basilic."
+    "desc": "1. Cuire les pâtes al dente dans de l'eau bien salée.\n2. Égoutter en gardant une louche d'eau de cuisson.\n3. Remettre les pâtes hors du feu avec un filet d'huile d'olive et un peu d'eau de cuisson.\n4. Déchirer le jambon de parme en morceaux et le mélanger aux pâtes.\n5. Couper la burrata en deux et la déposer sur les pâtes chaudes. Poivre, basilic.",
+    "author": "Gatien et Margot",
+    "authorColor": "#e91e8c"
   },
   {
     "id": 15,
@@ -492,7 +520,9 @@
       }
     ],
     "cat": "pâtes",
-    "desc": "1. Couper le chorizo en rondelles et le faire revenir à sec dans une poêle.\n2. Cuire les pâtes al dente.\n3. Égoutter en gardant une tasse d'eau de cuisson.\n4. Ajouter le Boursin directement dans les pâtes chaudes avec 3-4 cuillères d'eau de cuisson.\n5. Bien mélanger pour créer une sauce crémeuse, ajouter le chorizo. Poivre et c'est prêt."
+    "desc": "1. Couper le chorizo en rondelles et le faire revenir à sec dans une poêle.\n2. Cuire les pâtes al dente.\n3. Égoutter en gardant une tasse d'eau de cuisson.\n4. Ajouter le Boursin directement dans les pâtes chaudes avec 3-4 cuillères d'eau de cuisson.\n5. Bien mélanger pour créer une sauce crémeuse, ajouter le chorizo. Poivre et c'est prêt.",
+    "author": "Gatien et Margot",
+    "authorColor": "#e91e8c"
   },
   {
     "id": 16,
@@ -521,7 +551,9 @@
       }
     ],
     "cat": "viande",
-    "desc": "1. Cuire le riz. Faire sauter les poivrons en lanières à la poêle.\n2. Couper le poulet en morceaux et le faire dorer dans une poêle huilée bien chaude.\n3. Sauce : 3 c. à soupe de beurre de cacahuète + 2 c. à soupe de sauce soja + 1 c. à soupe de miel + eau chaude pour diluer.\n4. Verser la sauce sur le poulet, laisser mijoter 3 min.\n5. Servir le poulet nappé de sauce sur le riz avec les poivrons à côté."
+    "desc": "1. Cuire le riz. Faire sauter les poivrons en lanières à la poêle.\n2. Couper le poulet en morceaux et le faire dorer dans une poêle huilée bien chaude.\n3. Sauce : 3 c. à soupe de beurre de cacahuète + 2 c. à soupe de sauce soja + 1 c. à soupe de miel + eau chaude pour diluer.\n4. Verser la sauce sur le poulet, laisser mijoter 3 min.\n5. Servir le poulet nappé de sauce sur le riz avec les poivrons à côté.",
+    "author": "Gatien et Margot",
+    "authorColor": "#e91e8c"
   },
   {
     "id": 1782743267318,
@@ -543,13 +575,15 @@
       {
         "name": "Oignon",
         "quantity": 1,
-        "unit": "G"
+        "unit": ""
       },
       {
         "name": "Tomate",
         "quantity": 1,
-        "unit": "G"
+        "unit": ""
       }
-    ]
+    ],
+    "author": "Gatien et Margot",
+    "authorColor": "#e91e8c"
   }
 ]
