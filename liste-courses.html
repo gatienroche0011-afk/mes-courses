@@ -151,6 +151,13 @@ nav{display:flex;gap:5px}
   min-height:138px;display:flex;align-items:center;justify-content:center;
   font-size:2rem;color:var(--p2);cursor:pointer;transition:all .2s;
 }
+/* ── PERSONNES ── */
+.persons-bar{display:flex;align-items:center;gap:8px;margin-bottom:12px;padding:7px 14px;background:#fff;border-radius:10px;box-shadow:var(--shadow);flex-wrap:wrap}
+.persons-label{font-size:.82rem;color:var(--muted);font-weight:600}
+.persons-btn{background:var(--p3);border:none;border-radius:8px;width:28px;height:28px;font-size:1.1rem;color:var(--p1);cursor:pointer;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.persons-btn:hover{background:var(--p2);color:#fff}
+.persons-count{font-size:1rem;font-weight:900;color:var(--p1);min-width:20px;text-align:center}
+.persons-hint{font-size:.72rem;color:var(--muted);margin-left:4px}
 /* ── FILTRES AUTEUR ── */
 .author-filters{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
 .author-chip{
@@ -362,6 +369,14 @@ nav{display:flex;gap:5px}
     <input type="text" id="search-input" placeholder="Rechercher un repas…" oninput="onSearch()" autocomplete="off"/>
     <button class="search-clear" id="search-clear" onclick="clearSearch()">✕</button>
   </div>
+  <div class="persons-bar">
+    <span class="persons-label">👥 Pour</span>
+    <button class="persons-btn" onclick="changePersons(-1)">−</button>
+    <span class="persons-count" id="persons-count">2</span>
+    <button class="persons-btn" onclick="changePersons(1)">+</button>
+    <span class="persons-label">personnes</span>
+    <span class="persons-hint" id="persons-hint"></span>
+  </div>
   <div class="author-filters" id="author-filters"></div>
   <div id="grid-wrap"></div>
 </div>
@@ -422,6 +437,7 @@ nav{display:flex;gap:5px}
         <option value="autre">✨ Autre</option>
       </select>
     </div>
+    <div class="field"><label>Pour combien de personnes (base recette)</label><div style="display:flex;align-items:center;gap:8px"><button type="button" class="persons-btn" onclick="changeServings(-1)">−</button><span id="f-servings-display" style="font-weight:800;color:var(--p1);min-width:24px;text-align:center">2</span><button type="button" class="persons-btn" onclick="changeServings(1)">+</button><input type="hidden" id="f-servings" value="2"/></div></div>
     <div class="field">
       <label>Ingrédients</label>
       <div style="display:grid;grid-template-columns:2fr 1fr 1.4fr auto;gap:6px;margin-bottom:8px">
@@ -476,6 +492,7 @@ const USER_COLORS = [
 ];
 const DEFAULT_AUTHOR       = 'Gatien et Margot';
 const DEFAULT_AUTHOR_COLOR = '#e91e8c';
+const DEFAULT_SERVINGS     = 2;
 
 /* ═══════════════════════════════════════════════════════
    DONNÉES PAR DÉFAUT
@@ -531,7 +548,7 @@ const DEFAULTS = [
     ingredients:[{name:'Poulet',quantity:1,unit:'filet'},{name:'Cacahuètes',quantity:1,unit:'paquet'},{name:'Riz',quantity:1,unit:'paquet'},{name:'Poivrons',quantity:2,unit:''}] },
 ];
 
-DEFAULTS.forEach(d => { d.author = DEFAULT_AUTHOR; d.authorColor = DEFAULT_AUTHOR_COLOR; });
+DEFAULTS.forEach(d => { d.author = DEFAULT_AUTHOR; d.authorColor = DEFAULT_AUTHOR_COLOR; if (!d.servings) d.servings = DEFAULT_SERVINGS; });
 
 const CAT_ORDER  = ['pâtes','salades','wraps','viande','autre'];
 const CAT_LABELS = { pâtes:'🍝 Pâtes', salades:'🥗 Salades', wraps:'🌮 Wraps', viande:'🍗 Viande', autre:'✨ Autre' };
@@ -580,6 +597,8 @@ let infoId      = null;
 let suggIdx     = -1;
 let searchQ     = '';
 let filterAuthor = null;
+let targetPersons  = parseInt(localStorage.getItem('mc_persons')||'2');
+let mealMultipliers = {};
 
 let mealsSha    = null;
 let cartSha     = null;
@@ -668,6 +687,7 @@ function saveLocal() {
     localStorage.setItem('mc_cart_'+slug(currentUser),    JSON.stringify(cart));
     localStorage.setItem('mc_counts_'+slug(currentUser),  JSON.stringify(counts));
     localStorage.setItem('mc_history_'+slug(currentUser), JSON.stringify(history));
+    localStorage.setItem('mc_mult_'+slug(currentUser),    JSON.stringify(mealMultipliers));
   } catch(e) {}
 }
 
@@ -678,9 +698,11 @@ function loadLocalUser() {
     const n = localStorage.getItem('mc_counts_'+slug(currentUser));
     const h = localStorage.getItem('mc_history_'+slug(currentUser));
     const m = localStorage.getItem('mc_meals');
+    const mu = localStorage.getItem('mc_mult_'+slug(currentUser));
     if (c) cart    = JSON.parse(c);
     if (n) counts  = JSON.parse(n);
     if (h) history = JSON.parse(h);
+    if (mu) mealMultipliers = JSON.parse(mu);
     if (m) { const pm = JSON.parse(m); if (pm && pm.length) meals = pm; }
   } catch {}
 }
@@ -700,8 +722,8 @@ async function loadMeals() {
     const customIds = new Set(custom.map(x => x.id));
     custom.forEach(m => {
       const def = defMap[m.id];
-      if (def) { m.name=def.name; m.emoji=def.emoji; m.cat=def.cat; if (!m.desc) m.desc=def.desc||''; if (!m.author) { m.author=DEFAULT_AUTHOR; m.authorColor=DEFAULT_AUTHOR_COLOR; } }
-      else { if (!m.cat) m.cat='autre'; if (!m.desc) m.desc=''; if (!m.author) { m.author=DEFAULT_AUTHOR; m.authorColor=DEFAULT_AUTHOR_COLOR; } }
+      if (def) { m.name=def.name; m.emoji=def.emoji; m.cat=def.cat; if (!m.desc) m.desc=def.desc||''; if (!m.author) { m.author=DEFAULT_AUTHOR; m.authorColor=DEFAULT_AUTHOR_COLOR; } if (!m.servings) m.servings=DEFAULT_SERVINGS; }
+      else { if (!m.cat) m.cat='autre'; if (!m.desc) m.desc=''; if (!m.author) { m.author=DEFAULT_AUTHOR; m.authorColor=DEFAULT_AUTHOR_COLOR; } if (!m.servings) m.servings=DEFAULT_SERVINGS; }
     });
     DEFAULTS.forEach(d => { if (!customIds.has(d.id)) custom.push({...d}); });
     meals = custom;
@@ -728,8 +750,9 @@ async function loadCart() {
     if (data.sha === cartSha) { setSyncStatus('live','Panier actif'); return; }
     cartSha = data.sha;
     const remote = JSON.parse(b64dec(data.content));
-    cart   = remote.cart   || {};
-    counts = remote.counts || {};
+    cart            = remote.cart        || {};
+    counts          = remote.counts      || {};
+    mealMultipliers = remote.multipliers || {};
     saveLocal(); updateBadge();
     const p = document.getElementById('page-cart');
     if (p.classList.contains('on')) renderCart();
@@ -747,7 +770,7 @@ async function syncCart() {
   if (!currentUser || !navigator.onLine) return;
   try {
     if (!cartSha) { const d = await ghGet(ghCart(currentUser)); if (d) cartSha = d.sha; }
-    cartSha = await ghPut(ghCart(currentUser), JSON.stringify({cart,counts}), cartSha, 'Mise à jour panier');
+    cartSha = await ghPut(ghCart(currentUser), JSON.stringify({cart,counts,multipliers:mealMultipliers}), cartSha, 'Mise à jour panier');
   } catch {}
 }
 
@@ -933,21 +956,28 @@ function doRipple(card, e) {
    PANIER — AJOUT / RETRAIT
 ═══════════════════════════════════════════════════════ */
 function addToCart(meal) {
+  const base = meal.servings || DEFAULT_SERVINGS;
+  const multiplier = targetPersons / base;
+  if (!counts[meal.id]) mealMultipliers[meal.id] = multiplier;
   counts[meal.id] = (counts[meal.id]||0) + 1;
+  const m = mealMultipliers[meal.id] || multiplier;
   meal.ingredients.forEach(ing => {
     const k = ing.name.toLowerCase().trim();
-    cart[k] ? (cart[k].quantity += ing.quantity) : (cart[k] = {name:ing.name,quantity:ing.quantity,unit:ing.unit,done:false});
+    const qty = ing.quantity * m;
+    cart[k] ? (cart[k].quantity += qty) : (cart[k] = {name:ing.name,quantity:qty,unit:ing.unit,done:false});
   });
   updateChip(meal.id); updateBadge(); saveLocal(); scheduleSync();
-  toast(`${meal.emoji} ${meal.name} ajouté !`);
+  toast(`${meal.emoji} ${meal.name} ajouté (×${targetPersons} pers.) !`);
 }
 
 function removeFromCart(meal) {
   if (!(counts[meal.id] > 0)) return;
+  const m = mealMultipliers[meal.id] || (targetPersons / (meal.servings || DEFAULT_SERVINGS));
   counts[meal.id]--;
+  if (!counts[meal.id]) delete mealMultipliers[meal.id];
   meal.ingredients.forEach(ing => {
     const k = ing.name.toLowerCase().trim(); if (!cart[k]) return;
-    cart[k].quantity -= ing.quantity; if (cart[k].quantity <= 0.001) delete cart[k];
+    cart[k].quantity -= ing.quantity * m; if (cart[k].quantity <= 0.001) delete cart[k];
   });
   updateChip(meal.id); updateBadge(); saveLocal(); scheduleSync();
   toast(`↩️ ${meal.emoji} ${meal.name} retiré`);
@@ -1211,11 +1241,27 @@ function saveDesc() {
 /* ═══════════════════════════════════════════════════════
    MODAL EDIT REPAS
 ═══════════════════════════════════════════════════════ */
+function setServingsUI(n) {
+  document.getElementById('f-servings').value=n;
+  document.getElementById('f-servings-display').textContent=n;
+}
+function changeServings(d) {
+  const cur=parseInt(document.getElementById('f-servings').value)||DEFAULT_SERVINGS;
+  setServingsUI(Math.max(1,Math.min(20,cur+d)));
+}
+function changePersons(d) {
+  targetPersons=Math.max(1,Math.min(20,targetPersons+d));
+  localStorage.setItem('mc_persons',targetPersons);
+  document.getElementById('persons-count').textContent=targetPersons;
+  const hint=document.getElementById('persons-hint');
+  hint.textContent=targetPersons===DEFAULT_SERVINGS?'':'(base recettes: '+DEFAULT_SERVINGS+' pers.)';
+}
 function openAdd() {
   editId=null;
   document.getElementById('modal-ttl').textContent='➕ Nouveau repas';
   document.getElementById('del-btn').style.display='none';
   document.getElementById('f-name').value=''; document.getElementById('f-emoji').value='🍽️'; document.getElementById('f-cat').value='autre';
+  setServingsUI(DEFAULT_SERVINGS);
   document.getElementById('ing-rows').innerHTML=''; addRow();
   document.getElementById('overlay').classList.add('open');
 }
@@ -1225,6 +1271,7 @@ function openEdit(id) {
   document.getElementById('modal-ttl').textContent='✏️ Modifier le repas';
   document.getElementById('del-btn').style.display='block';
   document.getElementById('f-name').value=meal.name; document.getElementById('f-emoji').value=meal.emoji; document.getElementById('f-cat').value=meal.cat||'autre';
+  setServingsUI(meal.servings||DEFAULT_SERVINGS);
   const rows=document.getElementById('ing-rows'); rows.innerHTML='';
   meal.ingredients.forEach(ing=>addRow(ing.name,ing.quantity,ing.unit));
   document.getElementById('overlay').classList.add('open');
@@ -1237,7 +1284,7 @@ function addRow(name='',qty=1,unit='') {
 }
 function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;'); }
 function saveMeal() {
-  const name=document.getElementById('f-name').value.trim(); const emoji=document.getElementById('f-emoji').value.trim()||'🍽️'; const cat=document.getElementById('f-cat').value;
+  const name=document.getElementById('f-name').value.trim(); const emoji=document.getElementById('f-emoji').value.trim()||'🍽️'; const cat=document.getElementById('f-cat').value; const servings=parseInt(document.getElementById('f-servings').value)||DEFAULT_SERVINGS;
   if (!name){alert('Donnez un nom au repas.');return;}
   const ingredients=[]; document.querySelectorAll('#ing-rows .ing-cols').forEach(row=>{ const n=row.querySelector('.r-name').value.trim(); const q=parseFloat(row.querySelector('.r-qty').value)||1; const u=row.querySelector('.r-unit').value.trim(); if(n)ingredients.push({name:n,quantity:q,unit:u}); });
   if (!ingredients.length){alert('Ajoutez au moins un ingrédient.');return;}
@@ -1247,12 +1294,12 @@ function saveMeal() {
       const isDefault = DEFAULTS.some(d=>d.id===editId);
       const prevAuthor = meals[i].author||DEFAULT_AUTHOR;
       const claim = !isDefault && prevAuthor===DEFAULT_AUTHOR;
-      meals[i]={...meals[i],name,emoji,cat,ingredients,
+      meals[i]={...meals[i],name,emoji,cat,servings,ingredients,
         author: claim?(currentUser||DEFAULT_AUTHOR):prevAuthor,
         authorColor: claim?currentUserColor:(meals[i].authorColor||DEFAULT_AUTHOR_COLOR)};
     }
     toast(`✅ ${emoji} ${name} mis à jour !`);
-  } else { meals.push({id:Date.now(),name,emoji,cat,desc:'',author:currentUser||DEFAULT_AUTHOR,authorColor:currentUserColor,ingredients}); toast(`✅ ${emoji} ${name} ajouté !`); }
+  } else { meals.push({id:Date.now(),name,emoji,cat,servings,desc:'',author:currentUser||DEFAULT_AUTHOR,authorColor:currentUserColor,ingredients}); toast(`✅ ${emoji} ${name} ajouté !`); }
   saveLocal(); closeModal(); renderMeals(); syncMeals();
 }
 function deleteMeal() {
@@ -1280,6 +1327,10 @@ if (savedUser) {
   document.getElementById('login-screen').classList.add('show');
   setTimeout(()=>document.getElementById('login-input').focus(), 300);
 }
+
+/* Init persons UI */
+document.getElementById('persons-count').textContent = targetPersons;
+if (targetPersons !== DEFAULT_SERVINGS) document.getElementById('persons-hint').textContent = '(base recettes: '+DEFAULT_SERVINGS+' pers.)';
 
 if ('serviceWorker' in navigator) navigator.serviceWorker.register('/mes-courses/sw.js');
 </script>
