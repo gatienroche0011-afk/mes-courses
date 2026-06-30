@@ -56,9 +56,10 @@ header{
 }
 .header-brand-bar{
   display:flex;align-items:center;justify-content:space-between;
-  padding:0 14px;overflow:hidden;
+  padding:0 14px 0 4px;
 }
-.header-logo{height:164px;width:auto;display:block}
+.header-logo-clip{height:58px;width:210px;overflow:hidden;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.header-logo{height:188px;width:auto;display:block;flex-shrink:0}
 .header-right{display:flex;align-items:center;gap:8px}
 .user-chip{
   background:var(--p3);color:var(--p1);
@@ -358,7 +359,7 @@ nav{display:flex;gap:4px;background:var(--p1);padding:6px 8px 0}
 <!-- ── HEADER ── -->
 <header>
   <div class="header-brand-bar">
-    <img src="logo-header.jpg" class="header-logo" alt="CADDIE — Les courses sans détour"/>
+    <div class="header-logo-clip"><img src="logo-header.jpg" class="header-logo" alt="CADDIE — Les courses sans détour"/></div>
     <div class="header-right">
       <div class="offline-badge" id="offline-badge">📵 Hors-ligne</div>
       <div class="user-chip" id="user-chip" onclick="promptLogout()" title="Changer de compte">
