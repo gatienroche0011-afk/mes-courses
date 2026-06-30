@@ -1,13 +1,13 @@
 {
-  "name": "Mes Courses",
-  "short_name": "Courses",
-  "description": "Liste de courses partagée",
+  "name": "Caddie",
+  "short_name": "Caddie",
+  "description": "Les courses sans détour",
   "start_url": "/mes-courses/",
   "scope": "/mes-courses/",
   "display": "standalone",
   "orientation": "portrait",
-  "background_color": "#fce4ec",
-  "theme_color": "#e91e8c",
+  "background_color": "#FDEEED",
+  "theme_color": "#D4605A",
   "icons": [
     {
       "src": "icon.svg",

@@ -3,25 +3,26 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Mes Courses 🛒</title>
+<title>Caddie</title>
 <link rel="manifest" href="manifest.json"/>
-<meta name="theme-color" content="#e91e8c"/>
+<meta name="theme-color" content="#D4605A"/>
 <meta name="apple-mobile-web-app-capable" content="yes"/>
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
-<meta name="apple-mobile-web-app-title" content="Mes Courses"/>
+<meta name="apple-mobile-web-app-title" content="Caddie"/>
 <link rel="apple-touch-icon" href="icon.svg"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --p1:#e91e8c;--p2:#f48fb1;--p3:#fce4ec;--p4:#ad1457;--p5:#fff0f7;
-  --text:#3d0c2e;--muted:#b06090;--shadow:0 4px 18px rgba(233,30,140,.12);--r:14px;
+  --p1:#D4605A;--p2:#E8908C;--p3:#FDEEED;--p4:#A83F3B;--p5:#FFF6F5;
+  --lav:#CE8FE0;--lav2:#EDD5F9;
+  --text:#2C1110;--muted:#9B6260;--shadow:0 4px 18px rgba(212,96,90,.12);--r:14px;
 }
 body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--p3);color:var(--text);min-height:100dvh;padding-bottom:30px}
 
 /* ── LOGIN ── */
 #login-screen{
   display:none;position:fixed;inset:0;z-index:9999;
-  background:linear-gradient(135deg,var(--p2),var(--p1),var(--p4));
+  background:linear-gradient(135deg,var(--lav),var(--p1),var(--p4));
   background-size:300% 300%;animation:bgShift 4s ease infinite alternate;
   flex-direction:column;align-items:center;justify-content:center;
   padding:30px;text-align:center;color:#fff;
@@ -49,9 +50,9 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--p3);color:var(
 
 /* ── HEADER ── */
 header{
-  background:linear-gradient(135deg,var(--p2),var(--p1));color:#fff;
+  background:linear-gradient(135deg,var(--lav),var(--p1));color:#fff;
   padding:14px 16px 0;position:sticky;top:0;z-index:100;
-  box-shadow:0 2px 16px rgba(233,30,140,.25);
+  box-shadow:0 2px 16px rgba(212,96,90,.25);
 }
 .header-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
 header h1{font-size:1.25rem;font-weight:900;letter-spacing:-.01em}
@@ -118,7 +119,7 @@ nav{display:flex;gap:5px}
   transition:transform .13s,box-shadow .13s;
   border-top:3.5px solid var(--card-color,var(--p2));
 }
-.card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(233,30,140,.18)}
+.card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(212,96,90,.18)}
 .card:active{transform:scale(.95)}
 .card-emoji{font-size:2.4rem;display:block;margin-bottom:8px}
 .card-name{font-size:.83rem;font-weight:700;line-height:1.3;margin-bottom:5px}
@@ -137,14 +138,14 @@ nav{display:flex;gap:5px}
 }
 .chip-minus:hover{background:rgba(255,255,255,.5)}
 .card-edit,.card-info{
-  position:absolute;background:rgba(233,30,140,.1);border:none;border-radius:8px;
+  position:absolute;background:rgba(212,96,90,.1);border:none;border-radius:8px;
   width:26px;height:26px;font-size:.78rem;color:var(--p1);cursor:pointer;
   display:flex;align-items:center;justify-content:center;transition:background .15s;
 }
-.card-edit:hover,.card-info:hover{background:rgba(233,30,140,.22)}
+.card-edit:hover,.card-info:hover{background:rgba(212,96,90,.22)}
 .card-edit{top:7px;right:7px}
 .card-info{top:7px;left:7px}
-.ripple{position:absolute;border-radius:50%;background:rgba(233,30,140,.13);transform:scale(0);animation:ripple .5s linear;pointer-events:none}
+.ripple{position:absolute;border-radius:50%;background:rgba(212,96,90,.13);transform:scale(0);animation:ripple .5s linear;pointer-events:none}
 @keyframes ripple{to{transform:scale(4);opacity:0}}
 .card-add{
   background:var(--p5);border:2px dashed var(--p2);border-radius:var(--r);
@@ -185,7 +186,7 @@ nav{display:flex;gap:5px}
 .manual-add:hover{opacity:.85}
 .suggestions{
   display:none;position:absolute;left:13px;right:13px;top:calc(100% - 8px);
-  background:#fff;border-radius:12px;box-shadow:0 8px 28px rgba(233,30,140,.2);
+  background:#fff;border-radius:12px;box-shadow:0 8px 28px rgba(212,96,90,.2);
   border:1.5px solid var(--p2);max-height:200px;overflow-y:auto;z-index:60;
 }
 .sugg-item{padding:10px 14px;display:flex;align-items:center;gap:10px;font-size:.9rem;color:var(--text);border-bottom:1px solid var(--p3);cursor:pointer;transition:background .1s}
@@ -228,9 +229,9 @@ nav{display:flex;gap:5px}
   background:linear-gradient(135deg,var(--p2),var(--p1));color:#fff;border:none;
   border-radius:var(--r);font-size:1rem;font-weight:800;cursor:pointer;
   display:flex;align-items:center;justify-content:center;gap:8px;
-  box-shadow:0 4px 18px rgba(233,30,140,.3);transition:all .2s;
+  box-shadow:0 4px 18px rgba(212,96,90,.3);transition:all .2s;
 }
-.done-btn:hover{transform:translateY(-2px);box-shadow:0 8px 26px rgba(233,30,140,.4)}
+.done-btn:hover{transform:translateY(-2px);box-shadow:0 8px 26px rgba(212,96,90,.4)}
 .done-btn:active{transform:scale(.98)}
 
 /* ── HISTORIQUE ── */
@@ -240,7 +241,7 @@ nav{display:flex;gap:5px}
   background:var(--p5);border-radius:var(--r);padding:15px 16px;margin-bottom:10px;
   box-shadow:var(--shadow);cursor:pointer;transition:box-shadow .15s;
 }
-.hist-card:hover{box-shadow:0 6px 22px rgba(233,30,140,.18)}
+.hist-card:hover{box-shadow:0 6px 22px rgba(212,96,90,.18)}
 .hist-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
 .hist-date{font-size:.8rem;font-weight:700;color:var(--muted)}
 .hist-count{background:var(--p3);color:var(--p1);font-size:.72rem;font-weight:800;padding:2px 9px;border-radius:99px}
@@ -304,7 +305,7 @@ nav{display:flex;gap:5px}
 .btn-confirm:hover{opacity:.8}
 
 /* ── BON APPÉTIT ── */
-#appetit{display:none;position:fixed;inset:0;z-index:999;background:linear-gradient(135deg,#f48fb1,#e91e8c,#ad1457);background-size:300% 300%;animation:bgShift 2s ease infinite alternate;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#fff;overflow:hidden}
+#appetit{display:none;position:fixed;inset:0;z-index:999;background:linear-gradient(135deg,#CE8FE0,#D4605A,#A83F3B);background-size:300% 300%;animation:bgShift 2s ease infinite alternate;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#fff;overflow:hidden}
 #appetit.show{display:flex}
 .ap-emoji{font-size:7rem;animation:superBob .5s ease infinite alternate;margin-bottom:20px;filter:drop-shadow(0 0 30px rgba(255,255,255,.6))}
 .ap-title{font-size:3rem;font-weight:900;letter-spacing:-.02em;animation:zoomIn .4s cubic-bezier(.17,.67,.35,1.4) both;text-shadow:0 4px 20px rgba(0,0,0,.2)}
@@ -332,9 +333,9 @@ nav{display:flex;gap:5px}
 
 <!-- ── LOGIN ── -->
 <div id="login-screen">
-  <div class="login-icon">🛒</div>
-  <div class="login-title">Mes Courses</div>
-  <div class="login-sub">Listes de courses partagées</div>
+  <div class="login-icon"><img src="icon.svg" style="width:90px;height:90px;border-radius:18px;box-shadow:0 8px 32px rgba(0,0,0,.2)"/></div>
+  <div class="login-title">CADDIE</div>
+  <div class="login-sub">Les courses sans détour</div>
   <div class="login-card">
     <label class="login-label">Quel est ton prénom ?</label>
     <input id="login-input" class="login-input" type="text" placeholder="Alice, Bob…"
@@ -347,7 +348,7 @@ nav{display:flex;gap:5px}
 <!-- ── HEADER ── -->
 <header>
   <div class="header-top">
-    <h1>🛒 Mes Courses</h1>
+    <h1><img src="icon.svg" style="width:28px;height:28px;border-radius:6px;vertical-align:middle;margin-right:8px"/>CADDIE</h1>
     <div class="header-right">
       <div class="offline-badge" id="offline-badge">📵 Hors-ligne</div>
       <div class="user-chip" id="user-chip" onclick="promptLogout()" title="Changer de compte">
@@ -491,7 +492,7 @@ const USER_COLORS = [
   '#FF5722','#607D8B','#795548','#009688','#673AB7',
 ];
 const DEFAULT_AUTHOR       = 'Gatien et Margot';
-const DEFAULT_AUTHOR_COLOR = '#e91e8c';
+const DEFAULT_AUTHOR_COLOR = '#D4605A';
 const DEFAULT_SERVINGS     = 2;
 
 /* ═══════════════════════════════════════════════════════
@@ -1133,7 +1134,7 @@ function showAppetit() {
 
 function launchConfetti() {
   const wrap = document.getElementById('confetti'); wrap.innerHTML='';
-  const cols=['#f48fb1','#e91e8c','#f06292','#fce4ec','#ff80ab','#fff','#ad1457','#ffcdd2','#ff4081','#c51162'];
+  const cols=['#CE8FE0','#D4605A','#E8908C','#FDEEED','#A83F3B','#fff','#EDD5F9','#F5B8B5','#CE8FE0','#8B3580'];
   for (let i=0; i<220; i++) {
     const d=document.createElement('div'); d.className='confetti-dot';
     const size=5+Math.random()*14;

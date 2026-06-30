@@ -1,4 +1,4 @@
-const CACHE = 'mes-courses-v1';
+const CACHE = 'caddie-v1';
 const ASSETS = [
   '/mes-courses/',
   '/mes-courses/index.html',
@@ -23,7 +23,6 @@ self.addEventListener('activate', e => {
 self.addEventListener('fetch', e => {
   if (e.request.method !== 'GET') return;
   const url = new URL(e.request.url);
-  /* Laisse passer les appels GitHub API sans cache */
   if (url.hostname === 'api.github.com') return;
 
   e.respondWith(

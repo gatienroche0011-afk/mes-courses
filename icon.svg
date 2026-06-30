@@ -1,25 +1,22 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-  <rect width="512" height="512" rx="110" fill="#e91e8c"/>
-  <rect width="512" height="512" rx="110" fill="url(#g)"/>
-  <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#f48fb1" stop-opacity="0.6"/>
-      <stop offset="1" stop-color="#ad1457" stop-opacity="0.4"/>
-    </linearGradient>
-  </defs>
-  <!-- Panier simplifié -->
-  <g fill="white">
-    <!-- poignée -->
-    <path d="M180 160 Q180 120 256 120 Q332 120 332 160" stroke="white" stroke-width="28" fill="none" stroke-linecap="round"/>
-    <!-- corps du panier -->
-    <rect x="140" y="168" width="232" height="160" rx="20"/>
-    <!-- roues -->
-    <circle cx="196" cy="368" r="28"/>
-    <circle cx="316" cy="368" r="28"/>
-    <!-- lignes décoratives sur le panier -->
-    <rect x="140" y="168" width="232" height="160" rx="20" fill="#e91e8c" opacity="0"/>
-    <line x1="210" y1="192" x2="210" y2="304" stroke="#e91e8c" stroke-width="14" stroke-linecap="round"/>
-    <line x1="256" y1="192" x2="256" y2="304" stroke="#e91e8c" stroke-width="14" stroke-linecap="round"/>
-    <line x1="302" y1="192" x2="302" y2="304" stroke="#e91e8c" stroke-width="14" stroke-linecap="round"/>
-  </g>
+  <rect width="512" height="512" rx="110" fill="#D4605A"/>
+  <!-- Speed lines -->
+  <line x1="148" y1="195" x2="114" y2="195" stroke="white" stroke-width="16" stroke-linecap="round"/>
+  <line x1="158" y1="221" x2="118" y2="221" stroke="white" stroke-width="16" stroke-linecap="round"/>
+  <line x1="168" y1="247" x2="122" y2="247" stroke="white" stroke-width="16" stroke-linecap="round"/>
+  <!-- Cart body -->
+  <path d="M185 165 L185 125 L390 125 L362 275 L215 275 Z" fill="none" stroke="white" stroke-width="20" stroke-linejoin="round" stroke-linecap="round"/>
+  <!-- Cart base -->
+  <line x1="215" y1="275" x2="200" y2="305" stroke="white" stroke-width="20" stroke-linecap="round"/>
+  <line x1="362" y1="275" x2="370" y2="305" stroke="white" stroke-width="20" stroke-linecap="round"/>
+  <line x1="198" y1="305" x2="372" y2="305" stroke="white" stroke-width="20" stroke-linecap="round"/>
+  <!-- Wheels -->
+  <circle cx="240" cy="340" r="26" fill="none" stroke="white" stroke-width="18"/>
+  <circle cx="240" cy="340" r="8" fill="white"/>
+  <circle cx="340" cy="340" r="26" fill="none" stroke="white" stroke-width="18"/>
+  <circle cx="340" cy="340" r="8" fill="white"/>
+  <!-- Sparkle top right -->
+  <line x1="390" y1="100" x2="390" y2="72" stroke="white" stroke-width="12" stroke-linecap="round"/>
+  <line x1="408" y1="110" x2="428" y2="94" stroke="white" stroke-width="12" stroke-linecap="round"/>
+  <line x1="415" y1="130" x2="444" y2="124" stroke="white" stroke-width="12" stroke-linecap="round"/>
 </svg>
