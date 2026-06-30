@@ -1,9 +1,12 @@
-const CACHE = 'caddie-v1';
+const CACHE = 'caddie-v2';
 const ASSETS = [
   '/mes-courses/',
   '/mes-courses/index.html',
   '/mes-courses/icon.svg',
   '/mes-courses/manifest.json',
+  '/mes-courses/logo-icon.jpg',
+  '/mes-courses/logo-header.jpg',
+  '/mes-courses/logo-login.jpg',
 ];
 
 self.addEventListener('install', e => {

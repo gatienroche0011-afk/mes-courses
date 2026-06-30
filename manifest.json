@@ -6,19 +6,19 @@
   "scope": "/mes-courses/",
   "display": "standalone",
   "orientation": "portrait",
-  "background_color": "#FDEEED",
+  "background_color": "#FFFFFF",
   "theme_color": "#D4605A",
   "icons": [
     {
-      "src": "icon.svg",
-      "sizes": "any",
-      "type": "image/svg+xml",
+      "src": "logo-icon.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
       "purpose": "any"
     },
     {
-      "src": "icon.svg",
-      "sizes": "any",
-      "type": "image/svg+xml",
+      "src": "logo-icon.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
       "purpose": "maskable"
     }
   ]
