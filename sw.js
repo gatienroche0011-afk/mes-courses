@@ -1,10 +1,10 @@
-const CACHE = 'caddie-v4';
+const CACHE = 'caddie-v5';
 const ASSETS = [
   '/mes-courses/',
   '/mes-courses/index.html',
   '/mes-courses/icon.svg',
   '/mes-courses/manifest.json',
-  '/mes-courses/logo-icon.jpg',
+  '/mes-courses/logo-icon-v2.jpg',
   '/mes-courses/logo-header.jpg',
   '/mes-courses/logo-login.jpg',
 ];
