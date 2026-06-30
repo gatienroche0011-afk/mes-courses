@@ -157,13 +157,21 @@ nav{display:flex;gap:4px;background:var(--p1);padding:6px 8px 0}
   font-size:2rem;color:var(--p2);cursor:pointer;transition:all .2s;
 }
 .card-add:hover{border-color:var(--p1);color:var(--p1)}
-/* ── PERSONNES ── */
-.persons-bar{display:flex;align-items:center;gap:8px;margin-bottom:12px;padding:7px 14px;background:#fff;border-radius:10px;box-shadow:var(--shadow);flex-wrap:wrap}
-.persons-label{font-size:.82rem;color:var(--muted);font-weight:600}
-.persons-btn{background:var(--p3);border:none;border-radius:8px;width:28px;height:28px;font-size:1.1rem;color:var(--p1);cursor:pointer;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:inherit}
-.persons-btn:hover{background:var(--p1);color:#fff}
-.persons-count{font-size:1rem;font-weight:900;color:var(--p1);min-width:20px;text-align:center}
-.persons-hint{font-size:.72rem;color:var(--muted);margin-left:4px}
+/* ── SHEET PORTIONS ── */
+#portions-overlay{display:none;position:fixed;inset:0;background:rgba(28,14,14,.5);z-index:200;align-items:flex-end;justify-content:center;padding:0}
+#portions-overlay.open{display:flex}
+.portions-sheet{background:#fff;border-radius:22px 22px 0 0;width:100%;max-width:480px;padding:24px 24px 36px;animation:slideUp .22s ease}
+.portions-meal-head{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.portions-emoji{font-size:2.2rem}
+.portions-name{font-size:1rem;font-weight:800;flex:1}
+.portions-label{font-size:.82rem;color:var(--muted);font-weight:600;margin-bottom:12px;display:block}
+.portions-stepper{display:flex;align-items:center;gap:16px;margin-bottom:22px}
+.portions-btn{background:var(--p3);border:none;border-radius:10px;width:44px;height:44px;font-size:1.4rem;color:var(--p1);cursor:pointer;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:inherit;transition:background .15s}
+.portions-btn:hover{background:var(--p1);color:#fff}
+.portions-count{font-size:2rem;font-weight:900;color:var(--p1);min-width:40px;text-align:center}
+.portions-base{font-size:.75rem;color:var(--muted);margin-left:4px}
+.portions-add-btn{width:100%;padding:15px;background:var(--p1);color:#fff;border:none;border-radius:var(--r);font-size:1rem;font-weight:800;cursor:pointer;font-family:inherit;transition:background .15s}
+.portions-add-btn:hover{background:var(--p1d)}
 /* ── FILTRES AUTEUR ── */
 .author-filters{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
 .author-chip{
@@ -372,14 +380,6 @@ nav{display:flex;gap:4px;background:var(--p1);padding:6px 8px 0}
     <input type="text" id="search-input" placeholder="Rechercher un repas…" oninput="onSearch()" autocomplete="off"/>
     <button class="search-clear" id="search-clear" onclick="clearSearch()">✕</button>
   </div>
-  <div class="persons-bar">
-    <span class="persons-label">👥 Pour</span>
-    <button class="persons-btn" onclick="changePersons(-1)">−</button>
-    <span class="persons-count" id="persons-count">2</span>
-    <button class="persons-btn" onclick="changePersons(1)">+</button>
-    <span class="persons-label">personnes</span>
-    <span class="persons-hint" id="persons-hint"></span>
-  </div>
   <div class="author-filters" id="author-filters"></div>
   <div id="grid-wrap"></div>
 </div>
@@ -466,6 +466,25 @@ nav{display:flex;gap:4px;background:var(--p1);padding:6px 8px 0}
   <div class="ap-title">Bon appétit !</div>
   <div class="ap-sub">Vos courses sont prêtes 🎉</div>
   <div class="ap-tricount">💸 N'oublie pas le Tricount !</div>
+</div>
+
+<!-- ── PORTIONS SHEET ── -->
+<div id="portions-overlay" onclick="if(event.target===this)closePortions()">
+  <div class="portions-sheet">
+    <div class="portions-meal-head">
+      <span class="portions-emoji" id="portions-emoji">🍽️</span>
+      <span class="portions-name" id="portions-name"></span>
+      <button class="modal-close" onclick="closePortions()">✕</button>
+    </div>
+    <span class="portions-label">Pour combien de personnes ?</span>
+    <div class="portions-stepper">
+      <button class="portions-btn" onclick="changePortions(-1)">−</button>
+      <span class="portions-count" id="portions-count">2</span>
+      <button class="portions-btn" onclick="changePortions(1)">+</button>
+      <span class="portions-base" id="portions-base"></span>
+    </div>
+    <button class="portions-add-btn" onclick="confirmPortions()">Ajouter au panier 🛒</button>
+  </div>
 </div>
 
 <!-- ── UNDO ── -->
@@ -600,8 +619,8 @@ let infoId      = null;
 let suggIdx     = -1;
 let searchQ     = '';
 let filterAuthor = null;
-let targetPersons  = parseInt(localStorage.getItem('mc_persons')||'2');
 let mealMultipliers = {};
+let mealPersons = {};
 
 let mealsSha    = null;
 let cartSha     = null;
@@ -691,6 +710,7 @@ function saveLocal() {
     localStorage.setItem('mc_counts_'+slug(currentUser),  JSON.stringify(counts));
     localStorage.setItem('mc_history_'+slug(currentUser), JSON.stringify(history));
     localStorage.setItem('mc_mult_'+slug(currentUser),    JSON.stringify(mealMultipliers));
+    localStorage.setItem('mc_mpers_'+slug(currentUser),   JSON.stringify(mealPersons));
   } catch(e) {}
 }
 
@@ -702,10 +722,12 @@ function loadLocalUser() {
     const h = localStorage.getItem('mc_history_'+slug(currentUser));
     const m = localStorage.getItem('mc_meals');
     const mu = localStorage.getItem('mc_mult_'+slug(currentUser));
+    const mp = localStorage.getItem('mc_mpers_'+slug(currentUser));
     if (c) cart    = JSON.parse(c);
     if (n) counts  = JSON.parse(n);
     if (h) history = JSON.parse(h);
     if (mu) mealMultipliers = JSON.parse(mu);
+    if (mp) mealPersons = JSON.parse(mp);
     if (m) { const pm = JSON.parse(m); if (pm && pm.length) meals = pm; }
   } catch {}
 }
@@ -756,6 +778,7 @@ async function loadCart() {
     cart            = remote.cart        || {};
     counts          = remote.counts      || {};
     mealMultipliers = remote.multipliers || {};
+    mealPersons = remote.mealPersons || {};
     saveLocal(); updateBadge();
     const p = document.getElementById('page-cart');
     if (p.classList.contains('on')) renderCart();
@@ -773,7 +796,7 @@ async function syncCart() {
   if (!currentUser || !navigator.onLine) return;
   try {
     if (!cartSha) { const d = await ghGet(ghCart(currentUser)); if (d) cartSha = d.sha; }
-    cartSha = await ghPut(ghCart(currentUser), JSON.stringify({cart,counts,multipliers:mealMultipliers}), cartSha, 'Mise à jour panier');
+    cartSha = await ghPut(ghCart(currentUser), JSON.stringify({cart,counts,multipliers:mealMultipliers,mealPersons}), cartSha, 'Mise à jour panier');
   } catch {}
 }
 
@@ -942,7 +965,7 @@ function mkCard(meal) {
 
   const hint = el('div','card-hint'); hint.textContent='Toucher pour ajouter';
   card.append(infoBtn, editBtn, emoji, name, author, chip, hint);
-  card.addEventListener('click', e => { addToCart(meal); doRipple(card, e); });
+  card.addEventListener('click', e => { openPortions(meal); doRipple(card, e); });
   return card;
 }
 
@@ -958,10 +981,38 @@ function doRipple(card, e) {
 /* ═══════════════════════════════════════════════════════
    PANIER — AJOUT / RETRAIT
 ═══════════════════════════════════════════════════════ */
-function addToCart(meal) {
+let _portionsMeal = null;
+let _portionsCount = 2;
+
+function openPortions(meal) {
+  _portionsMeal = meal;
+  _portionsCount = counts[meal.id] ? (mealPersons[meal.id] || 2) : 2;
+  document.getElementById('portions-emoji').textContent = meal.emoji;
+  document.getElementById('portions-name').textContent = meal.name;
+  document.getElementById('portions-count').textContent = _portionsCount;
   const base = meal.servings || DEFAULT_SERVINGS;
-  const multiplier = targetPersons / base;
+  document.getElementById('portions-base').textContent = `(recette base : ${base} pers.)`;
+  document.getElementById('portions-overlay').classList.add('open');
+}
+function closePortions() {
+  document.getElementById('portions-overlay').classList.remove('open');
+  _portionsMeal = null;
+}
+function changePortions(d) {
+  _portionsCount = Math.max(1, Math.min(20, _portionsCount + d));
+  document.getElementById('portions-count').textContent = _portionsCount;
+}
+function confirmPortions() {
+  if (_portionsMeal) addToCart(_portionsMeal, _portionsCount);
+  closePortions();
+}
+
+function addToCart(meal, persons) {
+  const base = meal.servings || DEFAULT_SERVINGS;
+  const p = persons || 2;
+  const multiplier = p / base;
   if (!counts[meal.id]) mealMultipliers[meal.id] = multiplier;
+  mealPersons[meal.id] = p;
   counts[meal.id] = (counts[meal.id]||0) + 1;
   const m = mealMultipliers[meal.id] || multiplier;
   meal.ingredients.forEach(ing => {
@@ -970,12 +1021,12 @@ function addToCart(meal) {
     cart[k] ? (cart[k].quantity += qty) : (cart[k] = {name:ing.name,quantity:qty,unit:ing.unit,done:false});
   });
   updateChip(meal.id); updateBadge(); saveLocal(); scheduleSync();
-  toast(`${meal.emoji} ${meal.name} ajouté (×${targetPersons} pers.) !`);
+  toast(`${meal.emoji} ${meal.name} ajouté (×${p} pers.) !`);
 }
 
 function removeFromCart(meal) {
   if (!(counts[meal.id] > 0)) return;
-  const m = mealMultipliers[meal.id] || (targetPersons / (meal.servings || DEFAULT_SERVINGS));
+  const m = mealMultipliers[meal.id] || (1);
   counts[meal.id]--;
   if (!counts[meal.id]) delete mealMultipliers[meal.id];
   meal.ingredients.forEach(ing => {
@@ -1252,13 +1303,6 @@ function changeServings(d) {
   const cur=parseInt(document.getElementById('f-servings').value)||DEFAULT_SERVINGS;
   setServingsUI(Math.max(1,Math.min(20,cur+d)));
 }
-function changePersons(d) {
-  targetPersons=Math.max(1,Math.min(20,targetPersons+d));
-  localStorage.setItem('mc_persons',targetPersons);
-  document.getElementById('persons-count').textContent=targetPersons;
-  const hint=document.getElementById('persons-hint');
-  hint.textContent=targetPersons===DEFAULT_SERVINGS?'':'(base recettes: '+DEFAULT_SERVINGS+' pers.)';
-}
 function openAdd() {
   editId=null;
   document.getElementById('modal-ttl').textContent='➕ Nouveau repas';
@@ -1331,9 +1375,6 @@ if (savedUser) {
   setTimeout(()=>document.getElementById('login-input').focus(), 300);
 }
 
-/* Init persons UI */
-document.getElementById('persons-count').textContent = targetPersons;
-if (targetPersons !== DEFAULT_SERVINGS) document.getElementById('persons-hint').textContent = '(base recettes: '+DEFAULT_SERVINGS+' pers.)';
 
 if ('serviceWorker' in navigator) navigator.serviceWorker.register('/mes-courses/sw.js');
 </script>
