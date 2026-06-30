@@ -20,7 +20,7 @@
   --lav:#CE8FE0;--lav2:#EDD5F9;
   --text:#1C0E0E;--muted:#8A5F5E;--shadow:0 2px 12px rgba(212,96,90,.10);--r:14px;
 }
-body{font-family:'Nunito','Segoe UI',system-ui,sans-serif;background:var(--p3);color:var(--text);min-height:100dvh;padding-bottom:30px}
+body{font-family:'Nunito','Segoe UI',system-ui,sans-serif;background:var(--p3);color:var(--text);min-height:100dvh;padding-bottom:80px}
 
 /* ── LOGIN ── */
 #login-screen{
@@ -61,32 +61,52 @@ header{
 .header-logo-clip{height:58px;width:210px;overflow:hidden;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .header-logo{height:188px;width:auto;display:block;flex-shrink:0}
 .header-right{display:flex;align-items:center;gap:8px}
-.user-chip{
-  background:var(--p3);color:var(--p1);
-  font-size:.78rem;font-weight:800;padding:5px 12px 5px 9px;
-  border-radius:99px;display:flex;align-items:center;gap:6px;cursor:pointer;
-  border:1.5px solid var(--p2);transition:background .15s;
-}
-.user-chip:hover{background:var(--p2)}
 .offline-badge{
-  background:var(--p3);color:var(--muted);font-size:.68rem;font-weight:700;
-  padding:3px 10px;border-radius:99px;display:none;align-items:center;gap:5px;
+  background:var(--p3);color:var(--muted);font-size:.65rem;font-weight:700;
+  padding:2px 8px;border-radius:99px;display:none;align-items:center;gap:4px;
   border:1px solid var(--p2);
 }
 .offline-badge.show{display:flex}
-nav{display:flex;gap:4px;background:var(--p1);padding:6px 8px 0}
-.tab{
-  flex:1;padding:9px 5px;background:rgba(255,255,255,.18);
-  border:none;border-radius:10px 10px 0 0;color:rgba(255,255,255,.82);
-  font-size:.82rem;font-weight:700;cursor:pointer;transition:all .18s;position:relative;font-family:inherit;
+
+/* ── BOTTOM NAV ── */
+#bottom-nav{
+  position:fixed;bottom:0;left:0;right:0;z-index:150;
+  background:#fff;border-top:1px solid var(--p2);
+  display:flex;height:62px;
+  box-shadow:0 -4px 20px rgba(212,96,90,.10);
 }
-.tab.on{background:var(--p3);color:var(--p1)}
-.badge{
-  position:absolute;top:4px;right:6px;background:var(--p4);color:#fff;
-  font-size:.58rem;font-weight:800;min-width:16px;height:16px;
+.bnav-tab{
+  flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:3px;border:none;background:transparent;cursor:pointer;
+  color:var(--muted);font-family:inherit;position:relative;transition:color .18s;
+}
+.bnav-tab.on{color:var(--p1)}
+.bnav-tab.on .bnav-icon-wrap::after{content:'';position:absolute;bottom:-6px;left:50%;transform:translateX(-50%);width:22px;height:3px;background:var(--p1);border-radius:2px 2px 0 0}
+.bnav-icon-wrap{position:relative;display:flex;align-items:center;justify-content:center}
+.bnav-icon{font-size:1.25rem;line-height:1}
+.bnav-label{font-size:.65rem;font-weight:700;letter-spacing:.02em}
+.bnav-badge{
+  position:absolute;top:-5px;right:-8px;background:var(--p1);color:#fff;
+  font-size:.5rem;font-weight:900;min-width:15px;height:15px;
   border-radius:99px;padding:0 3px;display:none;align-items:center;justify-content:center;
 }
-.badge.show{display:flex}
+.bnav-badge.show{display:flex}
+
+/* ── ACCOUNT SHEET ── */
+#account-overlay{display:none;position:fixed;inset:0;background:rgba(28,14,14,.45);z-index:200;align-items:flex-end;justify-content:center;padding:0}
+#account-overlay.open{display:flex}
+.account-sheet{background:#fff;border-radius:22px 22px 0 0;width:100%;max-width:560px;max-height:90dvh;overflow-y:auto;animation:slideUp .25s ease;padding-bottom:30px}
+.account-head-bar{display:flex;align-items:center;justify-content:space-between;padding:18px 20px 14px}
+.account-profile{display:flex;align-items:center;gap:14px}
+.account-avatar{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.2rem;font-weight:900;color:#fff;flex-shrink:0;font-family:inherit}
+.account-info{}
+.account-name-disp{font-size:1rem;font-weight:900;color:var(--text)}
+.account-sub{font-size:.72rem;color:var(--muted);font-weight:600;margin-top:1px}
+.account-logout{background:var(--p3);border:none;border-radius:9px;padding:7px 13px;font-size:.8rem;font-weight:700;color:var(--p4);cursor:pointer;font-family:inherit;transition:background .15s}
+.account-logout:hover{background:var(--p2)}
+.account-hist-title{font-size:.72rem;font-weight:800;color:var(--p1);text-transform:uppercase;letter-spacing:.1em;padding:0 20px 10px;display:flex;align-items:center;gap:7px}
+.account-hist-title::after{content:'';flex:1;height:1.5px;background:var(--p2)}
+.account-hist-wrap{padding:0 14px}
 
 /* ── PAGES ── */
 .page{display:none;padding:16px 14px}
@@ -122,7 +142,7 @@ nav{display:flex;gap:4px;background:var(--p1);padding:6px 8px 0}
   text-align:center;cursor:pointer;box-shadow:var(--shadow);
   position:relative;overflow:hidden;user-select:none;
   transition:transform .13s,box-shadow .13s;
-  border-top:3.5px solid var(--card-color,var(--p2));
+  border-left:4px solid var(--card-color,var(--p2));
 }
 .card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(212,96,90,.18)}
 .card:active{transform:scale(.95)}
@@ -360,19 +380,43 @@ nav{display:flex;gap:4px;background:var(--p1);padding:6px 8px 0}
 <header>
   <div class="header-brand-bar">
     <div class="header-logo-clip"><img src="logo-header.jpg" class="header-logo" alt="CADDIE — Les courses sans détour"/></div>
-    <div class="header-right">
-      <div class="offline-badge" id="offline-badge">📵 Hors-ligne</div>
-      <div class="user-chip" id="user-chip" onclick="promptLogout()" title="Changer de compte">
-        <span>👤</span><span id="user-name-display">…</span>
-      </div>
-    </div>
+    <div class="offline-badge" id="offline-badge">📵 Hors-ligne</div>
   </div>
-  <nav>
-    <button class="tab on" onclick="goPage('meals',this)">🍽️ Repas</button>
-    <button class="tab"    onclick="goPage('cart',this)">🧺 Panier<span class="badge" id="badge">0</span></button>
-    <button class="tab"    onclick="goPage('history',this)">📋 Historique</button>
-  </nav>
 </header>
+
+<!-- ── BOTTOM NAV ── -->
+<nav id="bottom-nav">
+  <button class="bnav-tab on" onclick="goPage('meals',this)">
+    <div class="bnav-icon-wrap"><span class="bnav-icon">🍽️</span></div>
+    <span class="bnav-label">Repas</span>
+  </button>
+  <button class="bnav-tab" onclick="goPage('cart',this)">
+    <div class="bnav-icon-wrap"><span class="bnav-icon">🛒</span><span class="bnav-badge" id="badge">0</span></div>
+    <span class="bnav-label">Panier</span>
+  </button>
+  <button class="bnav-tab" onclick="openAccount()">
+    <div class="bnav-icon-wrap"><span class="bnav-icon">👤</span></div>
+    <span class="bnav-label" id="user-name-display">Mon compte</span>
+  </button>
+</nav>
+
+<!-- ── ACCOUNT SHEET ── -->
+<div id="account-overlay" onclick="if(event.target===this)closeAccount()">
+  <div class="account-sheet">
+    <div class="account-head-bar">
+      <div class="account-profile">
+        <div class="account-avatar" id="account-avatar">?</div>
+        <div class="account-info">
+          <div class="account-name-disp" id="account-name-disp">…</div>
+          <div class="account-sub">Mon compte</div>
+        </div>
+      </div>
+      <button class="account-logout" onclick="promptLogout()">🚪 Changer</button>
+    </div>
+    <div class="account-hist-title">Historique</div>
+    <div class="account-hist-wrap" id="account-history-list"></div>
+  </div>
+</div>
 
 <!-- ── PAGE REPAS ── -->
 <div class="page on" id="page-meals">
@@ -683,8 +727,7 @@ function doLogin() {
   currentUserColor = color;
   localStorage.setItem('mc_user', val);
   document.getElementById('login-screen').classList.remove('show');
-  document.getElementById('user-name-display').textContent = val;
-  document.getElementById('user-chip').style.borderColor = color;
+  setUserUI(val, color);
   loadUserData();
 }
 
@@ -838,7 +881,7 @@ async function appendHistory(entry) {
 function loadUserData() {
   loadLocalUser();
   renderMeals(); updateBadge(); renderCart(); renderHistory();
-  document.getElementById('user-name-display').textContent = currentUser;
+  setUserUI(currentUser, currentUserColor);
   loadMeals();
   loadCart();
   loadHistory();
@@ -870,11 +913,27 @@ function setSyncStatus(state, label) {
 ═══════════════════════════════════════════════════════ */
 function goPage(id, tab) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('on'));
-  document.querySelectorAll('.tab').forEach(t => t.classList.remove('on'));
+  document.querySelectorAll('.bnav-tab').forEach(t => t.classList.remove('on'));
   document.getElementById('page-'+id).classList.add('on');
   tab.classList.add('on');
-  if (id==='cart')    renderCart();
-  if (id==='history') renderHistory();
+  if (id==='cart') renderCart();
+}
+
+function setUserUI(name, color) {
+  const short = (name||'?').slice(0,2).toUpperCase();
+  document.getElementById('user-name-display').textContent = name || 'Mon compte';
+  const av = document.getElementById('account-avatar');
+  if (av) { av.textContent = short; av.style.background = color || 'var(--p1)'; }
+  const nd = document.getElementById('account-name-disp');
+  if (nd) nd.textContent = name || '…';
+}
+
+function openAccount() {
+  renderHistory();
+  document.getElementById('account-overlay').classList.add('open');
+}
+function closeAccount() {
+  document.getElementById('account-overlay').classList.remove('open');
 }
 
 /* ═══════════════════════════════════════════════════════
@@ -1142,7 +1201,7 @@ function confirmCourses() {
    HISTORIQUE — RENDU
 ═══════════════════════════════════════════════════════ */
 function renderHistory() {
-  const container = document.getElementById('history-list');
+  const container = document.getElementById('account-history-list');
   if (!history.length) {
     container.innerHTML = `<div class="hist-empty"><div class="hist-empty-icon">📋</div><div style="font-size:.9rem;font-weight:700">Aucune course effectuée</div><div style="font-size:.82rem;margin-top:6px">L'historique s'enrichit après chaque "Courses faites !"</div></div>`;
     return;
@@ -1182,7 +1241,7 @@ function showAppetit() {
   launchConfetti(); launchStars();
   setTimeout(() => {
     el.classList.remove('show'); document.getElementById('confetti').innerHTML='';
-    const t = document.querySelector('.tab'); goPage('meals', t); t.classList.add('on');
+    const t = document.querySelector('.bnav-tab'); goPage('meals', t);
   }, 5000);
 }
 
@@ -1367,9 +1426,8 @@ if (savedUser) {
   const savedColor = localStorage.getItem('mc_color_'+slug(savedUser));
   if (savedColor) {
     currentUserColor = savedColor;
-    document.getElementById('user-chip').style.borderColor = savedColor;
+    setUserUI(savedUser, savedColor);
   }
-  document.getElementById('user-name-display').textContent = savedUser;
   loadUserData();
 } else {
   document.getElementById('login-screen').classList.add('show');
