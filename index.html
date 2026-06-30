@@ -67,6 +67,17 @@ header{
   border:1px solid var(--p2);
 }
 .offline-badge.show{display:flex}
+.account-btn{
+  display:flex;align-items:center;gap:8px;
+  background:var(--p3);border:1.5px solid var(--p2);border-radius:99px;
+  padding:5px 14px 5px 6px;cursor:pointer;font-family:inherit;
+  font-size:.8rem;font-weight:800;color:var(--p1);transition:background .15s;
+}
+.account-btn:hover{background:var(--p2)}
+.account-btn-avatar{
+  width:26px;height:26px;border-radius:50%;background:var(--p1);
+  color:#fff;font-size:.72rem;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
 
 /* ── BOTTOM NAV ── */
 #bottom-nav{
@@ -380,7 +391,13 @@ header{
 <header>
   <div class="header-brand-bar">
     <div class="header-logo-clip"><img src="logo-header.jpg" class="header-logo" alt="CADDIE — Les courses sans détour"/></div>
-    <div class="offline-badge" id="offline-badge">📵 Hors-ligne</div>
+    <div style="display:flex;align-items:center;gap:8px">
+      <div class="offline-badge" id="offline-badge">📵 Hors-ligne</div>
+      <button class="account-btn" id="account-btn" onclick="openAccount()">
+        <span class="account-btn-avatar" id="account-btn-avatar">?</span>
+        <span id="user-name-display">Mon compte</span>
+      </button>
+    </div>
   </div>
 </header>
 
@@ -393,10 +410,6 @@ header{
   <button class="bnav-tab" onclick="goPage('cart',this)">
     <div class="bnav-icon-wrap"><span class="bnav-icon">🛒</span><span class="bnav-badge" id="badge">0</span></div>
     <span class="bnav-label">Panier</span>
-  </button>
-  <button class="bnav-tab" onclick="openAccount()">
-    <div class="bnav-icon-wrap"><span class="bnav-icon">👤</span></div>
-    <span class="bnav-label" id="user-name-display">Mon compte</span>
   </button>
 </nav>
 
@@ -922,6 +935,10 @@ function goPage(id, tab) {
 function setUserUI(name, color) {
   const short = (name||'?').slice(0,2).toUpperCase();
   document.getElementById('user-name-display').textContent = name || 'Mon compte';
+  const btnAv = document.getElementById('account-btn-avatar');
+  if (btnAv) { btnAv.textContent = short; btnAv.style.background = color || 'var(--p1)'; }
+  const btn = document.getElementById('account-btn');
+  if (btn) btn.style.borderColor = color || 'var(--p2)';
   const av = document.getElementById('account-avatar');
   if (av) { av.textContent = short; av.style.background = color || 'var(--p1)'; }
   const nd = document.getElementById('account-name-disp');
