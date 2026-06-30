@@ -998,7 +998,7 @@ function ciHtml(k, item) {
 }
 
 function fmtQty(q, unit) { const s=q===0.5?'½':q%1!==0?q.toFixed(1):String(q); return unit?`${s} ${unit}`:`×${s}`; }
-function toggle(k) { if (!cart[k]) return; cart[k].done=!cart[k].done; saveLocal(); updateBadge(); renderCart(); scheduleSync(); }
+function toggle(k) { if (!cart[k]) return; cart[k].done=!cart[k].done; if (cart[k].done && navigator.clipboard) navigator.clipboard.writeText(cart[k].name).catch(()=>{}); saveLocal(); updateBadge(); renderCart(); scheduleSync(); }
 function decrement(k) { if (!cart[k]) return; cart[k].quantity-=1; if (cart[k].quantity<=0) delete cart[k]; saveLocal(); updateBadge(); renderCart(); scheduleSync(); }
 function delItem(k)   { delete cart[k]; saveLocal(); updateBadge(); renderCart(); scheduleSync(); }
 function clearDone()  { Object.keys(cart).forEach(k=>{ if (cart[k].done) delete cart[k]; }); saveLocal(); updateBadge(); renderCart(); scheduleSync(); }
