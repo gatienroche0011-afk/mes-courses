@@ -12,8 +12,11 @@
 <link rel="apple-touch-icon" href="logo-icon-v2.jpg"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Josefin+Sans:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
 <style>
+@font-face{font-family:'Intro';src:url('Intro.otf') format('opentype');font-weight:700 900;font-display:swap}
+@font-face{font-family:'GlacialIndifference';src:url('GlacialIndifference-Regular.otf') format('opentype');font-weight:400;font-display:swap}
+@font-face{font-family:'GlacialIndifference';src:url('GlacialIndifference-Bold.otf') format('opentype');font-weight:700;font-display:swap}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
   --p1:#D4605A;--p1d:#B84E49;--p2:#ECBAB7;--p3:#FDF0EF;--p4:#B84E49;--p5:#FFFFFF;
@@ -21,7 +24,7 @@
   --text:#1C0E0E;--muted:#8A5F5E;--shadow:0 2px 12px rgba(212,96,90,.10);--r:14px;
 }
 body{font-family:'Nunito','Segoe UI',system-ui,sans-serif;background:var(--p3);color:var(--text);min-height:100dvh;padding-bottom:80px}
-:root{--f-intro:'Nunito',sans-serif;--f-glacial:'Josefin Sans','Segoe UI',sans-serif}
+:root{--f-intro:'Intro',sans-serif;--f-glacial:'GlacialIndifference',sans-serif}
 
 /* ── LOGIN ── */
 #login-screen{
