@@ -164,8 +164,7 @@ header{
 }
 .card:active{transform:translate(3px,3px);box-shadow:2px 2px 0 var(--card-color,var(--p1))}
 /* Sparkle — coin haut-droite, image détourée par multiply */
-.card-sparkle-wrap{position:absolute;top:6px;left:6px;width:78px;height:72px;overflow:hidden;pointer-events:none;border-radius:4px}
-.card-sparkle-img{width:320px;transform:translate(-44px,-38px);mix-blend-mode:multiply;display:block}
+.card-sparkle-img{position:absolute;top:-4px;left:-4px;width:72px;pointer-events:none}
 .card-name{
   font-family:var(--f-intro);font-weight:900;line-height:1.15;
   font-size:clamp(1.17rem,4.5vw,1.53rem);
@@ -174,7 +173,7 @@ header{
 }
 .card-author{
   font-family:var(--f-glacial);font-size:.65rem;font-weight:400;text-transform:uppercase;
-  letter-spacing:.2em;color:var(--muted);text-align:center;margin-bottom:20px;
+  letter-spacing:.2em;text-align:center;margin-bottom:20px;
 }
 .card-actions{display:flex;gap:12px;align-items:stretch;min-height:90px}
 .card-btns-left{display:flex;flex-direction:column;gap:10px;flex:1.1}
@@ -1050,16 +1049,13 @@ function mkCard(meal) {
   const n = counts[meal.id] || 0;
   const color = meal.authorColor || DEFAULT_AUTHOR_COLOR;
   const card = el('div','card');
-  card.style.setProperty('--card-color', color);
 
-  const sparkWrap = el('div','card-sparkle-wrap');
   const sparkImg = document.createElement('img');
-  sparkImg.src = 'sparkle.jpg'; sparkImg.alt = ''; sparkImg.className = 'card-sparkle-img';
-  sparkImg.style.filter = `hue-rotate(${Math.round(hexHue(color)-3)}deg) saturate(1.1) brightness(.95)`;
-  sparkWrap.appendChild(sparkImg);
+  sparkImg.src = 'illustration.png'; sparkImg.alt = ''; sparkImg.className = 'card-sparkle-img';
 
   const name   = el('div','card-name');   name.textContent   = meal.name.toUpperCase();
   const author = el('div','card-author'); author.textContent = (meal.author||DEFAULT_AUTHOR).toUpperCase();
+  author.style.color = color;
 
   // Actions row
   const actions  = el('div','card-actions');
@@ -1079,7 +1075,7 @@ function mkCard(meal) {
   addBtn.addEventListener('click', e=>{ e.stopPropagation(); openPortions(meal); doRipple(card,e); });
 
   actions.append(leftBtns, addBtn);
-  card.append(sparkWrap, name, author, actions);
+  card.append(sparkImg, name, author, actions);
   return card;
 }
 

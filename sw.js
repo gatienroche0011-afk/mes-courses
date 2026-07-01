@@ -1,4 +1,4 @@
-const CACHE = 'caddie-v7';
+const CACHE = 'caddie-v8';
 const ASSETS = [
   '/mes-courses/',
   '/mes-courses/index.html',
@@ -7,7 +7,7 @@ const ASSETS = [
   '/mes-courses/logo-icon-v2.jpg',
   '/mes-courses/logo-header.jpg',
   '/mes-courses/logo-login.jpg',
-  '/mes-courses/sparkle.jpg',
+  '/mes-courses/illustration.png',
   '/mes-courses/Intro.otf',
   '/mes-courses/GlacialIndifference-Regular.otf',
   '/mes-courses/GlacialIndifference-Bold.otf',
