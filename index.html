@@ -153,6 +153,8 @@ header{
 /* ── GRILLE ── */
 .grid{display:grid;grid-template-columns:1fr;gap:16px;margin-bottom:8px}
 @media(min-width:560px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:900px){.page{padding:24px 36px}.grid{grid-template-columns:repeat(3,1fr);gap:22px}}
+@media(min-width:1280px){.page{padding:28px 60px;max-width:1400px;margin:0 auto}.grid{grid-template-columns:repeat(4,1fr);gap:28px}}
 .card{
   background:#fff;border-radius:20px;padding:22px 20px 18px;
   user-select:none;position:relative;overflow:visible;
@@ -161,11 +163,12 @@ header{
   transition:transform .1s,box-shadow .1s;
 }
 .card:active{transform:translate(3px,3px);box-shadow:2px 2px 0 var(--card-color,var(--p1))}
-/* Sparkle — top-left, rayonnant depuis un point */
-.card-sparkle{position:absolute;top:16px;left:18px;pointer-events:none}
+/* Sparkle — coin haut-droite, image détourée par multiply */
+.card-sparkle-wrap{position:absolute;top:6px;right:6px;width:78px;height:72px;overflow:hidden;pointer-events:none;border-radius:4px}
+.card-sparkle-img{width:320px;transform:translate(-44px,-38px);mix-blend-mode:multiply;display:block}
 .card-name{
   font-family:var(--f-intro);font-weight:900;line-height:1.15;
-  font-size:clamp(1.3rem,5vw,1.7rem);
+  font-size:clamp(1.17rem,4.5vw,1.53rem);
   text-transform:uppercase;color:var(--card-color,var(--p1));
   text-align:center;margin:36px 0 8px;letter-spacing:.01em;word-break:break-word;
 }
@@ -1040,17 +1043,10 @@ function mkCard(meal) {
   const card = el('div','card');
   card.style.setProperty('--card-color', color);
 
-  // Sparkle SVG (top-left)
-  const ns = 'http://www.w3.org/2000/svg';
-  const svg = document.createElementNS(ns,'svg');
-  svg.setAttribute('class','card-sparkle'); svg.setAttribute('width','82'); svg.setAttribute('height','42'); svg.setAttribute('viewBox','0 28 82 42'); svg.setAttribute('fill','none');
-  // 8 rays from origin (80,68), fanning upper-left — longest nearly horizontal, shortest nearly vertical
-  [[8,58,6.5],[21,47,5.8],[36,39,5.2],[51,36,4.5],[63,40,3.8],[72,46,3.2],[76,52,2.7],[79,58,2.2]].forEach(([x2,y2,sw])=>{
-    const l=document.createElementNS(ns,'line');
-    l.setAttribute('x1',80);l.setAttribute('y1',68);l.setAttribute('x2',x2);l.setAttribute('y2',y2);
-    l.setAttribute('stroke',color);l.setAttribute('stroke-width',sw);l.setAttribute('stroke-linecap','round');
-    svg.appendChild(l);
-  });
+  const sparkWrap = el('div','card-sparkle-wrap');
+  const sparkImg = document.createElement('img');
+  sparkImg.src = 'sparkle.jpg'; sparkImg.alt = ''; sparkImg.className = 'card-sparkle-img';
+  sparkWrap.appendChild(sparkImg);
 
   const name   = el('div','card-name');   name.textContent   = meal.name.toUpperCase();
   const author = el('div','card-author'); author.textContent = (meal.author||DEFAULT_AUTHOR).toUpperCase();
@@ -1073,7 +1069,7 @@ function mkCard(meal) {
   addBtn.addEventListener('click', e=>{ e.stopPropagation(); openPortions(meal); doRipple(card,e); });
 
   actions.append(leftBtns, addBtn);
-  card.append(svg, name, author, actions);
+  card.append(sparkWrap, name, author, actions);
   return card;
 }
 
