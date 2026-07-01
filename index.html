@@ -1043,11 +1043,12 @@ function mkCard(meal) {
   // Sparkle SVG (top-left)
   const ns = 'http://www.w3.org/2000/svg';
   const svg = document.createElementNS(ns,'svg');
-  svg.setAttribute('class','card-sparkle'); svg.setAttribute('width','38'); svg.setAttribute('height','38'); svg.setAttribute('viewBox','0 0 38 38'); svg.setAttribute('fill','none');
-  [[19,2,19,10],[2,19,10,19],[6,6,11,11],[6,32,11,27],[32,6,27,11],[32,19,24,19],[19,32,19,24]].forEach(([x1,y1,x2,y2])=>{
+  svg.setAttribute('class','card-sparkle'); svg.setAttribute('width','82'); svg.setAttribute('height','42'); svg.setAttribute('viewBox','0 28 82 42'); svg.setAttribute('fill','none');
+  // 8 rays from origin (80,68), fanning upper-left — longest nearly horizontal, shortest nearly vertical
+  [[8,58,6.5],[21,47,5.8],[36,39,5.2],[51,36,4.5],[63,40,3.8],[72,46,3.2],[76,52,2.7],[79,58,2.2]].forEach(([x2,y2,sw])=>{
     const l=document.createElementNS(ns,'line');
-    l.setAttribute('x1',x1);l.setAttribute('y1',y1);l.setAttribute('x2',x2);l.setAttribute('y2',y2);
-    l.setAttribute('stroke',color);l.setAttribute('stroke-width','3');l.setAttribute('stroke-linecap','round');
+    l.setAttribute('x1',80);l.setAttribute('y1',68);l.setAttribute('x2',x2);l.setAttribute('y2',y2);
+    l.setAttribute('stroke',color);l.setAttribute('stroke-width',sw);l.setAttribute('stroke-linecap','round');
     svg.appendChild(l);
   });
 
