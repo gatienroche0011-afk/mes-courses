@@ -6,7 +6,7 @@
   "scope": "/mes-courses/",
   "display": "standalone",
   "orientation": "portrait",
-  "background_color": "#FFFFFF",
+  "background_color": "#D4605A",
   "theme_color": "#D4605A",
   "icons": [
     {
@@ -14,12 +14,6 @@
       "sizes": "512x512",
       "type": "image/jpeg",
       "purpose": "any"
-    },
-    {
-      "src": "logo-icon-v2.jpg",
-      "sizes": "512x512",
-      "type": "image/jpeg",
-      "purpose": "maskable"
     }
   ]
 }
