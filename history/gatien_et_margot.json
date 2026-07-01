@@ -1,5 +1,58 @@
 [
   {
+    "date": "2026-07-01T21:16:27.385Z",
+    "meals": [
+      "🥟 Gyozas Maison"
+    ],
+    "items": [
+      {
+        "name": "Escalope de poulet",
+        "quantity": 0.5,
+        "unit": ""
+      },
+      {
+        "name": "Carotte",
+        "quantity": 0.25,
+        "unit": ""
+      },
+      {
+        "name": "Poireau",
+        "quantity": 0.5,
+        "unit": "petit"
+      },
+      {
+        "name": "Ail",
+        "quantity": 0.5,
+        "unit": "gousse"
+      },
+      {
+        "name": "Gingembre",
+        "quantity": 0.5,
+        "unit": "c. à café"
+      },
+      {
+        "name": "Sauce soja sucrée",
+        "quantity": 2,
+        "unit": "c. à soupe"
+      },
+      {
+        "name": "Pâte à gyoza",
+        "quantity": 0.5,
+        "unit": "paquet"
+      },
+      {
+        "name": "Huile de sésame",
+        "quantity": 0.5,
+        "unit": "filet"
+      },
+      {
+        "name": "Sel et poivre",
+        "quantity": 0.5,
+        "unit": ""
+      }
+    ]
+  },
+  {
     "date": "2026-07-01T21:16:06.465Z",
     "meals": [
       "🥟 Gyozas Maison"
