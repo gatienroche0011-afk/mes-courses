@@ -26,6 +26,13 @@
 body{font-family:'Nunito','Segoe UI',system-ui,sans-serif;background:var(--p3);color:var(--text);min-height:100dvh;padding-bottom:80px}
 :root{--f-intro:'Intro',sans-serif;--f-glacial:'GlacialIndifference',sans-serif}
 
+/* ── SPLASH ── */
+#splash-screen{position:fixed;inset:0;z-index:99999;background:#000;display:flex;align-items:center;justify-content:center;transition:opacity .4s}
+#splash-screen.out{opacity:0;pointer-events:none}
+#splash-video{width:100%;height:100%;object-fit:cover;display:block}
+/* ── UNDO VIDEO ── */
+.undo-video-wrap{width:100%;border-radius:14px;overflow:hidden;margin-bottom:16px;max-height:220px}
+#undo-video{width:100%;display:block;max-height:220px;object-fit:cover}
 /* ── LOGIN ── */
 #login-screen{
   display:none;position:fixed;inset:0;z-index:9999;
@@ -393,6 +400,11 @@ header{
 </head>
 <body>
 
+<!-- ── SPLASH ── -->
+<div id="splash-screen">
+  <video id="splash-video" src="CADDIE.mp4" autoplay muted playsinline></video>
+</div>
+
 <!-- ── LOGIN ── -->
 <div id="login-screen">
   <img src="logo-login.jpg" class="login-logo" alt="CADDIE — Les courses sans détour"/>
@@ -566,7 +578,7 @@ header{
 <!-- ── UNDO ── -->
 <div id="undo-overlay">
   <div class="undo-card">
-    <div class="undo-icon">🧺</div>
+    <div class="undo-video-wrap"><video id="undo-video" src="CADDIE.mp4" muted playsinline></video></div>
     <div class="undo-title">Courses faites !</div>
     <div class="undo-sub">Le panier va être effacé dans…</div>
     <div class="undo-countdown" id="undo-countdown">5</div>
@@ -1209,6 +1221,8 @@ function coursesFaites() {
   undoCartBackup   = JSON.parse(JSON.stringify(cart));
   undoCountsBackup = JSON.parse(JSON.stringify(counts));
   document.getElementById('undo-overlay').classList.add('show');
+  const uv = document.getElementById('undo-video');
+  if (uv) { uv.currentTime = 0; uv.play(); }
   let t = 5; document.getElementById('undo-countdown').textContent = t;
   clearInterval(undoCountdown);
   undoCountdown = setInterval(() => {
@@ -1486,6 +1500,16 @@ if (savedUser) {
 
 
 if ('serviceWorker' in navigator) navigator.serviceWorker.register('/mes-courses/sw.js');
+
+/* ── SPLASH ── */
+(function(){
+  const s = document.getElementById('splash-screen');
+  const v = document.getElementById('splash-video');
+  function hideSplash(){ s.classList.add('out'); setTimeout(()=>s.style.display='none', 400); }
+  v.addEventListener('ended', hideSplash);
+  v.addEventListener('error', hideSplash);
+  setTimeout(hideSplash, 8000); // sécurité si la vidéo ne charge pas
+})();
 </script>
 </body>
 </html>
