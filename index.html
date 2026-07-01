@@ -159,9 +159,6 @@ header{
 
 /* ── GRILLE ── */
 .grid{display:grid;grid-template-columns:1fr;gap:16px;margin-bottom:8px}
-@media(min-width:560px){.grid{grid-template-columns:repeat(2,1fr)}}
-@media(min-width:900px){.page{padding:24px 36px}.grid{grid-template-columns:repeat(3,1fr);gap:22px}}
-@media(min-width:1280px){.page{padding:28px 60px;max-width:1400px;margin:0 auto}.grid{grid-template-columns:repeat(4,1fr);gap:28px}}
 .card{
   background:#fff;border-radius:20px;padding:22px 20px 18px;
   user-select:none;position:relative;overflow:visible;
@@ -395,7 +392,63 @@ header{
 #toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(70px);background:var(--p1);color:#fff;padding:9px 20px;border-radius:99px;font-size:.88rem;font-weight:700;box-shadow:0 4px 18px rgba(0,0,0,.18);white-space:nowrap;z-index:400;transition:transform .28s;pointer-events:none}
 #toast.show{transform:translateX(-50%) translateY(0)}
 
-@media(max-width:400px){.grid{grid-template-columns:repeat(2,1fr)}.ap-title{font-size:1.9rem}}
+/* ── RESPONSIVE ── */
+
+/* Très petits écrans (< 380px) */
+@media(max-width:380px){
+  .header-logo-clip{width:150px}
+  .account-btn{padding:4px 9px 4px 5px;font-size:.72rem;gap:5px}
+  .account-btn span{display:none}
+  .page{padding:10px 10px}
+  .card{padding:15px 12px 12px}
+  .card-name{font-size:clamp(.95rem,6vw,1.2rem)}
+  .card-actions{gap:8px;min-height:auto}
+  .card-btn{font-size:.6rem}
+  .card-btn-count{font-size:1.4rem}
+  .ap-title{font-size:1.9rem}
+  .login-card{padding:22px 18px}
+}
+
+/* Petits mobiles (380–560px) : 1 colonne */
+@media(min-width:380px) and (max-width:559px){
+  .card-actions{min-height:85px}
+}
+
+/* Tablettes (560px+) : 2 colonnes */
+@media(min-width:560px){
+  .grid{grid-template-columns:repeat(2,1fr);gap:18px}
+  .page{padding:18px 20px}
+  .card{padding:24px 20px 18px}
+}
+
+/* Desktop (900px+) : 3 colonnes + nav centrée */
+@media(min-width:900px){
+  body{padding-bottom:86px}
+  .page{padding:28px 40px}
+  .grid{grid-template-columns:repeat(3,1fr);gap:24px}
+  .card{padding:28px 24px 20px}
+  .card-name{font-size:clamp(1.1rem,2vw,1.5rem)}
+  header .header-brand-bar{max-width:1200px;margin:0 auto}
+  #bottom-nav{
+    left:50%;right:auto;
+    transform:translateX(-50%);
+    width:min(540px,100%);
+    border-radius:18px 18px 0 0;
+    border-left:1px solid var(--p2);
+    border-right:1px solid var(--p2);
+    height:70px;
+  }
+  .bnav-icon{width:24px;height:24px}
+  .bnav-label{font-size:.65rem}
+  .login-card{max-width:400px}
+}
+
+/* Grand écran (1280px+) : 4 colonnes */
+@media(min-width:1280px){
+  .page{padding:32px 60px;max-width:1400px;margin:0 auto}
+  .grid{grid-template-columns:repeat(4,1fr);gap:28px}
+  header .header-brand-bar{max-width:1400px}
+}
 </style>
 </head>
 <body>
