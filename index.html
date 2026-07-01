@@ -158,7 +158,7 @@ header{
 .cat-header:first-child{margin-top:0}
 
 /* ── GRILLE ── */
-.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-bottom:8px}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-bottom:8px;max-width:480px;margin-left:auto;margin-right:auto}
 .card{
   background:#fff;border-radius:20px;padding:22px 20px 18px;
   user-select:none;position:relative;overflow:visible;
@@ -1552,7 +1552,7 @@ if (savedUser) {
 }
 
 
-if ('serviceWorker' in navigator) navigator.serviceWorker.register('/mes-courses/sw.js?v=13', {updateViaCache:'none'});
+if ('serviceWorker' in navigator) navigator.serviceWorker.register('/mes-courses/sw.js?v=14', {updateViaCache:'none'});
 
 /* ── SPLASH ── */
 (function(){
