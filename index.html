@@ -1552,7 +1552,7 @@ if (savedUser) {
 }
 
 
-if ('serviceWorker' in navigator) navigator.serviceWorker.register('/mes-courses/sw.js');
+if ('serviceWorker' in navigator) navigator.serviceWorker.register('/mes-courses/sw.js?v=11', {updateViaCache:'none'});
 
 /* ── SPLASH ── */
 (function(){
