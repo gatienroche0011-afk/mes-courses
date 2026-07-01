@@ -147,48 +147,55 @@ header{
 .cat-header:first-child{margin-top:0}
 
 /* ── GRILLE ── */
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(145px,1fr));gap:11px;margin-bottom:8px}
+.grid{display:grid;grid-template-columns:1fr;gap:14px;margin-bottom:8px}
+@media(min-width:540px){.grid{grid-template-columns:repeat(2,1fr)}}
 .card{
-  background:#fff;border-radius:var(--r);padding:16px 12px 12px;
-  text-align:center;cursor:pointer;box-shadow:var(--shadow);
-  position:relative;overflow:hidden;user-select:none;
-  transition:transform .13s,box-shadow .13s;
-  border-left:4px solid var(--card-color,var(--p2));
+  background:#fff;border-radius:18px;padding:20px 18px 16px;
+  user-select:none;position:relative;overflow:visible;
+  border:2.5px solid var(--card-color,var(--p1));
+  box-shadow:4px 4px 0 var(--card-color,var(--p1));
+  transition:transform .12s,box-shadow .12s;
 }
-.card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(212,96,90,.18)}
-.card:active{transform:scale(.95)}
-.card-emoji{font-size:2.4rem;display:block;margin-bottom:8px}
-.card-name{font-size:.83rem;font-weight:800;line-height:1.3;margin-bottom:5px}
-.card-author{font-size:.65rem;color:var(--card-color,var(--muted));font-weight:700;margin-bottom:6px;opacity:.85}
-.card-hint{font-size:.68rem;color:var(--muted)}
-.card-chip{
-  display:inline-flex;align-items:center;gap:5px;background:var(--p1);color:#fff;
-  font-size:.7rem;font-weight:800;padding:3px 5px 3px 9px;border-radius:99px;
-  margin-bottom:6px;opacity:0;pointer-events:none;transition:opacity .2s;
+.card:active{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--card-color,var(--p1))}
+.card-sparkle{position:absolute;top:14px;left:16px;pointer-events:none}
+.card-name{
+  font-size:1.55rem;font-weight:900;line-height:1.15;
+  text-transform:uppercase;color:var(--card-color,var(--p1));
+  text-align:center;margin:32px 0 10px;letter-spacing:.01em;
 }
-.card-chip.show{opacity:1;pointer-events:auto}
-.chip-minus{
-  background:rgba(255,255,255,.28);border:none;border-radius:50%;
-  width:17px;height:17px;flex-shrink:0;color:#fff;font-size:1rem;line-height:1;
-  cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .15s;
+.card-author{
+  font-size:.6rem;font-weight:700;text-transform:uppercase;
+  letter-spacing:.14em;color:var(--muted);text-align:center;margin-bottom:18px;
 }
-.chip-minus:hover{background:rgba(255,255,255,.5)}
-.card-edit,.card-info{
-  position:absolute;background:rgba(212,96,90,.1);border:none;border-radius:8px;
-  width:26px;height:26px;font-size:.78rem;color:var(--p1);cursor:pointer;
-  display:flex;align-items:center;justify-content:center;transition:background .15s;
+.card-actions{display:flex;gap:10px;align-items:stretch}
+.card-btns-left{display:flex;flex-direction:column;gap:8px;flex:1}
+.card-btn{
+  border:2px solid var(--card-color,var(--p1));background:#fff;
+  color:var(--card-color,var(--p1));border-radius:10px;font-family:inherit;
+  font-weight:800;font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;
+  cursor:pointer;padding:10px 6px;transition:background .15s,color .15s;
+  box-shadow:2px 2px 0 var(--card-color,var(--p1));
 }
-.card-edit:hover,.card-info:hover{background:rgba(212,96,90,.22)}
-.card-edit{top:7px;right:7px}
-.card-info{top:7px;left:7px}
-.ripple{position:absolute;border-radius:50%;background:rgba(212,96,90,.13);transform:scale(0);animation:ripple .5s linear;pointer-events:none}
-@keyframes ripple{to{transform:scale(4);opacity:0}}
+.card-btn:active{transform:translate(1px,1px);box-shadow:1px 1px 0 var(--card-color,var(--p1))}
+.card-btn-add{
+  border:2.5px solid var(--card-color,var(--p1));background:#fff;
+  color:var(--card-color,var(--p1));border-radius:12px;font-family:inherit;
+  cursor:pointer;flex:1;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:4px;padding:10px 14px;
+  transition:background .15s,color .15s;
+  box-shadow:3px 3px 0 var(--card-color,var(--p1));
+}
+.card-btn-add:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--card-color,var(--p1))}
+.card-btn-add-label{font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em}
+.card-btn-count{font-size:1.5rem;font-weight:900;line-height:1}
 .card-add{
-  background:#fff;border:2px dashed var(--p2);border-radius:var(--r);
-  min-height:138px;display:flex;align-items:center;justify-content:center;
+  background:#fff;border:2.5px dashed var(--p2);border-radius:18px;
+  min-height:140px;display:flex;align-items:center;justify-content:center;
   font-size:2rem;color:var(--p2);cursor:pointer;transition:all .2s;
 }
 .card-add:hover{border-color:var(--p1);color:var(--p1)}
+.ripple{position:absolute;border-radius:50%;background:rgba(212,96,90,.13);transform:scale(0);animation:ripple .5s linear;pointer-events:none}
+@keyframes ripple{to{transform:scale(4);opacity:0}}
 /* ── SHEET PORTIONS ── */
 #portions-overlay{display:none;position:fixed;inset:0;background:rgba(28,14,14,.5);z-index:200;align-items:flex-end;justify-content:center;padding:0}
 #portions-overlay.open{display:flex}
@@ -1025,24 +1032,39 @@ function mkCard(meal) {
   const card = el('div','card');
   card.style.setProperty('--card-color', color);
 
-  const infoBtn = el('button','card-info'); infoBtn.textContent='ℹ️'; infoBtn.title='Voir la recette';
-  infoBtn.addEventListener('click', e => { e.stopPropagation(); openInfo(meal.id); });
-  const editBtn = el('button','card-edit'); editBtn.textContent='✏️'; editBtn.title='Modifier';
-  editBtn.addEventListener('click', e => { e.stopPropagation(); openEdit(meal.id); });
+  // Sparkle SVG (top-left)
+  const ns = 'http://www.w3.org/2000/svg';
+  const svg = document.createElementNS(ns,'svg');
+  svg.setAttribute('class','card-sparkle'); svg.setAttribute('width','38'); svg.setAttribute('height','38'); svg.setAttribute('viewBox','0 0 38 38'); svg.setAttribute('fill','none');
+  [[19,2,19,10],[2,19,10,19],[6,6,11,11],[6,32,11,27],[32,6,27,11],[32,19,24,19],[19,32,19,24]].forEach(([x1,y1,x2,y2])=>{
+    const l=document.createElementNS(ns,'line');
+    l.setAttribute('x1',x1);l.setAttribute('y1',y1);l.setAttribute('x2',x2);l.setAttribute('y2',y2);
+    l.setAttribute('stroke',color);l.setAttribute('stroke-width','3');l.setAttribute('stroke-linecap','round');
+    svg.appendChild(l);
+  });
 
-  const emoji  = el('span','card-emoji');  emoji.textContent  = meal.emoji;
-  const name   = el('div','card-name');    name.textContent   = meal.name;
-  const author = el('div','card-author');  author.textContent = meal.author||DEFAULT_AUTHOR;
+  const name   = el('div','card-name');   name.textContent   = meal.name.toUpperCase();
+  const author = el('div','card-author'); author.textContent = (meal.author||DEFAULT_AUTHOR).toUpperCase();
 
-  const chip  = el('div','card-chip'+(n>0?' show':'')); chip.id='chip-'+meal.id;
-  chip.appendChild(document.createTextNode('×'+n+' '));
-  const minus = el('button','chip-minus'); minus.textContent='−'; minus.title='Retirer ce repas';
-  minus.addEventListener('click', e => { e.stopPropagation(); removeFromCart(meal); });
-  chip.appendChild(minus);
+  // Actions row
+  const actions  = el('div','card-actions');
+  const leftBtns = el('div','card-btns-left');
 
-  const hint = el('div','card-hint'); hint.textContent='Toucher pour ajouter';
-  card.append(infoBtn, editBtn, emoji, name, author, chip, hint);
-  card.addEventListener('click', e => { openPortions(meal); doRipple(card, e); });
+  const editBtn = el('button','card-btn'); editBtn.textContent='Modifier';
+  editBtn.addEventListener('click', e=>{ e.stopPropagation(); openEdit(meal.id); });
+  const infoBtn = el('button','card-btn'); infoBtn.textContent='Recette';
+  infoBtn.addEventListener('click', e=>{ e.stopPropagation(); openInfo(meal.id); });
+  leftBtns.append(editBtn, infoBtn);
+
+  const addBtn   = el('button','card-btn-add');
+  const addLabel = el('span','card-btn-add-label'); addLabel.textContent='Ajouter';
+  const addCount = el('span','card-btn-count'); addCount.id='chip-'+meal.id;
+  addCount.textContent = n>0 ? '+'+n : '+';
+  addBtn.append(addLabel, addCount);
+  addBtn.addEventListener('click', e=>{ e.stopPropagation(); openPortions(meal); doRipple(card,e); });
+
+  actions.append(leftBtns, addBtn);
+  card.append(svg, name, author, actions);
   return card;
 }
 
@@ -1115,8 +1137,8 @@ function removeFromCart(meal) {
 }
 
 function updateChip(id) {
-  const chip = document.getElementById('chip-'+id); if (!chip) return;
-  const n = counts[id]||0; chip.firstChild.textContent = '×'+n+' '; chip.classList.toggle('show', n>0);
+  const el = document.getElementById('chip-'+id); if (!el) return;
+  const n = counts[id]||0; el.textContent = n>0 ? '+'+n : '+';
 }
 
 /* ═══════════════════════════════════════════════════════
