@@ -1,0 +1,152 @@
+[
+  {
+    "date": "2026-07-01T21:16:06.465Z",
+    "meals": [
+      "🥟 Gyozas Maison"
+    ],
+    "items": [
+      {
+        "name": "Escalope de poulet",
+        "quantity": 0.5,
+        "unit": ""
+      },
+      {
+        "name": "Carotte",
+        "quantity": 0.25,
+        "unit": ""
+      },
+      {
+        "name": "Poireau",
+        "quantity": 0.5,
+        "unit": "petit"
+      },
+      {
+        "name": "Ail",
+        "quantity": 0.5,
+        "unit": "gousse"
+      },
+      {
+        "name": "Gingembre",
+        "quantity": 0.5,
+        "unit": "c. à café"
+      },
+      {
+        "name": "Sauce soja sucrée",
+        "quantity": 2,
+        "unit": "c. à soupe"
+      },
+      {
+        "name": "Pâte à gyoza",
+        "quantity": 0.5,
+        "unit": "paquet"
+      },
+      {
+        "name": "Huile de sésame",
+        "quantity": 0.5,
+        "unit": "filet"
+      },
+      {
+        "name": "Sel et poivre",
+        "quantity": 0.5,
+        "unit": ""
+      }
+    ]
+  },
+  {
+    "date": "2026-07-01T18:24:47.983Z",
+    "meals": [],
+    "items": [
+      {
+        "name": "Huile d'olive",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Beurre",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Pate à tartiner",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Flocon d'avoine",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Bicarbonate de soude",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Liquide vaisselle",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Café moulu",
+        "quantity": 1,
+        "unit": ""
+      }
+    ]
+  },
+  {
+    "date": "2026-06-29T14:06:30.432Z",
+    "meals": [
+      "🍝 Pâtes Carbonara",
+      "🍝 Pâtes Carbo Parmesan",
+      "🍝 Pâtes Jambon Burrata",
+      "🍝 Pâtes Chorizo Boursin"
+    ],
+    "items": [
+      {
+        "name": "Pâtes",
+        "quantity": 3.5,
+        "unit": "paquet"
+      },
+      {
+        "name": "Jambon de parme",
+        "quantity": 1,
+        "unit": "paquet"
+      },
+      {
+        "name": "Burrata",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Chorizo",
+        "quantity": 1,
+        "unit": "paquet"
+      },
+      {
+        "name": "Boursin",
+        "quantity": 1,
+        "unit": "pot"
+      },
+      {
+        "name": "Parmesan",
+        "quantity": 1,
+        "unit": "paquet"
+      },
+      {
+        "name": "Crème fraîche",
+        "quantity": 2,
+        "unit": "pot"
+      },
+      {
+        "name": "Allumettes de bacon fumé",
+        "quantity": 1,
+        "unit": "boîte"
+      },
+      {
+        "name": "Œufs",
+        "quantity": 2,
+        "unit": ""
+      }
+    ]
+  }
+]
