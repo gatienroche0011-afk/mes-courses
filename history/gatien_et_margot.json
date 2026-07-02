@@ -1,5 +1,33 @@
 [
   {
+    "date": "2026-07-02T10:24:45.494Z",
+    "meals": [
+      "🍝 Pâtes Carbo Parmesan"
+    ],
+    "items": [
+      {
+        "name": "Pâtes",
+        "quantity": 1,
+        "unit": "paquet"
+      },
+      {
+        "name": "Allumettes de bacon",
+        "quantity": 1,
+        "unit": "barquette"
+      },
+      {
+        "name": "Parmesan",
+        "quantity": 1,
+        "unit": "paquet"
+      },
+      {
+        "name": "Crème fraîche",
+        "quantity": 1,
+        "unit": "pot"
+      }
+    ]
+  },
+  {
     "date": "2026-07-02T10:24:29.247Z",
     "meals": [],
     "items": [
