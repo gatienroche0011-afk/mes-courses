@@ -1,1 +1,1 @@
-{"cart":{},"counts":{},"multipliers":{"13":0.5},"mealPersons":{"13":1}}
+{"cart":{"pâtes":{"name":"Pâtes","quantity":1,"unit":"paquet","done":false},"chorizo":{"name":"Chorizo","quantity":1,"unit":"paquet","done":false},"boursin":{"name":"Boursin","quantity":1,"unit":"pot","done":false}},"counts":{"15":1},"multipliers":{"13":0.5,"15":1},"mealPersons":{"13":1,"15":2}}
