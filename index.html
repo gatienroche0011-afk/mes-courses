@@ -29,7 +29,7 @@ body{font-family:'Nunito','Segoe UI',system-ui,sans-serif;background:var(--p3);c
 /* ── SPLASH ── */
 #splash-screen{position:fixed;inset:0;z-index:99999;background:#d65858;display:flex;align-items:center;justify-content:center;transition:opacity .4s}
 #splash-screen.out{opacity:0;pointer-events:none}
-#splash-video{width:70%;height:70%;object-fit:contain;display:block;border-radius:16px}
+#splash-video{width:100%;height:100%;object-fit:cover;display:block}
 /* ── UNDO VIDEO ── */
 .undo-video-wrap{width:70%;margin:0 auto 16px;border-radius:14px;overflow:hidden;max-height:154px}
 #undo-video{width:100%;display:block;max-height:154px;object-fit:cover}
@@ -1567,7 +1567,7 @@ if (savedUser) {
 }
 
 
-if ('serviceWorker' in navigator) navigator.serviceWorker.register('/mes-courses/sw.js?v=15', {updateViaCache:'none'});
+if ('serviceWorker' in navigator) navigator.serviceWorker.register('/mes-courses/sw.js?v=16', {updateViaCache:'none'});
 
 /* ── SPLASH ── */
 (function(){
