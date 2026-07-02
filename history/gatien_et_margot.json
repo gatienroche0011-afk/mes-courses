@@ -1,5 +1,16 @@
 [
   {
+    "date": "2026-07-02T10:24:29.247Z",
+    "meals": [],
+    "items": [
+      {
+        "name": "Filet de poulet",
+        "quantity": 1,
+        "unit": ""
+      }
+    ]
+  },
+  {
     "date": "2026-07-01T18:24:47.983Z",
     "meals": [],
     "items": [
