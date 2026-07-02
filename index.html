@@ -373,22 +373,21 @@ header{
 .btn-confirm{padding:12px 22px;border:none;border-radius:10px;font-size:.95rem;font-weight:700;cursor:pointer;background:var(--p3);color:var(--muted);transition:opacity .15s;font-family:inherit}
 .btn-confirm:hover{opacity:.8}
 
-/* ── BON APPÉTIT ── */
-#appetit{display:none;position:fixed;inset:0;z-index:999;background:var(--p1);flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#fff;overflow:hidden}
+/* ── COURSES TERMINÉES ── */
+#appetit{display:none;position:fixed;inset:0;z-index:999;background:#fff;flex-direction:column;align-items:center;justify-content:center;text-align:center;overflow:hidden}
 #appetit.show{display:flex}
-.ap-emoji{font-size:7rem;animation:superBob .5s ease infinite alternate;margin-bottom:20px;filter:drop-shadow(0 0 30px rgba(255,255,255,.6))}
-.ap-title{font-size:3rem;font-weight:900;letter-spacing:-.02em;animation:zoomIn .4s cubic-bezier(.17,.67,.35,1.4) both;text-shadow:0 4px 20px rgba(0,0,0,.2)}
-.ap-sub{font-size:1.1rem;opacity:.92;margin-top:10px;animation:up .5s ease .3s both;background:rgba(255,255,255,.2);padding:8px 20px;border-radius:99px;backdrop-filter:blur(6px)}
-.ap-tricount{font-size:1rem;margin-top:14px;opacity:.85;animation:up .5s ease .5s both;display:flex;align-items:center;gap:8px}
-.ap-star{position:absolute;font-size:2rem;pointer-events:none;animation:floatStar linear forwards}
-.confetti-wrap{position:fixed;inset:0;pointer-events:none;overflow:hidden}
-.confetti-dot{position:absolute;animation:fall linear forwards}
-
-@keyframes superBob{from{transform:translateY(0) rotate(-8deg) scale(1)}to{transform:translateY(-28px) rotate(8deg) scale(1.1)}}
-@keyframes zoomIn{from{opacity:0;transform:scale(.4) rotate(-10deg)}to{opacity:1;transform:scale(1) rotate(0deg)}}
-@keyframes up{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
-@keyframes fall{to{transform:translateY(110vh) rotate(900deg);opacity:0}}
-@keyframes floatStar{0%{transform:translateY(110vh) rotate(0deg);opacity:1}100%{transform:translateY(-20vh) rotate(720deg);opacity:0}}
+.ap-logo-img{width:150px;height:auto;border-radius:10px;margin-bottom:36px;animation:apFadeUp .5s ease both}
+.ap-check-svg{width:90px;height:90px;margin-bottom:28px;animation:apFadeUp .4s ease .15s both;opacity:0}
+.ap-check-circle{stroke-dasharray:277;stroke-dashoffset:277;animation:apDrawCircle .75s cubic-bezier(.4,0,.2,1) .25s forwards}
+.ap-check-mark{stroke-dasharray:64;stroke-dashoffset:64;animation:apDrawMark .35s ease .9s forwards}
+.ap-title{font-family:var(--f-intro);font-size:1.55rem;font-weight:900;color:var(--text);text-transform:uppercase;letter-spacing:.06em;animation:apFadeUp .5s ease .45s both;opacity:0}
+.ap-sub{font-family:var(--f-glacial);font-size:.88rem;color:var(--muted);margin-top:10px;letter-spacing:.18em;text-transform:uppercase;animation:apFadeUp .5s ease .65s both;opacity:0}
+.ap-illus{position:absolute;bottom:-30px;right:-30px;width:200px;opacity:.14;mix-blend-mode:multiply;pointer-events:none}
+.ap-particle{position:absolute;border-radius:50%;pointer-events:none;animation:apRise linear forwards}
+@keyframes apFadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes apDrawCircle{to{stroke-dashoffset:0}}
+@keyframes apDrawMark{to{stroke-dashoffset:0}}
+@keyframes apRise{0%{opacity:.65;transform:translateY(0) scale(1)}100%{opacity:0;transform:translateY(-55vh) scale(.4)}}
 
 /* ── TOAST ── */
 #toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%) translateY(70px);background:var(--p1);color:#fff;padding:9px 20px;border-radius:99px;font-size:.88rem;font-weight:700;box-shadow:0 4px 18px rgba(0,0,0,.18);white-space:nowrap;z-index:400;transition:transform .28s;pointer-events:none}
@@ -619,11 +618,15 @@ header{
 
 <!-- ── BON APPÉTIT ── -->
 <div id="appetit">
-  <div class="confetti-wrap" id="confetti"></div>
-  <div class="ap-emoji">🍽️</div>
-  <div class="ap-title">Bon appétit !</div>
-  <div class="ap-sub">Vos courses sont prêtes !</div>
-  <div class="ap-tricount">💸 N'oublie pas le Tricount !</div>
+  <div id="ap-particles"></div>
+  <img class="ap-logo-img" src="logo-header.jpg" alt="CADDIE"/>
+  <svg class="ap-check-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <circle class="ap-check-circle" cx="50" cy="50" r="44" fill="none" stroke="#D4605A" stroke-width="2.5"/>
+    <polyline class="ap-check-mark" points="30,52 44,67 70,33" fill="none" stroke="#D4605A" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+  <div class="ap-title">Courses terminées</div>
+  <div class="ap-sub">Profitez bien !</div>
+  <img class="ap-illus" src="illustration.png" alt=""/>
 </div>
 
 <!-- ── PORTIONS SHEET ── -->
@@ -1385,31 +1388,32 @@ async function deleteHistory(idx) {
    BON APPÉTIT
 ═══════════════════════════════════════════════════════ */
 function showAppetit() {
-  const el = document.getElementById('appetit'); el.classList.add('show');
-  launchConfetti(); launchStars();
+  const el = document.getElementById('appetit');
+  el.classList.add('show');
+  launchParticles();
   setTimeout(() => {
-    el.classList.remove('show'); document.getElementById('confetti').innerHTML='';
+    el.classList.remove('show');
+    el.querySelectorAll('.ap-particle').forEach(p => p.remove());
     const t = document.querySelector('.bnav-tab'); goPage('meals', t);
-  }, 5000);
+  }, 4500);
 }
 
-function launchConfetti() {
-  const wrap = document.getElementById('confetti'); wrap.innerHTML='';
-  const cols=['#CE8FE0','#D4605A','#E8908C','#FDEEED','#A83F3B','#fff','#EDD5F9','#F5B8B5','#CE8FE0','#8B3580'];
-  for (let i=0; i<220; i++) {
-    const d=document.createElement('div'); d.className='confetti-dot';
-    const size=5+Math.random()*14;
-    Object.assign(d.style,{left:Math.random()*110-5+'%',top:'-30px',background:cols[Math.random()*cols.length|0],width:size+'px',height:size*(Math.random()>.4?1:2.5)+'px',borderRadius:Math.random()>.4?'50%':'3px',transform:`rotate(${Math.random()*360}deg)`,animationDuration:(1.2+Math.random()*2.8)+'s',animationDelay:(Math.random()*2)+'s',opacity:0.8+Math.random()*.2});
-    wrap.appendChild(d);
-  }
-}
-
-function launchStars() {
-  const el=document.getElementById('appetit'); const emojis=['⭐','🌟','✨','💫','🎉','🎊','💖','🥳','🛒','🍾'];
-  for (let i=0; i<18; i++) {
-    const s=document.createElement('div'); s.className='ap-star'; s.textContent=emojis[Math.random()*emojis.length|0];
-    Object.assign(s.style,{left:Math.random()*100+'%',bottom:'-60px',fontSize:(1.5+Math.random()*2.5)+'rem',animationDuration:(2+Math.random()*3)+'s',animationDelay:(Math.random()*2)+'s'});
-    el.appendChild(s); setTimeout(()=>s.remove(),6000);
+function launchParticles() {
+  const el = document.getElementById('appetit');
+  el.querySelectorAll('.ap-particle').forEach(p => p.remove());
+  const cols = ['#D4605A','#ECBAB7','#FDF0EF','#B84E49','#E8908C','#fff'];
+  for (let i = 0; i < 22; i++) {
+    const p = document.createElement('div'); p.className = 'ap-particle';
+    const size = 4 + Math.random() * 9;
+    Object.assign(p.style, {
+      left: (5 + Math.random() * 90) + '%',
+      bottom: (Math.random() * 25) + '%',
+      width: size + 'px', height: size + 'px',
+      background: cols[Math.random() * cols.length | 0],
+      animationDuration: (2.5 + Math.random() * 3) + 's',
+      animationDelay: (Math.random() * 1.8) + 's',
+    });
+    el.appendChild(p);
   }
 }
 
@@ -1583,7 +1587,7 @@ if (savedUser) {
 }
 
 
-if ('serviceWorker' in navigator) navigator.serviceWorker.register('/mes-courses/sw.js?v=18', {updateViaCache:'none'});
+if ('serviceWorker' in navigator) navigator.serviceWorker.register('/mes-courses/sw.js?v=19', {updateViaCache:'none'});
 
 /* ── SPLASH ── */
 (function(){
