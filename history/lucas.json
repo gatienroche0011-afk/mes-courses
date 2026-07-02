@@ -1,0 +1,53 @@
+[
+  {
+    "date": "2026-07-02T11:40:17.508Z",
+    "meals": [
+      "🍝 Pâtes Chorizo Boursin"
+    ],
+    "items": [
+      {
+        "name": "Pâtes",
+        "quantity": 1,
+        "unit": "paquet"
+      },
+      {
+        "name": "Chorizo",
+        "quantity": 1,
+        "unit": "paquet"
+      },
+      {
+        "name": "Boursin",
+        "quantity": 1,
+        "unit": "pot"
+      }
+    ]
+  },
+  {
+    "date": "2026-07-02T11:39:47.915Z",
+    "meals": [
+      "🍗 Melon Tenders Party"
+    ],
+    "items": [
+      {
+        "name": "Melon",
+        "quantity": 0.5,
+        "unit": ""
+      },
+      {
+        "name": "Œufs",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Poulet",
+        "quantity": 0.5,
+        "unit": "filet"
+      },
+      {
+        "name": "Chapelure",
+        "quantity": 0.5,
+        "unit": "paquet"
+      }
+    ]
+  }
+]
