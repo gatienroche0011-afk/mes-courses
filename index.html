@@ -317,6 +317,8 @@ header{
 .hist-item-row{font-size:.82rem;color:var(--text);padding:3px 0;display:flex;gap:8px}
 .hist-item-qty{color:var(--muted);font-size:.75rem;white-space:nowrap}
 .hist-toggle{font-size:.75rem;color:var(--p1);font-weight:700;cursor:pointer;background:none;border:none;padding:0;font-family:inherit}
+.hist-del-btn{background:var(--p3);border:none;border-radius:8px;width:28px;height:28px;font-size:.8rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .15s;flex-shrink:0}
+.hist-del-btn:hover{background:#FBCBC9}
 
 /* ── MODAL ── */
 .overlay,.info-overlay{
@@ -1349,7 +1351,10 @@ function renderHistory() {
         <div>
           <div class="hist-date">${dateStr} · ${timeStr}</div>
         </div>
-        <span class="hist-count">${h.items?.length||0} articles</span>
+        <div style="display:flex;align-items:center;gap:8px">
+          <span class="hist-count">${h.items?.length||0} articles</span>
+          <button class="hist-del-btn" onclick="deleteHistory(${idx})" title="Supprimer">🗑</button>
+        </div>
       </div>
       <div class="hist-meals">${mealChips}</div>
       <button class="hist-toggle" onclick="toggleHistItems(${idx})">Voir les articles ▾</button>
@@ -1363,6 +1368,17 @@ function toggleHistItems(idx) {
   const btn = el.previousElementSibling;
   el.classList.toggle('open');
   btn.textContent = el.classList.contains('open') ? 'Masquer ▴' : 'Voir les articles ▾';
+}
+
+async function deleteHistory(idx) {
+  history.splice(idx, 1);
+  saveLocal();
+  renderHistory();
+  try {
+    if (!historySha) { const d = await ghGet(ghHistory(currentUser)); if (d) historySha = d.sha; }
+    historySha = await ghPut(ghHistory(currentUser), JSON.stringify(history,null,2), historySha, 'Suppression entrée historique');
+  } catch {}
+  toast('🗑 Entrée supprimée');
 }
 
 /* ═══════════════════════════════════════════════════════
@@ -1567,7 +1583,7 @@ if (savedUser) {
 }
 
 
-if ('serviceWorker' in navigator) navigator.serviceWorker.register('/mes-courses/sw.js?v=17', {updateViaCache:'none'});
+if ('serviceWorker' in navigator) navigator.serviceWorker.register('/mes-courses/sw.js?v=18', {updateViaCache:'none'});
 
 /* ── SPLASH ── */
 (function(){
