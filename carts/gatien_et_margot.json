@@ -1,1 +1,1 @@
-{"cart":{},"counts":{},"multipliers":{"1":1,"15":1,"23":0.5},"mealPersons":{"1":2,"15":2,"23":2}}
+{"cart":{"pâtes":{"name":"Pâtes","quantity":1,"unit":"paquet","done":false},"allumettes de bacon":{"name":"Allumettes de bacon","quantity":1,"unit":"barquette","done":false},"parmesan":{"name":"Parmesan","quantity":1,"unit":"paquet","done":false},"crème fraîche":{"name":"Crème fraîche","quantity":1,"unit":"pot","done":false}},"counts":{"12":1},"multipliers":{"1":1,"12":1,"15":1,"23":0.5},"mealPersons":{"1":2,"12":2,"15":2,"23":2}}
