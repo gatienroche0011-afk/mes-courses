@@ -1,5 +1,16 @@
 [
   {
+    "date": "2026-07-02T15:53:56.070Z",
+    "meals": [],
+    "items": [
+      {
+        "name": "Huile de sésame",
+        "quantity": 1,
+        "unit": ""
+      }
+    ]
+  },
+  {
     "date": "2026-07-02T10:24:45.494Z",
     "meals": [
       "🍝 Pâtes Carbo Parmesan"
