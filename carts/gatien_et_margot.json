@@ -1,1 +1,1 @@
-{"cart":{"dentifrice":{"name":"Dentifrice","quantity":1,"unit":"","done":false}},"counts":{},"multipliers":{"1":1,"12":1,"15":1,"23":0.5},"mealPersons":{"1":2,"12":2,"15":2,"23":2}}
+{"cart":{"dentifrice":{"name":"Dentifrice","quantity":1,"unit":"","done":false},"pâtes":{"name":"Pâtes","quantity":1,"unit":"paquet","done":false},"chorizo":{"name":"Chorizo","quantity":1,"unit":"paquet","done":false},"boursin":{"name":"Boursin","quantity":1,"unit":"pot","done":false}},"counts":{"15":1},"multipliers":{"1":1,"12":1,"15":1,"23":0.5},"mealPersons":{"1":2,"12":2,"15":2,"23":2}}
