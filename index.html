@@ -208,6 +208,15 @@ header{
   font-size:1.8rem;color:var(--p2);cursor:pointer;transition:all .2s;
 }
 .card-add:hover{border-color:var(--p1);color:var(--p1)}
+/* ── BARRE REPAS AJOUTÉ ── */
+.card-added-bar{display:flex;align-items:center;justify-content:space-between;margin-top:8px;padding:6px 8px;background:var(--p3);border-radius:10px;gap:6px}
+.card-added-bar.hidden{display:none}
+.card-added-pill{font-family:var(--f-glacial);font-size:.58rem;font-weight:700;color:var(--p1);text-transform:uppercase;letter-spacing:.1em;flex:1;text-align:center}
+.card-ctrl-btn{border:none;border-radius:7px;width:26px;height:26px;display:flex;align-items:center;justify-content:center;font-family:var(--f-intro);font-weight:900;font-size:.72rem;cursor:pointer;transition:background .15s;flex-shrink:0}
+.card-ctrl-remove{background:var(--p2);color:var(--p1)}
+.card-ctrl-remove:hover{background:#E8908C;color:#fff}
+.card-ctrl-double{background:var(--card-color,var(--p1));color:#fff}
+.card-ctrl-double:hover{filter:brightness(.9)}
 .ripple{position:absolute;border-radius:50%;background:rgba(212,96,90,.13);transform:scale(0);animation:ripple .5s linear;pointer-events:none}
 @keyframes ripple{to{transform:scale(4);opacity:0}}
 /* ── SHEET PORTIONS ── */
@@ -1160,7 +1169,26 @@ function mkCard(meal) {
   addBtn.addEventListener('click', e=>{ e.stopPropagation(); openPortions(meal); doRipple(card,e); });
 
   actions.append(leftBtns, addBtn);
-  card.append(sparkImg, name, author, actions);
+
+  // Barre contrôles (visible seulement si repas ajouté)
+  const addedBar = el('div','card-added-bar' + (n > 0 ? '' : ' hidden'));
+  addedBar.id = 'added-bar-' + meal.id;
+
+  const removeBtn = el('button','card-ctrl-btn card-ctrl-remove');
+  removeBtn.textContent = '−'; removeBtn.title = 'Retirer';
+  removeBtn.addEventListener('click', e => { e.stopPropagation(); removeFromCart(meal); updateChip(meal.id); });
+
+  const pill = el('span','card-added-pill');
+  pill.id = 'added-pill-' + meal.id;
+  pill.textContent = n > 0 ? `×${n} ajouté${n>1?'s':''}` : '';
+
+  const doubleBtn = el('button','card-ctrl-btn card-ctrl-double');
+  doubleBtn.textContent = '×2'; doubleBtn.title = 'Doubler';
+  doubleBtn.style.background = color;
+  doubleBtn.addEventListener('click', e => { e.stopPropagation(); addToCart(meal, mealPersons[meal.id] || 2); updateChip(meal.id); });
+
+  addedBar.append(removeBtn, pill, doubleBtn);
+  card.append(sparkImg, name, author, actions, addedBar);
   return card;
 }
 
@@ -1233,8 +1261,13 @@ function removeFromCart(meal) {
 }
 
 function updateChip(id) {
-  const el = document.getElementById('chip-'+id); if (!el) return;
-  const n = counts[id]||0; el.textContent = n>0 ? '+'+n : '+';
+  const n = counts[id]||0;
+  const chip = document.getElementById('chip-'+id);
+  if (chip) chip.textContent = n>0 ? '+'+n : '+';
+  const bar = document.getElementById('added-bar-'+id);
+  if (bar) bar.classList.toggle('hidden', n===0);
+  const pill = document.getElementById('added-pill-'+id);
+  if (pill) pill.textContent = n>0 ? `×${n} ajouté${n>1?'s':''}` : '';
 }
 
 /* ═══════════════════════════════════════════════════════
@@ -1466,7 +1499,7 @@ document.addEventListener('click',e=>{ if (!e.target.closest('.manual-box')) hid
    TOAST
 ═══════════════════════════════════════════════════════ */
 let toastT;
-function toast(msg) { const t=document.getElementById('toast'); t.textContent=msg; t.classList.add('show'); clearTimeout(toastT); toastT=setTimeout(()=>t.classList.remove('show'),2200); }
+function toast(msg) { const t=document.getElementById('toast'); t.textContent=msg; t.classList.add('show'); clearTimeout(toastT); toastT=setTimeout(()=>t.classList.remove('show'),3000); }
 
 /* ═══════════════════════════════════════════════════════
    MODAL INFO RECETTE
@@ -1587,7 +1620,7 @@ if (savedUser) {
 }
 
 
-if ('serviceWorker' in navigator) navigator.serviceWorker.register('/mes-courses/sw.js?v=19', {updateViaCache:'none'});
+if ('serviceWorker' in navigator) navigator.serviceWorker.register('/mes-courses/sw.js?v=20', {updateViaCache:'none'});
 
 /* ── SPLASH ── */
 (function(){
