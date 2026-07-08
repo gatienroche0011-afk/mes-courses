@@ -1,5 +1,64 @@
 [
   {
+    "date": "2026-07-08T09:50:14.429Z",
+    "meals": [
+      "🍝 Pâtes Carbonara",
+      "🍽️ Ragou"
+    ],
+    "items": [
+      {
+        "name": "Huile d'olive",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Sel",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Pomme de terre",
+        "quantity": 1,
+        "unit": "Kg"
+      },
+      {
+        "name": "Viande",
+        "quantity": 1,
+        "unit": "Kg"
+      },
+      {
+        "name": "Oignon",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Tomate",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Pâtes",
+        "quantity": 1,
+        "unit": "paquet"
+      },
+      {
+        "name": "Allumettes de bacon fumé",
+        "quantity": 2,
+        "unit": "boîte"
+      },
+      {
+        "name": "Crème fraîche",
+        "quantity": 2,
+        "unit": "pot (10cl)"
+      },
+      {
+        "name": "Œufs",
+        "quantity": 4,
+        "unit": ""
+      }
+    ]
+  },
+  {
     "date": "2026-06-29T14:29:16.042Z",
     "meals": [
       "🍽️ Ragou"
