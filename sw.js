@@ -1,4 +1,4 @@
-const CACHE = 'caddie-v22';
+const CACHE = 'caddie-v23';
 const ASSETS = [
   '/mes-courses/',
   '/mes-courses/index.html',

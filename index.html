@@ -1629,7 +1629,7 @@ if (savedUser) {
 }
 
 
-if ('serviceWorker' in navigator) navigator.serviceWorker.register('/mes-courses/sw.js?v=22', {updateViaCache:'none'});
+if ('serviceWorker' in navigator) navigator.serviceWorker.register('/mes-courses/sw.js?v=23', {updateViaCache:'none'});
 
 /* ── SPLASH ── */
 (function(){
@@ -1638,7 +1638,19 @@ if ('serviceWorker' in navigator) navigator.serviceWorker.register('/mes-courses
   function hideSplash(){ s.classList.add('out'); setTimeout(()=>s.style.display='none', 400); }
   v.addEventListener('ended', hideSplash);
   v.addEventListener('error', hideSplash);
-  setTimeout(hideSplash, 8000); // sécurité si la vidéo ne charge pas
+  setTimeout(hideSplash, 8000);
+  // Extrait la couleur du bord de la vidéo et l'applique au fond
+  function matchBg() {
+    try {
+      const c = document.createElement('canvas'); c.width=4; c.height=4;
+      const ctx = c.getContext('2d');
+      ctx.drawImage(v, 0, 0, 4, 4);
+      const d = ctx.getImageData(0, 0, 1, 1).data;
+      s.style.background = `rgb(${d[0]},${d[1]},${d[2]})`;
+    } catch(e) {}
+  }
+  v.addEventListener('loadeddata', matchBg);
+  v.addEventListener('play', matchBg);
 })();
 </script>
 </body>
