@@ -1023,5 +1023,52 @@
     "author": "Gatien et Margot",
     "authorColor": "#e91e8c",
     "servings": 4
+  },
+  {
+    "id": 1783779785513,
+    "name": "Tasty crousty",
+    "emoji": "🍽️",
+    "cat": "viande",
+    "servings": 2,
+    "desc": "",
+    "author": "Gatien et Margot",
+    "authorColor": "#D4605A",
+    "ingredients": [
+      {
+        "name": "Sauce aigre douce",
+        "quantity": 0.5,
+        "unit": ""
+      },
+      {
+        "name": "Fromage blanc",
+        "quantity": 0.5,
+        "unit": ""
+      },
+      {
+        "name": "Sauce soja sucree",
+        "quantity": 0.3,
+        "unit": ""
+      },
+      {
+        "name": "Sauce soja sale",
+        "quantity": 0.3,
+        "unit": ""
+      },
+      {
+        "name": "Poulet",
+        "quantity": 0.5,
+        "unit": "Kg"
+      },
+      {
+        "name": "Panure",
+        "quantity": 0.5,
+        "unit": ""
+      },
+      {
+        "name": "Oeufs",
+        "quantity": 2,
+        "unit": ""
+      }
+    ]
   }
 ]
