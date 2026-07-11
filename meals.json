@@ -1097,5 +1097,27 @@
         "unit": ""
       }
     ]
+  },
+  {
+    "id": 1783780082243,
+    "name": "Oeufs a la coque",
+    "emoji": "🍽️",
+    "cat": "autre",
+    "servings": 2,
+    "desc": "",
+    "author": "Gatien et Margot",
+    "authorColor": "#D4605A",
+    "ingredients": [
+      {
+        "name": "Oeufs",
+        "quantity": 4,
+        "unit": ""
+      },
+      {
+        "name": "Pain de mie",
+        "quantity": 0.5,
+        "unit": ""
+      }
+    ]
   }
 ]
