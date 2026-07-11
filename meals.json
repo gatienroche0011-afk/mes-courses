@@ -1119,5 +1119,47 @@
         "unit": ""
       }
     ]
+  },
+  {
+    "id": 1783780514785,
+    "name": "Saumon bowl",
+    "emoji": "🍽️",
+    "cat": "autre",
+    "servings": 2,
+    "desc": "",
+    "author": "Gatien et Margot",
+    "authorColor": "#D4605A",
+    "ingredients": [
+      {
+        "name": "Saumon",
+        "quantity": 2,
+        "unit": ""
+      },
+      {
+        "name": "Sauce soja sucree",
+        "quantity": 0.3,
+        "unit": ""
+      },
+      {
+        "name": "Sauce soja sale",
+        "quantity": 0.3,
+        "unit": ""
+      },
+      {
+        "name": "Riz",
+        "quantity": 120,
+        "unit": "G"
+      },
+      {
+        "name": "Edamame",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Avocat",
+        "quantity": 1,
+        "unit": ""
+      }
+    ]
   }
 ]
