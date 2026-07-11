@@ -340,7 +340,7 @@
   {
     "id": 10,
     "emoji": "🥗",
-    "name": "Salade de Pâtes italiennes",
+    "name": "Salade de Pâtes Estivale",
     "ingredients": [
       {
         "name": "Pâtes",
@@ -1056,8 +1056,8 @@
       },
       {
         "name": "Poulet",
-        "quantity": 0.5,
-        "unit": "Kg"
+        "quantity": 2,
+        "unit": "Filets"
       },
       {
         "name": "Panure",
