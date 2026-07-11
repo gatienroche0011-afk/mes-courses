@@ -1070,5 +1070,32 @@
         "unit": ""
       }
     ]
+  },
+  {
+    "id": 1783779858271,
+    "name": "Croque monsieur",
+    "emoji": "🍽️",
+    "cat": "wraps",
+    "servings": 2,
+    "desc": "",
+    "author": "Gatien et Margot",
+    "authorColor": "#D4605A",
+    "ingredients": [
+      {
+        "name": "Pain de mie",
+        "quantity": 0.5,
+        "unit": ""
+      },
+      {
+        "name": "Gruyere",
+        "quantity": 0.5,
+        "unit": ""
+      },
+      {
+        "name": "Jambon",
+        "quantity": 1,
+        "unit": ""
+      }
+    ]
   }
 ]
