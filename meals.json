@@ -630,19 +630,9 @@
   },
   {
     "id": 17,
-    "emoji": "🍅",
-    "name": "Tomate Mozza Houmous",
+    "emoji": "🧆",
+    "name": "Houmous",
     "ingredients": [
-      {
-        "name": "Tomate cœur de bœuf",
-        "quantity": 1,
-        "unit": ""
-      },
-      {
-        "name": "Mozza",
-        "quantity": 1,
-        "unit": "boule"
-      },
       {
         "name": "Pois chiche",
         "quantity": 1,
@@ -672,7 +662,7 @@
     "cat": "salades",
     "desc": "Houmous maison :\n1. Mixer les pois chiches égouttés avec le tahine, le jus de citron, l'ail et les glaçons (ils donnent une texture ultra crémeuse). Mixer jusqu'à consistance lisse. Saler.\n\nDressage :\n2. Couper la tomate cœur de bœuf en tranches épaisses.\n3. Disposer les tranches de tomate en éventail dans une assiette.\n4. Déposer la mozza tranchée à côté ou par-dessus.\n5. Servir avec le houmous maison à part ou nappé dessus. Finir d'un filet d'huile d'olive et de quelques graines de sésame.",
     "author": "Gatien et Margot",
-    "authorColor": "#e91e8c",
+    "authorColor": "#2ECC71",
     "servings": 2
   },
   {
