@@ -411,12 +411,12 @@
       },
       {
         "name": "Olives",
-        "quantity": 1,
+        "quantity": 0.3,
         "unit": "bocal"
       },
       {
         "name": "Tomate cerise",
-        "quantity": 1,
+        "quantity": 0.5,
         "unit": "barquette"
       },
       {
