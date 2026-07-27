@@ -1193,5 +1193,42 @@
         "unit": ""
       }
     ]
+  },
+  {
+    "id": 1785184614291,
+    "name": "Pâtes au citron",
+    "emoji": "🍽️",
+    "cat": "pâtes",
+    "servings": 2,
+    "desc": "",
+    "author": "Gatien et Margot",
+    "authorColor": "#D4605A",
+    "ingredients": [
+      {
+        "name": "Pâtes",
+        "quantity": 0.5,
+        "unit": ""
+      },
+      {
+        "name": "Citron",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Crème fraiche",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Parmezan",
+        "quantity": 0.5,
+        "unit": ""
+      },
+      {
+        "name": "Basilic",
+        "quantity": 1,
+        "unit": ""
+      }
+    ]
   }
 ]
