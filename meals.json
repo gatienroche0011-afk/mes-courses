@@ -1230,5 +1230,47 @@
         "unit": ""
       }
     ]
+  },
+  {
+    "id": 1785187546617,
+    "name": "Salade falafel",
+    "emoji": "🍽️",
+    "cat": "salades",
+    "servings": 2,
+    "desc": "",
+    "author": "Gatien et Margot",
+    "authorColor": "#D4605A",
+    "ingredients": [
+      {
+        "name": "Pois chiches",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Oeufs",
+        "quantity": 2,
+        "unit": ""
+      },
+      {
+        "name": "Chapelure",
+        "quantity": 0.5,
+        "unit": ""
+      },
+      {
+        "name": "Persil",
+        "quantity": 0.2,
+        "unit": ""
+      },
+      {
+        "name": "Tomates cerises",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Roquette",
+        "quantity": 0.5,
+        "unit": ""
+      }
+    ]
   }
 ]
