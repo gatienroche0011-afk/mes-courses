@@ -672,8 +672,8 @@
     "ingredients": [
       {
         "name": "Gnocchis",
-        "quantity": 1,
-        "unit": "paquet"
+        "quantity": 500,
+        "unit": "Grammes"
       },
       {
         "name": "Chorizo",
@@ -699,7 +699,7 @@
     "cat": "pâtes",
     "desc": "1. Couper le chorizo en rondelles et les poivrons en lanières.\n2. Faire revenir le chorizo à sec dans une grande poêle jusqu'à ce qu'il soit légèrement croustillant. Réserver.\n3. Dans la même poêle, faire sauter les poivrons 8-10 min à feu moyen-vif.\n4. Ajouter les gnocchis directement dans la poêle avec un fond d'eau, couvrir 3 min.\n5. Incorporer la crème fraîche et le chorizo, mélanger. Servir avec le parmesan râpé.",
     "author": "Gatien et Margot",
-    "authorColor": "#e91e8c",
+    "authorColor": "#D4605A",
     "servings": 2
   },
   {
