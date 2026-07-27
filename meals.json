@@ -1151,5 +1151,47 @@
         "unit": ""
       }
     ]
+  },
+  {
+    "id": 1785184410761,
+    "name": "Wrap italien",
+    "emoji": "🍽️",
+    "cat": "wraps",
+    "servings": 2,
+    "desc": "",
+    "author": "Gatien et Margot",
+    "authorColor": "#D4605A",
+    "ingredients": [
+      {
+        "name": "Poulet",
+        "quantity": 200,
+        "unit": "Gramme"
+      },
+      {
+        "name": "Champignons",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Pesto",
+        "quantity": 0.2,
+        "unit": ""
+      },
+      {
+        "name": "Tomates séchées",
+        "quantity": 0.2,
+        "unit": ""
+      },
+      {
+        "name": "Fromage frais",
+        "quantity": 0.3,
+        "unit": ""
+      },
+      {
+        "name": "Mozzarella",
+        "quantity": 1,
+        "unit": ""
+      }
+    ]
   }
 ]
