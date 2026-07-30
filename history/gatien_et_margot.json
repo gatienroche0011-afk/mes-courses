@@ -1,5 +1,216 @@
 [
   {
+    "date": "2026-07-30T14:29:31.888Z",
+    "meals": [],
+    "items": [
+      {
+        "name": "Zaatar",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Poulet",
+        "quantity": 200,
+        "unit": "Gramme"
+      },
+      {
+        "name": "Champignons",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Pesto",
+        "quantity": 0.2,
+        "unit": ""
+      },
+      {
+        "name": "Tomates séchées",
+        "quantity": 0.2,
+        "unit": ""
+      },
+      {
+        "name": "Fromage frais",
+        "quantity": 0.3,
+        "unit": ""
+      },
+      {
+        "name": "Mozzarella",
+        "quantity": 2,
+        "unit": ""
+      },
+      {
+        "name": "Pâtes",
+        "quantity": 3,
+        "unit": ""
+      },
+      {
+        "name": "Citron",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Crème fraiche",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Parmezan",
+        "quantity": 0.5,
+        "unit": ""
+      },
+      {
+        "name": "Basilic",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Pâtes à lasagne",
+        "quantity": 1,
+        "unit": "paquet"
+      },
+      {
+        "name": "Aubergine",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Courgette",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Tomate cerise",
+        "quantity": 2,
+        "unit": "barquette"
+      },
+      {
+        "name": "Ricotta",
+        "quantity": 1,
+        "unit": "pot"
+      },
+      {
+        "name": "Pesto rouge",
+        "quantity": 1,
+        "unit": "pot"
+      },
+      {
+        "name": "Pois chiche",
+        "quantity": 1,
+        "unit": "boîte"
+      },
+      {
+        "name": "Roquette",
+        "quantity": 0.8,
+        "unit": "sachet"
+      },
+      {
+        "name": "Radis",
+        "quantity": 1,
+        "unit": "botte"
+      },
+      {
+        "name": "Mozza",
+        "quantity": 1,
+        "unit": "boule"
+      },
+      {
+        "name": "Concombre",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Avocat",
+        "quantity": 2,
+        "unit": ""
+      },
+      {
+        "name": "Jambon de parme",
+        "quantity": 2,
+        "unit": "paquet"
+      },
+      {
+        "name": "Burrata",
+        "quantity": 2,
+        "unit": ""
+      },
+      {
+        "name": "Pesto vert",
+        "quantity": 2,
+        "unit": "pot"
+      },
+      {
+        "name": "Concentré de tomate",
+        "quantity": 2,
+        "unit": ""
+      },
+      {
+        "name": "Courgettes",
+        "quantity": 2,
+        "unit": ""
+      },
+      {
+        "name": "Crevettes",
+        "quantity": 1,
+        "unit": "sachet"
+      },
+      {
+        "name": "Lait de coco",
+        "quantity": 1,
+        "unit": "boîte"
+      },
+      {
+        "name": "Curry",
+        "quantity": 1,
+        "unit": "c. à café"
+      },
+      {
+        "name": "Saint Moret",
+        "quantity": 1,
+        "unit": "pot"
+      },
+      {
+        "name": "Œufs",
+        "quantity": 12,
+        "unit": ""
+      },
+      {
+        "name": "Boule de pain",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Pois chiches",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Oeufs",
+        "quantity": 2,
+        "unit": ""
+      },
+      {
+        "name": "Chapelure",
+        "quantity": 0.5,
+        "unit": ""
+      },
+      {
+        "name": "Persil",
+        "quantity": 0.2,
+        "unit": ""
+      },
+      {
+        "name": "Tomates cerises",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Chewing-gum",
+        "quantity": 1,
+        "unit": ""
+      }
+    ]
+  },
+  {
     "date": "2026-07-27T15:18:22.179Z",
     "meals": [
       "🍝 Pâtes Carbonara",
