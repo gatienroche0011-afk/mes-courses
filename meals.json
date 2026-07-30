@@ -29,7 +29,8 @@
     "desc": "1. Faire revenir les allumettes de bacon dans une poêle sans matière grasse jusqu'à ce qu'elles soient dorées.\n2. Cuire les pâtes al dente dans de l'eau bouillante salée.\n3. Dans un bol, mélanger les œufs battus avec la crème fraîche, sel et poivre.\n4. Égoutter les pâtes en gardant un peu d'eau de cuisson. Hors du feu, mélanger rapidement avec le bacon et la sauce.\n5. Ajouter un peu d'eau de cuisson si nécessaire pour lier. Servir immédiatement.",
     "author": "Gatien et Margot",
     "authorColor": "#e91e8c",
-    "servings": 2
+    "servings": 2,
+    "optional": []
   },
   {
     "id": 2,
@@ -76,7 +77,8 @@
     "desc": "1. Égoutter et rincer les pois chiches.\n2. Couper les tomates cerises en deux, le concombre en dés, trancher les radis finement.\n3. Disposer la roquette dans un grand bol, ajouter les pois chiches, les tomates, le concombre et les radis.\n4. Déchirer la mozza et l'ajouter par-dessus avec l'avocat en dés.\n5. Assaisonner d'huile d'olive, jus de citron, sel et poivre.",
     "author": "Gatien et Margot",
     "authorColor": "#e91e8c",
-    "servings": 2
+    "servings": 2,
+    "optional": []
   },
   {
     "id": 3,
@@ -118,7 +120,8 @@
     "desc": "1. Couper le poulet en lanières, faire mariner avec les épices fajitas 10 min.\n2. Faire sauter le poulet à feu vif 5-6 min, réserver.\n3. Faire revenir les poivrons en lanières dans la même poêle 8 min.\n4. Écraser les avocats à la fourchette avec sel et jus de citron (guacamole rapide).\n5. Réchauffer les wraps à la poêle. Garnir de poulet, poivrons, guacamole et gruyère râpé. Rouler et déguster.",
     "author": "Gatien et Margot",
     "authorColor": "#e91e8c",
-    "servings": 2
+    "servings": 2,
+    "optional": []
   },
   {
     "id": 4,
@@ -150,7 +153,8 @@
     "desc": "1. Faire cuire les œufs selon votre goût (brouillés ou au plat).\n2. Toaster généreusement des tranches de pain.\n3. Tartiner chaque tranche d'une épaisse couche de Saint Moret.\n4. Trancher l'avocat finement et le disposer sur le pain.\n5. Poser les œufs par-dessus. Finir avec sel, poivre et piment en option.",
     "author": "Gatien et Margot",
     "authorColor": "#e91e8c",
-    "servings": 2
+    "servings": 2,
+    "optional": []
   },
   {
     "id": 5,
@@ -182,7 +186,8 @@
     "desc": "1. Faire chauffer une poêle à feu moyen avec un peu de beurre.\n2. Déposer une galette bien à plat.\n3. Casser un œuf au centre, ajouter une tranche de jambon autour.\n4. Parsemer de gruyère râpé sur tout le dessus.\n5. Replier les 4 bords vers le centre. Cuire jusqu'à ce que l'œuf soit pris. Répéter.",
     "author": "Gatien et Margot",
     "authorColor": "#e91e8c",
-    "servings": 2
+    "servings": 2,
+    "optional": []
   },
   {
     "id": 6,
@@ -214,7 +219,8 @@
     "desc": "1. Couper les tomates cerises en deux et assaisonner d'huile d'olive, sel, poivre et basilic.\n2. Toaster les tranches de pain.\n3. Tartiner généreusement chaque tranche de pesto vert.\n4. Déposer des tranches de mozza fraîche par-dessus.\n5. Ajouter les tomates assaisonnées. Servir frais.",
     "author": "Gatien et Margot",
     "authorColor": "#e91e8c",
-    "servings": 2
+    "servings": 2,
+    "optional": []
   },
   {
     "id": 7,
@@ -251,7 +257,8 @@
     "desc": "1. Couper le chapeau des tomates et les évider à la cuillère. Garder la pulpe.\n2. Faire cuire les œufs durs 10 min, les couper en petits dés.\n3. Égoutter le thon. Écraser l'avocat à la fourchette.\n4. Mélanger thon, avocat, œufs, fromage blanc, pulpe de tomate, sel et poivre.\n5. Farcir les tomates, remettre le chapeau. Réfrigérer 30 min avant de servir.",
     "author": "Gatien et Margot",
     "authorColor": "#e91e8c",
-    "servings": 2
+    "servings": 2,
+    "optional": []
   },
   {
     "id": 8,
@@ -293,7 +300,8 @@
     "desc": "1. Couper aubergine et courgette en dés, faire revenir à la poêle avec huile, sel et poivre.\n2. Ajouter les tomates cerises coupées en deux et le pesto rouge. Cuire 5 min.\n3. Dans un plat, alterner : couche de pâtes à lasagne, légumes, ricotta.\n4. Répéter 3 fois. Terminer par de la ricotta.\n5. Cuire au four à 180°C pendant 30 à 35 min.",
     "author": "Gatien et Margot",
     "authorColor": "#e91e8c",
-    "servings": 2
+    "servings": 2,
+    "optional": []
   },
   {
     "id": 9,
@@ -335,7 +343,8 @@
     "desc": "1. Faire griller le poulet en lamelles avec sel, poivre et paprika.\n2. Râper le concombre, l'essorer dans un torchon, mélanger avec le fromage blanc et sel. C'est le tzatziki.\n3. Couper les tomates cerises en deux, trancher les radis.\n4. Réchauffer les wraps.\n5. Garnir : tzatziki d'abord, puis poulet, tomates et radis. Rouler serré.",
     "author": "Gatien et Margot",
     "authorColor": "#e91e8c",
-    "servings": 2
+    "servings": 2,
+    "optional": []
   },
   {
     "id": 10,
@@ -382,7 +391,8 @@
     "desc": "1. Cuire les pâtes al dente, les rincer à l'eau froide.\n2. Mélanger les pâtes avec les tomates cerises, les tomates séchées coupées et le pesto vert.\n3. Ajouter la roquette et le jambon de parme déchiré en morceaux.\n4. Poser la burrata entière au centre au moment de servir.\n5. Un filet d'huile d'olive, poivre, et déguster aussitôt.",
     "author": "Gatien et Margot",
     "authorColor": "#e91e8c",
-    "servings": 2
+    "servings": 2,
+    "optional": []
   },
   {
     "id": 11,
@@ -434,7 +444,8 @@
     "desc": "1. Cuire les pâtes al dente, rincer à l'eau froide.\n2. Faire cuire les œufs durs 10 min, les couper en quartiers.\n3. Mélanger pâtes, pois chiches, concombre en dés, tomates cerises, maïs et olives.\n4. Ajouter la mozza déchirée et les œufs.\n5. Assaisonner d'huile d'olive, herbes de Provence, sel et poivre.",
     "author": "Gatien et Margot",
     "authorColor": "#e91e8c",
-    "servings": 2
+    "servings": 2,
+    "optional": []
   },
   {
     "id": 12,
@@ -466,7 +477,8 @@
     "desc": "1. Faire revenir les allumettes de bacon à sec jusqu'à ce qu'elles soient croustillantes.\n2. Cuire les pâtes al dente.\n3. Mélanger la crème fraîche avec la moitié du parmesan râpé, sel, poivre.\n4. Égoutter les pâtes, mélanger hors du feu avec le bacon et la crème au parmesan.\n5. Servir avec le reste du parmesan généreusement râpé par-dessus.",
     "author": "Gatien et Margot",
     "authorColor": "#e91e8c",
-    "servings": 2
+    "servings": 2,
+    "optional": []
   },
   {
     "id": 13,
@@ -498,7 +510,8 @@
     "desc": "1. Couper le poulet en lanières régulières.\n2. Battre les œufs dans un bol avec sel et poivre.\n3. Tremper chaque lanière dans l'œuf battu puis rouler dans la chapelure en appuyant bien.\n4. Faire frire dans une poêle avec un bon fond d'huile, 3-4 min de chaque côté jusqu'à dorure.\n5. Égoutter sur du papier absorbant. Couper le melon en tranches fraîches. Servir ensemble.",
     "author": "Gatien et Margot",
     "authorColor": "#e91e8c",
-    "servings": 2
+    "servings": 2,
+    "optional": []
   },
   {
     "id": 14,
@@ -535,7 +548,8 @@
     "desc": "1. Cuire les pâtes al dente dans de l'eau bien salée.\n2. Égoutter en gardant une louche d'eau de cuisson.\n3. Remettre les pâtes hors du feu avec un filet d'huile d'olive et un peu d'eau de cuisson.\n4. Déchirer le jambon de parme en morceaux et le mélanger aux pâtes.\n5. Couper la burrata en deux et la déposer sur les pâtes chaudes. Poivre, basilic.",
     "author": "Gatien et Margot",
     "authorColor": "#e91e8c",
-    "servings": 2
+    "servings": 2,
+    "optional": []
   },
   {
     "id": 15,
@@ -562,7 +576,8 @@
     "desc": "1. Couper le chorizo en rondelles et le faire revenir à sec dans une poêle.\n2. Cuire les pâtes al dente.\n3. Égoutter en gardant une tasse d'eau de cuisson.\n4. Ajouter le Boursin directement dans les pâtes chaudes avec 3-4 cuillères d'eau de cuisson.\n5. Bien mélanger pour créer une sauce crémeuse, ajouter le chorizo. Poivre et c'est prêt.",
     "author": "Gatien et Margot",
     "authorColor": "#e91e8c",
-    "servings": 2
+    "servings": 2,
+    "optional": []
   },
   {
     "id": 16,
@@ -594,7 +609,8 @@
     "desc": "1. Cuire le riz. Faire sauter les poivrons en lanières à la poêle.\n2. Couper le poulet en morceaux et le faire dorer dans une poêle huilée bien chaude.\n3. Sauce : 3 c. à soupe de beurre de cacahuète + 2 c. à soupe de sauce soja + 1 c. à soupe de miel + eau chaude pour diluer.\n4. Verser la sauce sur le poulet, laisser mijoter 3 min.\n5. Servir le poulet nappé de sauce sur le riz avec les poivrons à côté.",
     "author": "Gatien et Margot",
     "authorColor": "#e91e8c",
-    "servings": 2
+    "servings": 2,
+    "optional": []
   },
   {
     "id": 1782743267318,
@@ -626,7 +642,8 @@
     ],
     "author": "Thierno",
     "authorColor": "#E67E22",
-    "servings": 2
+    "servings": 2,
+    "optional": []
   },
   {
     "id": 17,
@@ -663,7 +680,8 @@
     "desc": "Houmous maison :\n1. Mixer les pois chiches égouttés avec le tahine, le jus de citron, l'ail et les glaçons (ils donnent une texture ultra crémeuse). Mixer jusqu'à consistance lisse. Saler.\n\nDressage :\n2. Couper la tomate cœur de bœuf en tranches épaisses.\n3. Disposer les tranches de tomate en éventail dans une assiette.\n4. Déposer la mozza tranchée à côté ou par-dessus.\n5. Servir avec le houmous maison à part ou nappé dessus. Finir d'un filet d'huile d'olive et de quelques graines de sésame.",
     "author": "Gatien et Margot",
     "authorColor": "#2ECC71",
-    "servings": 2
+    "servings": 2,
+    "optional": []
   },
   {
     "id": 18,
@@ -700,7 +718,8 @@
     "desc": "1. Couper le chorizo en rondelles et les poivrons en lanières.\n2. Faire revenir le chorizo à sec dans une grande poêle jusqu'à ce qu'il soit légèrement croustillant. Réserver.\n3. Dans la même poêle, faire sauter les poivrons 8-10 min à feu moyen-vif.\n4. Ajouter les gnocchis directement dans la poêle avec un fond d'eau, couvrir 3 min.\n5. Incorporer la crème fraîche et le chorizo, mélanger. Servir avec le parmesan râpé.",
     "author": "Gatien et Margot",
     "authorColor": "#D4605A",
-    "servings": 2
+    "servings": 2,
+    "optional": []
   },
   {
     "id": 19,
@@ -737,7 +756,8 @@
     "desc": "1. Cuire les pâtes al dente, réserver.\n2. Couper les courgettes en demi-rondelles et les faire sauter à la poêle avec huile, sel et poivre.\n3. Ajouter les crevettes et les faire revenir 2-3 min jusqu'à ce qu'elles rosissent.\n4. Verser le lait de coco et le curry, mélanger et laisser réduire 4-5 min à feu moyen.\n5. Ajouter les pâtes dans la sauce, mélanger et servir aussitôt.",
     "author": "Gatien et Margot",
     "authorColor": "#e91e8c",
-    "servings": 2
+    "servings": 2,
+    "optional": []
   },
   {
     "id": 20,
@@ -809,7 +829,8 @@
     "desc": "1. Mélanger la farine avec les levures, le sel, le sucre et l'huile. Ajouter le yaourt puis l'eau. Former une boule en pétrissant minimum 10 minutes.\n2. Laisser reposer 45 minutes sous un torchon, puis dégazer la pâte.\n3. Former des boules, les étaler finement, ajouter le Kiri au centre, refermer puis étaler à nouveau.\n4. Faire cuire dans une poêle à feu moyen en mettant des petites gouttes d'eau pour que ça gonfle, à couvert.\n5. Badigeonner de beurre fondu mélangé à l'ail haché et au persil ciselé.",
     "author": "Gatien et Margot",
     "authorColor": "#e91e8c",
-    "servings": 4
+    "servings": 4,
+    "optional": []
   },
   {
     "id": 21,
@@ -841,7 +862,8 @@
     "desc": "1. Cuire le riz dans de l'eau salée selon les instructions.\n2. Couper les filets de poulet en morceaux et les faire dorer dans une poêle huilée à feu vif, sel et poivre.\n3. Ajouter les champignons tranchés et faire revenir 5 min jusqu'à ce qu'ils rendent leur eau.\n4. Verser la crème fraîche, mélanger et laisser mijoter 3-4 min à feu doux.\n5. Servir le poulet crémeux sur le riz.",
     "author": "Gatien et Margot",
     "authorColor": "#e91e8c",
-    "servings": 2
+    "servings": 2,
+    "optional": []
   },
   {
     "id": 22,
@@ -883,7 +905,8 @@
     "desc": "1. Cuire les nouilles selon les instructions, égoutter et réserver.\n2. Faire sauter les poivrons en lanières et les champignons dans un wok bien chaud avec un filet d'huile de sésame.\n3. Cuire les gyozas dans une poêle huilée 3-4 min, ajouter un fond d'eau et couvrir jusqu'à évaporation.\n4. Mélanger les nouilles aux légumes avec la sauce soja salée et sucrée, faire sauter 2 min à feu vif.\n5. Servir les nouilles aux légumes avec les gyozas dorés par-dessus.",
     "author": "Gatien et Margot",
     "authorColor": "#e91e8c",
-    "servings": 2
+    "servings": 2,
+    "optional": []
   },
   {
     "id": 23,
@@ -940,7 +963,8 @@
     "desc": "1. Hacher finement le poulet, la carotte, le poireau, l'ail et le gingembre. Mélanger avec la sauce soja, sel et poivre pour obtenir la farce.\n2. Humidifier le contour de chaque disque de pâte à gyoza avec un peu d'eau.\n3. Déposer une cuillère de farce au centre. Souder le centre, puis rabattre chaque côté 2-3 fois pour créer les plis.\n4. Faire chauffer l'huile de sésame dans une poêle à feu moyen-fort. Dorer les gyozas sur la base quelques minutes.\n5. Ajouter un fond d'eau dans la poêle, couvrir immédiatement. Cuire à l'étouffée jusqu'à évaporation totale.",
     "author": "Gatien et Margot",
     "authorColor": "#e91e8c",
-    "servings": 4
+    "servings": 4,
+    "optional": []
   },
   {
     "id": 24,
@@ -1012,7 +1036,8 @@
     "desc": "Sauce maison :\n1. Monter une mayonnaise avec l'œuf, le sel, le poivre, la moutarde et l'huile neutre. Ajouter le vinaigre de cornichons, le ketchup, le paprika fumé, l'ail semoule, un gros cornichon et un petit oignon hachés. Mixer.\n\nBurgers :\n2. Former 4 boules de bœuf de 125g chacune.\n3. Faire chauffer une poêle en fonte ou une plancha à feu très vif. Déposer une boule et écraser fortement avec une spatule pour former un steak fin. Saler et poivrer.\n4. Cuire 2 min, retourner, poser 2 tranches de cheddar et couvrir 1 min.\n5. Garnir le pain toasté de sauce maison, steak, oignons caramélisés et cornichons.",
     "author": "Gatien et Margot",
     "authorColor": "#e91e8c",
-    "servings": 4
+    "servings": 4,
+    "optional": []
   },
   {
     "id": 1783779785513,
@@ -1059,7 +1084,8 @@
         "quantity": 2,
         "unit": ""
       }
-    ]
+    ],
+    "optional": []
   },
   {
     "id": 1783779858271,
@@ -1086,7 +1112,8 @@
         "quantity": 1,
         "unit": ""
       }
-    ]
+    ],
+    "optional": []
   },
   {
     "id": 1783780082243,
@@ -1108,7 +1135,8 @@
         "quantity": 0.5,
         "unit": ""
       }
-    ]
+    ],
+    "optional": []
   },
   {
     "id": 1783780514785,
@@ -1150,7 +1178,8 @@
         "quantity": 1,
         "unit": ""
       }
-    ]
+    ],
+    "optional": []
   },
   {
     "id": 1785184410761,
@@ -1192,7 +1221,8 @@
         "quantity": 1,
         "unit": ""
       }
-    ]
+    ],
+    "optional": []
   },
   {
     "id": 1785184614291,
@@ -1229,7 +1259,8 @@
         "quantity": 1,
         "unit": ""
       }
-    ]
+    ],
+    "optional": []
   },
   {
     "id": 1785187546617,
@@ -1257,11 +1288,6 @@
         "unit": ""
       },
       {
-        "name": "Persil",
-        "quantity": 0.2,
-        "unit": ""
-      },
-      {
         "name": "Tomates cerises",
         "quantity": 1,
         "unit": ""
@@ -1277,13 +1303,20 @@
         "unit": ""
       },
       {
+        "name": "Concombre",
+        "quantity": 0.5,
+        "unit": ""
+      }
+    ],
+    "optional": [
+      {
         "name": "Radis",
         "quantity": 0.5,
         "unit": ""
       },
       {
-        "name": "Concombre",
-        "quantity": 0.5,
+        "name": "Persil",
+        "quantity": 0.2,
         "unit": ""
       }
     ]
