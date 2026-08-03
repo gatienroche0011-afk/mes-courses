@@ -1426,5 +1426,54 @@
       }
     ],
     "optional": []
+  },
+  {
+    "id": 1785758779618,
+    "name": "Dahl de lentilles corail",
+    "emoji": "🍽️",
+    "cat": "autre",
+    "servings": 2,
+    "desc": "",
+    "author": "Gatien et Margot",
+    "authorColor": "#2ECC71",
+    "ingredients": [
+      {
+        "name": "Lentilles corail",
+        "quantity": 200,
+        "unit": "G"
+      },
+      {
+        "name": "Lait de coco",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Pousse d’épinard",
+        "quantity": 0.5,
+        "unit": ""
+      }
+    ],
+    "optional": [
+      {
+        "name": "Concentré de tomate",
+        "quantity": 0.2,
+        "unit": ""
+      },
+      {
+        "name": "Oignon",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Ail",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Persil",
+        "quantity": 1,
+        "unit": ""
+      }
+    ]
   }
 ]
