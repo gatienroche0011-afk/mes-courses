@@ -1557,5 +1557,49 @@
       }
     ],
     "optional": []
+  },
+  {
+    "id": 1785758984376,
+    "name": "Pâtes tomate cerise épinard chorizo pesto rosso",
+    "emoji": "🍽️",
+    "cat": "pâtes",
+    "servings": 2,
+    "desc": "",
+    "author": "Gatien et Margot",
+    "authorColor": "#2ECC71",
+    "ingredients": [
+      {
+        "name": "Pâtes",
+        "quantity": 250,
+        "unit": "G"
+      },
+      {
+        "name": "Tomate cerise",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Pousse d’épinard",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Chorizo",
+        "quantity": 0.5,
+        "unit": ""
+      },
+      {
+        "name": "Pesto rosso",
+        "quantity": 1,
+        "unit": ""
+      }
+    ],
+    "optional": [
+      {
+        "name": "Parmesan",
+        "quantity": 1,
+        "unit": ""
+      }
+    ]
   }
 ]
