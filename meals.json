@@ -1349,5 +1349,44 @@
         "unit": "g"
       }
     ]
+  },
+  {
+    "id": 1785758515649,
+    "name": "Pâtes chorizo crème de poivron",
+    "emoji": "🫑",
+    "cat": "pâtes",
+    "servings": 2,
+    "desc": "",
+    "author": "Gatien et Margot",
+    "authorColor": "#2ECC71",
+    "ingredients": [
+      {
+        "name": "Pâtes",
+        "quantity": 250,
+        "unit": "G"
+      },
+      {
+        "name": "Chorizo",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Poivrons",
+        "quantity": 2,
+        "unit": ""
+      }
+    ],
+    "optional": [
+      {
+        "name": "Crème fraîche",
+        "quantity": 0.5,
+        "unit": ""
+      },
+      {
+        "name": "Parmesan",
+        "quantity": 0.3,
+        "unit": ""
+      }
+    ]
   }
 ]
