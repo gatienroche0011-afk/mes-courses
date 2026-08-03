@@ -1475,5 +1475,54 @@
         "unit": ""
       }
     ]
+  },
+  {
+    "id": 1785758861960,
+    "name": "Padthai",
+    "emoji": "🍽️",
+    "cat": "autre",
+    "servings": 2,
+    "desc": "",
+    "author": "Gatien et Margot",
+    "authorColor": "#2ECC71",
+    "ingredients": [
+      {
+        "name": "Nouilles de riz",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Poivrons",
+        "quantity": 2,
+        "unit": ""
+      },
+      {
+        "name": "Poulet",
+        "quantity": 2,
+        "unit": "Filets"
+      },
+      {
+        "name": "Cacahuètes",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Pousses de soja",
+        "quantity": 1,
+        "unit": ""
+      }
+    ],
+    "optional": [
+      {
+        "name": "Sauce soja sucrée",
+        "quantity": 0.2,
+        "unit": ""
+      },
+      {
+        "name": "Sauce soja salée",
+        "quantity": 0.2,
+        "unit": ""
+      }
+    ]
   }
 ]
