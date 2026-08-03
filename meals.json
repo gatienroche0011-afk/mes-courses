@@ -1320,5 +1320,34 @@
         "unit": ""
       }
     ]
+  },
+  {
+    "id": 1785758330646,
+    "name": "Courgettes farcies",
+    "emoji": "🍽️",
+    "cat": "autre",
+    "servings": 2,
+    "desc": "",
+    "author": "Gatien et Margot",
+    "authorColor": "#2ECC71",
+    "ingredients": [
+      {
+        "name": "Courgettes",
+        "quantity": 2,
+        "unit": ""
+      },
+      {
+        "name": "Chair à saucisses",
+        "quantity": 200,
+        "unit": "g"
+      }
+    ],
+    "optional": [
+      {
+        "name": "Riz",
+        "quantity": 120,
+        "unit": "g"
+      }
+    ]
   }
 ]
