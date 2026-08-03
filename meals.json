@@ -1524,5 +1524,38 @@
         "unit": ""
       }
     ]
+  },
+  {
+    "id": 1785758912208,
+    "name": "Bagel",
+    "emoji": "🍽️",
+    "cat": "autre",
+    "servings": 2,
+    "desc": "",
+    "author": "Gatien et Margot",
+    "authorColor": "#2ECC71",
+    "ingredients": [
+      {
+        "name": "Bagel",
+        "quantity": 4,
+        "unit": ""
+      },
+      {
+        "name": "Tzatziki",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Saumon fumé",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Avocats",
+        "quantity": 2,
+        "unit": ""
+      }
+    ],
+    "optional": []
   }
 ]
