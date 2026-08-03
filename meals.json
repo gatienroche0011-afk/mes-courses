@@ -1388,5 +1388,43 @@
         "unit": ""
       }
     ]
+  },
+  {
+    "id": 1785758664218,
+    "name": "Galettes bretonnes légumes",
+    "emoji": "🍽️",
+    "cat": "autre",
+    "servings": 2,
+    "desc": "",
+    "author": "Gatien et Margot",
+    "authorColor": "#2ECC71",
+    "ingredients": [
+      {
+        "name": "Galettes bretonnes",
+        "quantity": 4,
+        "unit": ""
+      },
+      {
+        "name": "Courgette",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Tomates",
+        "quantity": 2,
+        "unit": ""
+      },
+      {
+        "name": "Allumettes de bacon",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Gruyère râpé",
+        "quantity": 0.3,
+        "unit": ""
+      }
+    ],
+    "optional": []
   }
 ]
