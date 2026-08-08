@@ -1,5 +1,245 @@
 [
   {
+    "date": "2026-08-08T14:25:33.269Z",
+    "meals": [
+      "🌮 Fajitas",
+      "🍽️ Courgettes farcies",
+      "🍽️ Galettes bretonnes légumes",
+      "🍽️ Dahl de lentilles corail",
+      "🍽️ Padthai",
+      "🍽️ Bagel",
+      "🍽️ Pâtes tomate cerise épinard chorizo pesto rosso",
+      "🫑 Pâtes chorizo crème de poivron"
+    ],
+    "items": [
+      {
+        "name": "Zaatar",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Chewing-gum",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Shampoing sec",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Truc du lave vaisselle",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Pruneau",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Cire froide",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Courgettes",
+        "quantity": 2,
+        "unit": ""
+      },
+      {
+        "name": "Chair à saucisses",
+        "quantity": 200,
+        "unit": "g"
+      },
+      {
+        "name": "Melon",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Galettes bretonnes",
+        "quantity": 4,
+        "unit": ""
+      },
+      {
+        "name": "Courgette",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Tomates",
+        "quantity": 2,
+        "unit": ""
+      },
+      {
+        "name": "Allumettes de bacon",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Gruyère râpé",
+        "quantity": 0.3,
+        "unit": ""
+      },
+      {
+        "name": "Lentilles corail",
+        "quantity": 200,
+        "unit": "G"
+      },
+      {
+        "name": "Lait de coco",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Pousse d’épinard",
+        "quantity": 0.5,
+        "unit": ""
+      },
+      {
+        "name": "Wrap",
+        "quantity": 6,
+        "unit": ""
+      },
+      {
+        "name": "Filet de poulet",
+        "quantity": 1,
+        "unit": "gros"
+      },
+      {
+        "name": "Avocats",
+        "quantity": 2,
+        "unit": ""
+      },
+      {
+        "name": "Poivrons",
+        "quantity": 2,
+        "unit": ""
+      },
+      {
+        "name": "Gruyère",
+        "quantity": 1,
+        "unit": "paquet"
+      },
+      {
+        "name": "Épices fajitas",
+        "quantity": 1,
+        "unit": "sachet"
+      },
+      {
+        "name": "Nouilles de riz",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Poivrons",
+        "quantity": 2,
+        "unit": ""
+      },
+      {
+        "name": "Poulet",
+        "quantity": 2,
+        "unit": "Filets"
+      },
+      {
+        "name": "Cacahuètes",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Pousses de soja",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Sauce soja sucrée",
+        "quantity": 0.2,
+        "unit": ""
+      },
+      {
+        "name": "Sauce soja salée",
+        "quantity": 0.2,
+        "unit": ""
+      },
+      {
+        "name": "Bagel",
+        "quantity": 4,
+        "unit": ""
+      },
+      {
+        "name": "Tzatziki",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Saumon fumé",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Avocats",
+        "quantity": 2,
+        "unit": ""
+      },
+      {
+        "name": "Pâtes",
+        "quantity": 250,
+        "unit": "G"
+      },
+      {
+        "name": "Tomate cerise",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Pousse d’épinard",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Chorizo",
+        "quantity": 0.5,
+        "unit": ""
+      },
+      {
+        "name": "Pesto rosso",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Poisson blanc",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "ratatouille",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Recharge gel douche",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Pâtes",
+        "quantity": 250,
+        "unit": "G"
+      },
+      {
+        "name": "Chorizo",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Poivrons",
+        "quantity": 2,
+        "unit": ""
+      }
+    ]
+  },
+  {
     "date": "2026-07-30T14:29:31.888Z",
     "meals": [],
     "items": [
