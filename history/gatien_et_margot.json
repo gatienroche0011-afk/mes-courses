@@ -1,5 +1,31 @@
 [
   {
+    "date": "2026-09-08T11:06:13.566Z",
+    "meals": [],
+    "items": [
+      {
+        "name": "Nouilles de riz",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Lingette hygiène",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Gyozas",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Champignons",
+        "quantity": 1,
+        "unit": ""
+      }
+    ]
+  },
+  {
     "date": "2026-08-08T14:25:33.269Z",
     "meals": [
       "🌮 Fajitas",
