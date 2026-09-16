@@ -1,5 +1,163 @@
 [
   {
+    "date": "2026-09-16T07:10:42.928Z",
+    "meals": [
+      "🍝 Pâtes Carbonara",
+      "🥗 Salade de pois chiche",
+      "🍗 Melon Tenders Party",
+      "🍜 Poulet Sauce Cacahuète",
+      "🫕 Gnocchi Chorizo Poivron",
+      "🍽️ Pâtes au citron"
+    ],
+    "items": [
+      {
+        "name": "Pâtes",
+        "quantity": 0.5,
+        "unit": "paquet"
+      },
+      {
+        "name": "Allumettes de bacon fumé",
+        "quantity": 1,
+        "unit": "boîte"
+      },
+      {
+        "name": "Crème fraîche",
+        "quantity": 1,
+        "unit": "pot (10cl)"
+      },
+      {
+        "name": "Œufs",
+        "quantity": 4,
+        "unit": ""
+      },
+      {
+        "name": "Gnocchis",
+        "quantity": 500,
+        "unit": "Grammes"
+      },
+      {
+        "name": "Chorizo",
+        "quantity": 0.5,
+        "unit": "saucisson"
+      },
+      {
+        "name": "Poivrons",
+        "quantity": 2,
+        "unit": ""
+      },
+      {
+        "name": "Crème fraîche",
+        "quantity": 0.5,
+        "unit": "pot"
+      },
+      {
+        "name": "Parmesan",
+        "quantity": 0.5,
+        "unit": "paquet"
+      },
+      {
+        "name": "Pâtes",
+        "quantity": 0.5,
+        "unit": ""
+      },
+      {
+        "name": "Citron",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Crème fraiche",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Parmezan",
+        "quantity": 0.5,
+        "unit": ""
+      },
+      {
+        "name": "Basilic",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Pois chiche",
+        "quantity": 1,
+        "unit": "boîte"
+      },
+      {
+        "name": "Tomate cerise",
+        "quantity": 1,
+        "unit": "barquette"
+      },
+      {
+        "name": "Roquette",
+        "quantity": 0.3,
+        "unit": "sachet"
+      },
+      {
+        "name": "Radis",
+        "quantity": 0.5,
+        "unit": "botte"
+      },
+      {
+        "name": "Mozza",
+        "quantity": 1,
+        "unit": "boule"
+      },
+      {
+        "name": "Concombre",
+        "quantity": 0.5,
+        "unit": ""
+      },
+      {
+        "name": "Avocat",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Melon",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Œufs",
+        "quantity": 2,
+        "unit": ""
+      },
+      {
+        "name": "Poulet",
+        "quantity": 1,
+        "unit": "filet"
+      },
+      {
+        "name": "Chapelure",
+        "quantity": 1,
+        "unit": "paquet"
+      },
+      {
+        "name": "Poulet",
+        "quantity": 2,
+        "unit": "filet"
+      },
+      {
+        "name": "Cacahuètes",
+        "quantity": 1,
+        "unit": "paquet"
+      },
+      {
+        "name": "Riz",
+        "quantity": 1,
+        "unit": "paquet"
+      },
+      {
+        "name": "Poivrons",
+        "quantity": 2,
+        "unit": ""
+      }
+    ]
+  },
+  {
     "date": "2026-09-08T11:06:13.566Z",
     "meals": [],
     "items": [
