@@ -159,7 +159,7 @@
   {
     "id": 5,
     "emoji": "🫓",
-    "name": "Galettes Bretonnes classiques",
+    "name": "Galettes Bretonnes",
     "ingredients": [
       {
         "name": "Galettes",
@@ -1601,5 +1601,38 @@
         "unit": ""
       }
     ]
+  },
+  {
+    "id": 1790177793378,
+    "name": "Gaspacho garni",
+    "emoji": "🍽️",
+    "cat": "autre",
+    "servings": 2,
+    "desc": "",
+    "author": "Gatien et Margot",
+    "authorColor": "#D4605A",
+    "ingredients": [
+      {
+        "name": "Gaspach",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Mozza",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Concombre",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Tomate",
+        "quantity": 1,
+        "unit": ""
+      }
+    ],
+    "optional": []
   }
 ]
