@@ -1,5 +1,83 @@
 [
   {
+    "date": "2026-09-28T08:55:07.990Z",
+    "meals": [
+      "🫓 Cheese Nan"
+    ],
+    "items": [
+      {
+        "name": "Dentifrice",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Boule cuivre vaisselle",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Farine",
+        "quantity": 500,
+        "unit": "g"
+      },
+      {
+        "name": "Levure boulangère",
+        "quantity": 1,
+        "unit": "sachet"
+      },
+      {
+        "name": "Levure chimique",
+        "quantity": 1,
+        "unit": "sachet"
+      },
+      {
+        "name": "Huile d'olive",
+        "quantity": 2,
+        "unit": "c. à soupe"
+      },
+      {
+        "name": "Sel",
+        "quantity": 1,
+        "unit": "pincée"
+      },
+      {
+        "name": "Sucre",
+        "quantity": 1,
+        "unit": "c. à café"
+      },
+      {
+        "name": "Yaourt grec",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Eau",
+        "quantity": 170,
+        "unit": "ml"
+      },
+      {
+        "name": "Kiri",
+        "quantity": 1,
+        "unit": "boîte"
+      },
+      {
+        "name": "Beurre",
+        "quantity": 1,
+        "unit": "noisette"
+      },
+      {
+        "name": "Ail",
+        "quantity": 2,
+        "unit": "gousses"
+      },
+      {
+        "name": "Persil",
+        "quantity": 1,
+        "unit": "botte"
+      }
+    ]
+  },
+  {
     "date": "2026-09-16T07:11:13.755Z",
     "meals": [
       "🍝 Pâtes Carbonara",
