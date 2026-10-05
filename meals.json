@@ -453,39 +453,6 @@
     "optional": []
   },
   {
-    "id": 12,
-    "emoji": "🍝",
-    "name": "Pâtes Carbo Parmesan",
-    "ingredients": [
-      {
-        "name": "Pâtes",
-        "quantity": 1,
-        "unit": "paquet"
-      },
-      {
-        "name": "Allumettes de bacon",
-        "quantity": 1,
-        "unit": "barquette"
-      },
-      {
-        "name": "Parmesan",
-        "quantity": 1,
-        "unit": "paquet"
-      },
-      {
-        "name": "Crème fraîche",
-        "quantity": 1,
-        "unit": "pot"
-      }
-    ],
-    "cat": "pâtes",
-    "desc": "1. Faire revenir les allumettes de bacon à sec jusqu'à ce qu'elles soient croustillantes.\n2. Cuire les pâtes al dente.\n3. Mélanger la crème fraîche avec la moitié du parmesan râpé, sel, poivre.\n4. Égoutter les pâtes, mélanger hors du feu avec le bacon et la crème au parmesan.\n5. Servir avec le reste du parmesan généreusement râpé par-dessus.",
-    "author": "Gatien et Margot",
-    "authorColor": "#e91e8c",
-    "servings": 2,
-    "optional": []
-  },
-  {
     "id": 13,
     "emoji": "🍗",
     "name": "Melon Tenders Party",
