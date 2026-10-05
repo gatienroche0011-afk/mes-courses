@@ -1678,5 +1678,39 @@
         "unit": ""
       }
     ]
+  },
+  {
+    "id": 1791193574734,
+    "name": "Coquillette jambon",
+    "emoji": "🍽️",
+    "cat": "pâtes",
+    "servings": 2,
+    "desc": "",
+    "author": "Gatien et Margot",
+    "authorColor": "#2ECC71",
+    "ingredients": [
+      {
+        "name": "Coquillette",
+        "quantity": 1,
+        "unit": "Paquet"
+      },
+      {
+        "name": "Jambon sans nitrite",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Gruyère",
+        "quantity": 1,
+        "unit": ""
+      }
+    ],
+    "optional": [
+      {
+        "name": "Crème fraîche",
+        "quantity": 1,
+        "unit": ""
+      }
+    ]
   }
 ]
