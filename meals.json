@@ -1606,5 +1606,38 @@
       }
     ],
     "optional": []
+  },
+  {
+    "id": 1791193370732,
+    "name": "Quesadillas",
+    "emoji": "🍽️",
+    "cat": "wraps",
+    "servings": 2,
+    "desc": "",
+    "author": "Gatien et Margot",
+    "authorColor": "#2ECC71",
+    "ingredients": [
+      {
+        "name": "Wrap",
+        "quantity": 4,
+        "unit": ""
+      },
+      {
+        "name": "Chorizo",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Pesto",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Mozza",
+        "quantity": 1,
+        "unit": ""
+      }
+    ],
+    "optional": []
   }
 ]
