@@ -1639,5 +1639,44 @@
       }
     ],
     "optional": []
+  },
+  {
+    "id": 1791193504420,
+    "name": "Cabillaud lait de coco",
+    "emoji": "🍽️",
+    "cat": "autre",
+    "servings": 2,
+    "desc": "",
+    "author": "Gatien et Margot",
+    "authorColor": "#2ECC71",
+    "ingredients": [
+      {
+        "name": "Cabillaud",
+        "quantity": 2,
+        "unit": "Filets"
+      },
+      {
+        "name": "Lait de coco",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Oignon",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Piment",
+        "quantity": 2,
+        "unit": ""
+      }
+    ],
+    "optional": [
+      {
+        "name": "Cube bouillon de légume",
+        "quantity": 1,
+        "unit": ""
+      }
+    ]
   }
 ]
