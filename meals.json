@@ -1963,5 +1963,44 @@
         "unit": ""
       }
     ]
+  },
+  {
+    "id": 1791790277215,
+    "name": "Gnocchis légumes",
+    "emoji": "🍽️",
+    "cat": "autre",
+    "servings": 2,
+    "desc": "",
+    "author": "Gatien et Margot",
+    "authorColor": "#2ECC71",
+    "ingredients": [
+      {
+        "name": "Gnocchis",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Poivrons",
+        "quantity": 2,
+        "unit": ""
+      },
+      {
+        "name": "Tomate cerise",
+        "quantity": 1,
+        "unit": ""
+      }
+    ],
+    "optional": [
+      {
+        "name": "Parmesan",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Crème fraîche",
+        "quantity": 1,
+        "unit": ""
+      }
+    ]
   }
 ]
