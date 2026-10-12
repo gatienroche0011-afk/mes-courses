@@ -1831,5 +1831,39 @@
         "unit": ""
       }
     ]
+  },
+  {
+    "id": 1791789949185,
+    "name": "Purée de pomme de terre",
+    "emoji": "🍽️",
+    "cat": "autre",
+    "servings": 2,
+    "desc": "",
+    "author": "Gatien et Margot",
+    "authorColor": "#2ECC71",
+    "ingredients": [
+      {
+        "name": "Patates",
+        "quantity": 1,
+        "unit": ""
+      }
+    ],
+    "optional": [
+      {
+        "name": "Beurre",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Lait",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Crème fraîche",
+        "quantity": 1,
+        "unit": ""
+      }
+    ]
   }
 ]
