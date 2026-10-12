@@ -1782,5 +1782,54 @@
       }
     ],
     "optional": []
+  },
+  {
+    "id": 1791789865141,
+    "name": "Saumon à la toscane",
+    "emoji": "🍽️",
+    "cat": "autre",
+    "servings": 2,
+    "desc": "",
+    "author": "Gatien et Margot",
+    "authorColor": "#2ECC71",
+    "ingredients": [
+      {
+        "name": "Saumon",
+        "quantity": 2,
+        "unit": "Pavés"
+      },
+      {
+        "name": "Tomate cerise",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Tomates séchées",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Épinard frais",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Basilic",
+        "quantity": 1,
+        "unit": ""
+      }
+    ],
+    "optional": [
+      {
+        "name": "Crème fraîche",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Parmesan",
+        "quantity": 1,
+        "unit": ""
+      }
+    ]
   }
 ]
