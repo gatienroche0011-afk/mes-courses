@@ -1865,5 +1865,34 @@
         "unit": ""
       }
     ]
+  },
+  {
+    "id": 1791790029106,
+    "name": "Boulette poulet courgette",
+    "emoji": "🍽️",
+    "cat": "viande",
+    "servings": 2,
+    "desc": "",
+    "author": "Gatien et Margot",
+    "authorColor": "#2ECC71",
+    "ingredients": [
+      {
+        "name": "Poulet",
+        "quantity": 2,
+        "unit": "Filets"
+      },
+      {
+        "name": "Courgette",
+        "quantity": 1,
+        "unit": ""
+      }
+    ],
+    "optional": [
+      {
+        "name": "Chapelure",
+        "quantity": 1,
+        "unit": ""
+      }
+    ]
   }
 ]
