@@ -1712,5 +1712,75 @@
         "unit": ""
       }
     ]
+  },
+  {
+    "id": 12,
+    "emoji": "🍝",
+    "name": "Pâtes Carbo Parmesan",
+    "cat": "pâtes",
+    "desc": "1. Faire revenir les allumettes de bacon à sec jusqu'à ce qu'elles soient croustillantes.\n2. Cuire les pâtes al dente.\n3. Mélanger la crème fraîche avec la moitié du parmesan râpé, sel, poivre.\n4. Égoutter les pâtes, mélanger hors du feu avec le bacon et la crème au parmesan.\n5. Servir avec le reste du parmesan généreusement râpé par-dessus.",
+    "ingredients": [
+      {
+        "name": "Pâtes",
+        "quantity": 1,
+        "unit": "paquet"
+      },
+      {
+        "name": "Allumettes de bacon",
+        "quantity": 1,
+        "unit": "barquette"
+      },
+      {
+        "name": "Parmesan",
+        "quantity": 1,
+        "unit": "paquet"
+      },
+      {
+        "name": "Crème fraîche",
+        "quantity": 1,
+        "unit": "pot"
+      }
+    ],
+    "author": "Gatien et Margot",
+    "authorColor": "#D4605A",
+    "servings": 2
+  },
+  {
+    "id": 1791789675858,
+    "name": "Lasagne italienne",
+    "emoji": "🍽️",
+    "cat": "pâtes",
+    "servings": 2,
+    "desc": "",
+    "author": "Gatien et Margot",
+    "authorColor": "#2ECC71",
+    "ingredients": [
+      {
+        "name": "Pâtes à lasagne",
+        "quantity": 8,
+        "unit": "Pâtes"
+      },
+      {
+        "name": "Mortadelle",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Courgette",
+        "quantity": 2,
+        "unit": ""
+      },
+      {
+        "name": "Mozza",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Crème fraîche",
+        "quantity": 1,
+        "unit": ""
+      }
+    ],
+    "optional": []
   }
 ]
