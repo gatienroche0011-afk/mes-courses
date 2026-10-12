@@ -1894,5 +1894,74 @@
         "unit": ""
       }
     ]
+  },
+  {
+    "id": 1791790199456,
+    "name": "Salade César",
+    "emoji": "🍽️",
+    "cat": "salades",
+    "servings": 2,
+    "desc": "",
+    "author": "Gatien et Margot",
+    "authorColor": "#2ECC71",
+    "ingredients": [
+      {
+        "name": "Salade",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Poulet",
+        "quantity": 2,
+        "unit": "Filets"
+      },
+      {
+        "name": "Pain de mie",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Tomate cerise",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Œufs",
+        "quantity": 4,
+        "unit": ""
+      },
+      {
+        "name": "Parmesan",
+        "quantity": 1,
+        "unit": ""
+      }
+    ],
+    "optional": [
+      {
+        "name": "Farine",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Œufs",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Chapelure",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Crème fraîche",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Citron",
+        "quantity": 1,
+        "unit": ""
+      }
+    ]
   }
 ]
