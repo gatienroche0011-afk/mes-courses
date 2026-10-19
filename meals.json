@@ -1387,17 +1387,23 @@
         "unit": ""
       },
       {
-        "name": "Allumettes de bacon",
-        "quantity": 1,
-        "unit": ""
-      },
-      {
         "name": "Gruyère râpé",
         "quantity": 0.3,
         "unit": ""
       }
     ],
-    "optional": []
+    "optional": [
+      {
+        "name": "Allumettes de bacon",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Chorizo",
+        "quantity": 1,
+        "unit": ""
+      }
+    ]
   },
   {
     "id": 1785758779618,
@@ -1743,7 +1749,8 @@
     ],
     "author": "Gatien et Margot",
     "authorColor": "#D4605A",
-    "servings": 2
+    "servings": 2,
+    "optional": []
   },
   {
     "id": 1791789675858,
