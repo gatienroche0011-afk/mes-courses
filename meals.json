@@ -1990,5 +1990,49 @@
         "unit": ""
       }
     ]
+  },
+  {
+    "id": 1792410648166,
+    "name": "Nugget lentilles corail",
+    "emoji": "🍽️",
+    "cat": "autre",
+    "servings": 2,
+    "desc": "",
+    "author": "Gatien et Margot",
+    "authorColor": "#D4605A",
+    "ingredients": [
+      {
+        "name": "Lentilles corails",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Oeufs",
+        "quantity": 2,
+        "unit": ""
+      }
+    ],
+    "optional": [
+      {
+        "name": "Maizena",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Oignon",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Paprika",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Chapelure",
+        "quantity": 1,
+        "unit": ""
+      }
+    ]
   }
 ]
