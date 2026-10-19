@@ -1602,7 +1602,7 @@
     "servings": 2,
     "desc": "",
     "author": "Gatien et Margot",
-    "authorColor": "#2ECC71",
+    "authorColor": "#D4605A",
     "ingredients": [
       {
         "name": "Wrap",
@@ -1621,7 +1621,7 @@
       },
       {
         "name": "Mozza",
-        "quantity": 1,
+        "quantity": 2,
         "unit": ""
       }
     ],
