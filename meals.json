@@ -964,41 +964,6 @@
         "unit": ""
       },
       {
-        "name": "Huile neutre",
-        "quantity": 170,
-        "unit": "g"
-      },
-      {
-        "name": "Moutarde de Dijon",
-        "quantity": 1,
-        "unit": "c. à soupe"
-      },
-      {
-        "name": "Vinaigre de cornichons",
-        "quantity": 2,
-        "unit": "c. à soupe"
-      },
-      {
-        "name": "Ketchup",
-        "quantity": 2,
-        "unit": "c. à soupe"
-      },
-      {
-        "name": "Paprika fumé",
-        "quantity": 1,
-        "unit": "c. à café"
-      },
-      {
-        "name": "Ail semoule",
-        "quantity": 0.5,
-        "unit": "c. à café"
-      },
-      {
-        "name": "Cornichons",
-        "quantity": 1,
-        "unit": "bocal"
-      },
-      {
         "name": "Oignons caramélisés",
         "quantity": 1,
         "unit": "pot"
@@ -1007,9 +972,25 @@
     "cat": "viande",
     "desc": "Sauce maison :\n1. Monter une mayonnaise avec l'œuf, le sel, le poivre, la moutarde et l'huile neutre. Ajouter le vinaigre de cornichons, le ketchup, le paprika fumé, l'ail semoule, un gros cornichon et un petit oignon hachés. Mixer.\n\nBurgers :\n2. Former 4 boules de bœuf de 125g chacune.\n3. Faire chauffer une poêle en fonte ou une plancha à feu très vif. Déposer une boule et écraser fortement avec une spatule pour former un steak fin. Saler et poivrer.\n4. Cuire 2 min, retourner, poser 2 tranches de cheddar et couvrir 1 min.\n5. Garnir le pain toasté de sauce maison, steak, oignons caramélisés et cornichons.",
     "author": "Gatien et Margot",
-    "authorColor": "#e91e8c",
+    "authorColor": "#D4605A",
     "servings": 4,
-    "optional": []
+    "optional": [
+      {
+        "name": "Huile",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "cornichon",
+        "quantity": 1,
+        "unit": "Bocal"
+      },
+      {
+        "name": "Paprika",
+        "quantity": 1,
+        "unit": ""
+      }
+    ]
   },
   {
     "id": 1783779785513,
