@@ -1,5 +1,178 @@
 [
   {
+    "date": "2026-10-25T16:46:14.476Z",
+    "meals": [
+      "🍝 Pâtes Carbonara",
+      "🍽️ Tasty crousty",
+      "🍽️ Galettes bretonnes légumes",
+      "🍽️ Purée de pomme de terre",
+      "🍽️ Nugget lentilles corail",
+      "🍽️ Croque monsieur"
+    ],
+    "items": [
+      {
+        "name": "Sauce aigre douce",
+        "quantity": 0.5,
+        "unit": ""
+      },
+      {
+        "name": "Fromage blanc",
+        "quantity": 0.5,
+        "unit": ""
+      },
+      {
+        "name": "Sauce soja sucree",
+        "quantity": 0.3,
+        "unit": ""
+      },
+      {
+        "name": "Sauce soja sale",
+        "quantity": 0.3,
+        "unit": ""
+      },
+      {
+        "name": "Poulet",
+        "quantity": 2,
+        "unit": "Filets"
+      },
+      {
+        "name": "Panure",
+        "quantity": 0.5,
+        "unit": ""
+      },
+      {
+        "name": "Oeufs",
+        "quantity": 2,
+        "unit": ""
+      },
+      {
+        "name": "Galettes bretonnes",
+        "quantity": 4,
+        "unit": ""
+      },
+      {
+        "name": "Courgette",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Tomates",
+        "quantity": 2,
+        "unit": ""
+      },
+      {
+        "name": "Gruyère râpé",
+        "quantity": 0.3,
+        "unit": ""
+      },
+      {
+        "name": "Allumettes de bacon",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Chorizo",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Patates",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Beurre",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Crème fraîche",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Poisson blanc",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Lentilles corails",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Oeufs",
+        "quantity": 2,
+        "unit": ""
+      },
+      {
+        "name": "Maizena",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Oignon",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Pâtes",
+        "quantity": 0.5,
+        "unit": "paquet"
+      },
+      {
+        "name": "Allumettes de bacon fumé",
+        "quantity": 1,
+        "unit": "boîte"
+      },
+      {
+        "name": "Crème fraîche",
+        "quantity": 1,
+        "unit": "pot (10cl)"
+      },
+      {
+        "name": "Œufs",
+        "quantity": 2,
+        "unit": ""
+      },
+      {
+        "name": "Parmesan",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Mozza sticks",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Pain de mie",
+        "quantity": 0.5,
+        "unit": ""
+      },
+      {
+        "name": "Gruyere",
+        "quantity": 0.5,
+        "unit": ""
+      },
+      {
+        "name": "Jambon",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Tourtel twist",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "gâteau apéro",
+        "quantity": 1,
+        "unit": ""
+      }
+    ]
+  },
+  {
     "date": "2026-09-28T08:55:20.569Z",
     "meals": [
       "🫓 Cheese Nan"
