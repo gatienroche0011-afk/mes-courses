@@ -2127,5 +2127,33 @@
         "unit": ""
       }
     ]
+  },
+  {
+    "id": 1793005391454,
+    "name": "Chili con/sin carne",
+    "emoji": "🍽️",
+    "cat": "autre",
+    "servings": 2,
+    "desc": "",
+    "author": "Gatien et Margot",
+    "authorColor": "#2ECC71",
+    "ingredients": [
+      {
+        "name": "Riz",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Sauce tomate",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Haricot rouge",
+        "quantity": 1,
+        "unit": ""
+      }
+    ],
+    "optional": []
   }
 ]
