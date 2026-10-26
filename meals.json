@@ -2034,5 +2034,59 @@
         "unit": ""
       }
     ]
+  },
+  {
+    "id": 1793005248193,
+    "name": "Sushi",
+    "emoji": "🍽️",
+    "cat": "autre",
+    "servings": 2,
+    "desc": "",
+    "author": "Gatien et Margot",
+    "authorColor": "#2ECC71",
+    "ingredients": [
+      {
+        "name": "Riz à sushi",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Saumon",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Avocat",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Feuille d’algue",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Fromage frais",
+        "quantity": 1,
+        "unit": ""
+      }
+    ],
+    "optional": [
+      {
+        "name": "Vinaigre de riz",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Oignon frits",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Graine de sesame",
+        "quantity": 1,
+        "unit": ""
+      }
+    ]
   }
 ]
