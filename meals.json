@@ -135,7 +135,7 @@
     "ingredients": [
       {
         "name": "Avocat",
-        "quantity": 1,
+        "quantity": 2,
         "unit": ""
       },
       {
@@ -145,7 +145,7 @@
       },
       {
         "name": "Œufs",
-        "quantity": 12,
+        "quantity": 4,
         "unit": ""
       },
       {
