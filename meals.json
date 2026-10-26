@@ -2088,5 +2088,39 @@
         "unit": ""
       }
     ]
+  },
+  {
+    "id": 1793005295972,
+    "name": "Pâtes bolo",
+    "emoji": "🍽️",
+    "cat": "pâtes",
+    "servings": 2,
+    "desc": "",
+    "author": "Gatien et Margot",
+    "authorColor": "#2ECC71",
+    "ingredients": [
+      {
+        "name": "Pâtes",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Viande hachée",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Sauce tomate",
+        "quantity": 1,
+        "unit": ""
+      }
+    ],
+    "optional": [
+      {
+        "name": "Parmesan",
+        "quantity": 1,
+        "unit": ""
+      }
+    ]
   }
 ]
