@@ -2349,5 +2349,39 @@
       }
     ],
     "optional": []
+  },
+  {
+    "id": 1793392907585,
+    "name": "Pâte poulet moutarde",
+    "emoji": "🍽️",
+    "cat": "pâtes",
+    "servings": 2,
+    "desc": "",
+    "author": "Gatien et Margot",
+    "authorColor": "#D4605A",
+    "ingredients": [
+      {
+        "name": "Pate",
+        "quantity": 0.5,
+        "unit": ""
+      },
+      {
+        "name": "Poulet",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Champignons",
+        "quantity": 1,
+        "unit": ""
+      }
+    ],
+    "optional": [
+      {
+        "name": "Moutarde a l'anciennr",
+        "quantity": 1,
+        "unit": ""
+      }
+    ]
   }
 ]
