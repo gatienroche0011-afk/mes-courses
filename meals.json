@@ -2383,5 +2383,43 @@
         "unit": ""
       }
     ]
+  },
+  {
+    "id": 1793393330831,
+    "name": "Gratin de pâtes",
+    "emoji": "🍽️",
+    "cat": "pâtes",
+    "servings": 2,
+    "desc": "",
+    "author": "Gatien et Margot",
+    "authorColor": "#D4605A",
+    "ingredients": [
+      {
+        "name": "Pate",
+        "quantity": 0.5,
+        "unit": ""
+      },
+      {
+        "name": "Allumettes de bacon",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Gruyere",
+        "quantity": 0.5,
+        "unit": ""
+      },
+      {
+        "name": "Crème fraiche",
+        "quantity": 0.5,
+        "unit": ""
+      },
+      {
+        "name": "Oeufs",
+        "quantity": 2,
+        "unit": ""
+      }
+    ],
+    "optional": []
   }
 ]
