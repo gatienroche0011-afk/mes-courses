@@ -2155,5 +2155,44 @@
       }
     ],
     "optional": []
+  },
+  {
+    "id": 1793392059914,
+    "name": "Quiche",
+    "emoji": "🍽️",
+    "cat": "autre",
+    "servings": 2,
+    "desc": "",
+    "author": "Gatien et Margot",
+    "authorColor": "#D4605A",
+    "ingredients": [
+      {
+        "name": "Pâte feuilleté",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Allumettes de bacon",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Oeufs",
+        "quantity": 4,
+        "unit": ""
+      }
+    ],
+    "optional": [
+      {
+        "name": "Lait",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Gruyere",
+        "quantity": 1,
+        "unit": ""
+      }
+    ]
   }
 ]
