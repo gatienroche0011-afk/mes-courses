@@ -2237,5 +2237,54 @@
       }
     ],
     "optional": []
+  },
+  {
+    "id": 1793392249293,
+    "name": "Saumon façon Agnès",
+    "emoji": "🍽️",
+    "cat": "autre",
+    "servings": 2,
+    "desc": "",
+    "author": "Gatien et Margot",
+    "authorColor": "#D4605A",
+    "ingredients": [
+      {
+        "name": "Pavé de saumon",
+        "quantity": 2,
+        "unit": ""
+      },
+      {
+        "name": "Carotte",
+        "quantity": 500,
+        "unit": "G"
+      }
+    ],
+    "optional": [
+      {
+        "name": "Moutarde a l'ancienne",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Chapelure",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Sauce soja sucré",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Beurre",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Échalottes",
+        "quantity": 1,
+        "unit": ""
+      }
+    ]
   }
 ]
