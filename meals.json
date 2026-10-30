@@ -2286,5 +2286,68 @@
         "unit": ""
       }
     ]
+  },
+  {
+    "id": 1793392583801,
+    "name": "Cinnamon rolles",
+    "emoji": "🍽️",
+    "cat": "autre",
+    "servings": 2,
+    "desc": "",
+    "author": "Gatien et Margot",
+    "authorColor": "#D4605A",
+    "ingredients": [
+      {
+        "name": "Farine",
+        "quantity": 600,
+        "unit": "G"
+      },
+      {
+        "name": "Lait",
+        "quantity": 30,
+        "unit": "Cl"
+      },
+      {
+        "name": "Levure boulangère",
+        "quantity": 1,
+        "unit": "Sachet"
+      },
+      {
+        "name": "Beurre",
+        "quantity": 270,
+        "unit": "G"
+      },
+      {
+        "name": "Sucre glace",
+        "quantity": 100,
+        "unit": "G"
+      },
+      {
+        "name": "Creme liquide",
+        "quantity": 5,
+        "unit": "Cl"
+      },
+      {
+        "name": "Sucre roux",
+        "quantity": 120,
+        "unit": "G"
+      },
+      {
+        "name": "Miel",
+        "quantity": 30,
+        "unit": "G"
+      },
+      {
+        "name": "Cannelle",
+        "quantity": 3,
+        "unit": "Cuillère café"
+      },
+      {
+        "name": "Philadelphia",
+        "quantity": 170,
+        "unit": "G"
+      }
+    ],
+    "optional": []
   }
 ]
