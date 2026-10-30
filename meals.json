@@ -2194,5 +2194,48 @@
         "unit": ""
       }
     ]
+  },
+  {
+    "id": 1793392135223,
+    "name": "Pinsa",
+    "emoji": "🍽️",
+    "cat": "autre",
+    "servings": 2,
+    "desc": "",
+    "author": "Gatien et Margot",
+    "authorColor": "#D4605A",
+    "ingredients": [
+      {
+        "name": "Pâte a pinsa",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Burrata",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Pesto vert",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Tomate cerise",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Roquette",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Jambon cru",
+        "quantity": 1,
+        "unit": ""
+      }
+    ],
+    "optional": []
   }
 ]
