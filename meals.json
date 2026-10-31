@@ -2427,5 +2427,48 @@
       }
     ],
     "optional": []
+  },
+  {
+    "id": 1793437079437,
+    "name": "Croque monsieur du soleil",
+    "emoji": "🍽️",
+    "cat": "wraps",
+    "servings": 2,
+    "desc": "",
+    "author": "Gatien et Margot",
+    "authorColor": "#2ECC71",
+    "ingredients": [
+      {
+        "name": "Pain de mie",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Pesto vert",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Jambon cru",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Tomate cerise",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Mozza",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Œufs",
+        "quantity": 1,
+        "unit": ""
+      }
+    ],
+    "optional": []
   }
 ]
