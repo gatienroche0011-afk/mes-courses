@@ -2470,5 +2470,49 @@
       }
     ],
     "optional": []
+  },
+  {
+    "id": 1793437352192,
+    "name": "Tarte thon tomate",
+    "emoji": "🍽️",
+    "cat": "autre",
+    "servings": 2,
+    "desc": "",
+    "author": "Gatien et Margot",
+    "authorColor": "#2ECC71",
+    "ingredients": [
+      {
+        "name": "Pâte feuilletée",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Tomate",
+        "quantity": 4,
+        "unit": ""
+      },
+      {
+        "name": "Thon",
+        "quantity": 1,
+        "unit": ""
+      }
+    ],
+    "optional": [
+      {
+        "name": "Moutarde",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Mozza",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Gruyère",
+        "quantity": 1,
+        "unit": ""
+      }
+    ]
   }
 ]
