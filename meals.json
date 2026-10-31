@@ -807,7 +807,7 @@
   {
     "id": 21,
     "emoji": "🍗",
-    "name": "Poulet Riz Champignons",
+    "name": "Poulet Riz Champignons moutarde à l’ancienne",
     "ingredients": [
       {
         "name": "Filets de poulet",
@@ -833,9 +833,15 @@
     "cat": "viande",
     "desc": "1. Cuire le riz dans de l'eau salée selon les instructions.\n2. Couper les filets de poulet en morceaux et les faire dorer dans une poêle huilée à feu vif, sel et poivre.\n3. Ajouter les champignons tranchés et faire revenir 5 min jusqu'à ce qu'ils rendent leur eau.\n4. Verser la crème fraîche, mélanger et laisser mijoter 3-4 min à feu doux.\n5. Servir le poulet crémeux sur le riz.",
     "author": "Gatien et Margot",
-    "authorColor": "#e91e8c",
+    "authorColor": "#2ECC71",
     "servings": 2,
-    "optional": []
+    "optional": [
+      {
+        "name": "Moutarde à l’ancienne",
+        "quantity": 1,
+        "unit": ""
+      }
+    ]
   },
   {
     "id": 22,
