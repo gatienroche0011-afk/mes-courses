@@ -717,19 +717,25 @@
         "name": "Lait de coco",
         "quantity": 1,
         "unit": "boîte"
-      },
-      {
-        "name": "Curry",
-        "quantity": 1,
-        "unit": "c. à café"
       }
     ],
     "cat": "pâtes",
     "desc": "1. Cuire les pâtes al dente, réserver.\n2. Couper les courgettes en demi-rondelles et les faire sauter à la poêle avec huile, sel et poivre.\n3. Ajouter les crevettes et les faire revenir 2-3 min jusqu'à ce qu'elles rosissent.\n4. Verser le lait de coco et le curry, mélanger et laisser réduire 4-5 min à feu moyen.\n5. Ajouter les pâtes dans la sauce, mélanger et servir aussitôt.",
     "author": "Gatien et Margot",
-    "authorColor": "#e91e8c",
+    "authorColor": "#D4605A",
     "servings": 2,
-    "optional": []
+    "optional": [
+      {
+        "name": "Curry",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Pâte de curry",
+        "quantity": 1,
+        "unit": ""
+      }
+    ]
   },
   {
     "id": 20,
