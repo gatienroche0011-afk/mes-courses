@@ -2525,5 +2525,59 @@
         "unit": ""
       }
     ]
+  },
+  {
+    "id": 1794054839157,
+    "name": "Wrap cesar",
+    "emoji": "🍽️",
+    "cat": "autre",
+    "servings": 2,
+    "desc": "",
+    "author": "Gatien et Margot",
+    "authorColor": "#D4605A",
+    "ingredients": [
+      {
+        "name": "Wrap",
+        "quantity": 4,
+        "unit": ""
+      },
+      {
+        "name": "Tomate cerise",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Nuggets",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Mozzarella",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Salade",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Oeufs",
+        "quantity": 4,
+        "unit": ""
+      }
+    ],
+    "optional": [
+      {
+        "name": "Crème fraiche",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Parmezan",
+        "quantity": 1,
+        "unit": ""
+      }
+    ]
   }
 ]
