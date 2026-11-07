@@ -35,7 +35,13 @@
     "author": "Gatien et Margot",
     "authorColor": "#e91e8c",
     "servings": 2,
-    "optional": []
+    "optional": [
+      {
+        "name": "Courgette",
+        "quantity": 1,
+        "unit": ""
+      }
+    ]
   },
   {
     "id": 2,
