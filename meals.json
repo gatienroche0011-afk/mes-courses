@@ -2732,5 +2732,49 @@
         "unit": ""
       }
     ]
+  },
+  {
+    "id": 1794766170746,
+    "name": "Carre feuilleté",
+    "emoji": "🍽️",
+    "cat": "autre",
+    "servings": 2,
+    "desc": "",
+    "author": "Gatien et Margot",
+    "authorColor": "#D4605A",
+    "ingredients": [
+      {
+        "name": "Pâte feuilleté carré",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Chorizo",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Tomate",
+        "quantity": 3,
+        "unit": ""
+      },
+      {
+        "name": "Courgette",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Gruyere",
+        "quantity": 1,
+        "unit": ""
+      }
+    ],
+    "optional": [
+      {
+        "name": "Pesto vert",
+        "quantity": 1,
+        "unit": ""
+      }
+    ]
   }
 ]
