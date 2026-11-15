@@ -2585,5 +2585,64 @@
         "unit": ""
       }
     ]
+  },
+  {
+    "id": 1794765748839,
+    "name": "Burger poulet guacamole",
+    "emoji": "🍽️",
+    "cat": "autre",
+    "servings": 2,
+    "desc": "",
+    "author": "Gatien et Margot",
+    "authorColor": "#D4605A",
+    "ingredients": [
+      {
+        "name": "Poulet",
+        "quantity": 1,
+        "unit": "Filet"
+      },
+      {
+        "name": "Avocats",
+        "quantity": 2,
+        "unit": ""
+      },
+      {
+        "name": "Tomate cerise",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Pain burger",
+        "quantity": 1,
+        "unit": ""
+      }
+    ],
+    "optional": [
+      {
+        "name": "Pommes noisettes",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Épices gucacamole",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Panure",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Oeufs",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Roquette",
+        "quantity": 1,
+        "unit": ""
+      }
+    ]
   }
 ]
