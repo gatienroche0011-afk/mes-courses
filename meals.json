@@ -2688,5 +2688,49 @@
         "unit": ""
       }
     ]
+  },
+  {
+    "id": 1794766096267,
+    "name": "Quiche boursin poireau",
+    "emoji": "🍽️",
+    "cat": "autre",
+    "servings": 2,
+    "desc": "",
+    "author": "Gatien et Margot",
+    "authorColor": "#D4605A",
+    "ingredients": [
+      {
+        "name": "Pâte brisée",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Poireaux",
+        "quantity": 3,
+        "unit": ""
+      },
+      {
+        "name": "Boursin",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Gruyère",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Oeufs",
+        "quantity": 4,
+        "unit": ""
+      }
+    ],
+    "optional": [
+      {
+        "name": "Lait",
+        "quantity": 1,
+        "unit": ""
+      }
+    ]
   }
 ]
