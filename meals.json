@@ -2644,5 +2644,49 @@
         "unit": ""
       }
     ]
+  },
+  {
+    "id": 1794765898244,
+    "name": "Flamenkuech maison",
+    "emoji": "🍽️",
+    "cat": "autre",
+    "servings": 2,
+    "desc": "",
+    "author": "Gatien et Margot",
+    "authorColor": "#D4605A",
+    "ingredients": [
+      {
+        "name": "Pâte brisée",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Lardons",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Crème fraiche",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Fromage blanc",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Oignon",
+        "quantity": 1,
+        "unit": ""
+      }
+    ],
+    "optional": [
+      {
+        "name": "Champignons",
+        "quantity": 1,
+        "unit": ""
+      }
+    ]
   }
 ]
