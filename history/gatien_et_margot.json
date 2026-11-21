@@ -1,5 +1,188 @@
 [
   {
+    "date": "2026-11-21T18:10:52.616Z",
+    "meals": [
+      "🍽️ Burger poulet guacamole",
+      "🍽️ Flamenkuech maison",
+      "🍽️ Croque monsieur",
+      "🍽️ Quiche boursin poireau",
+      "🍽️ Carre feuilleté",
+      "🫑 Pâtes chorizo crème de poivron"
+    ],
+    "items": [
+      {
+        "name": "Champignons",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Muscade",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Pain de mie",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Fromage blanc",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Poulet",
+        "quantity": 1,
+        "unit": "Filet"
+      },
+      {
+        "name": "Avocats",
+        "quantity": 2,
+        "unit": ""
+      },
+      {
+        "name": "Tomate cerise",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Pain burger",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Pommes noisettes",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Roquette",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Pâte brisée",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Lardons",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Crème fraiche",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Fromage blanc",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Oignon",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Champignons",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Pain de mie",
+        "quantity": 0.5,
+        "unit": ""
+      },
+      {
+        "name": "Gruyere",
+        "quantity": 0.5,
+        "unit": ""
+      },
+      {
+        "name": "Jambon",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Pâte brisée",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Poireaux",
+        "quantity": 3,
+        "unit": ""
+      },
+      {
+        "name": "Boursin",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Gruyère",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Oeufs",
+        "quantity": 4,
+        "unit": ""
+      },
+      {
+        "name": "Pâte feuilleté carré",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Chorizo",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Tomate",
+        "quantity": 3,
+        "unit": ""
+      },
+      {
+        "name": "Courgette",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Gruyere",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Pâtes",
+        "quantity": 250,
+        "unit": "G"
+      },
+      {
+        "name": "Chorizo",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Poivrons",
+        "quantity": 2,
+        "unit": ""
+      },
+      {
+        "name": "Parmesan",
+        "quantity": 0.3,
+        "unit": ""
+      },
+      {
+        "name": "Poisson",
+        "quantity": 1,
+        "unit": ""
+      }
+    ]
+  },
+  {
     "date": "2026-10-25T16:46:14.476Z",
     "meals": [
       "🍝 Pâtes Carbonara",
