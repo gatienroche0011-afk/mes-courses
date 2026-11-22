@@ -2896,5 +2896,44 @@
       }
     ],
     "optional": []
+  },
+  {
+    "id": 1795367432377,
+    "name": "Quiche brocolis lardons mozza",
+    "emoji": "🍽️",
+    "cat": "autre",
+    "servings": 2,
+    "desc": "",
+    "author": "Gatien et Margot",
+    "authorColor": "#2ECC71",
+    "ingredients": [
+      {
+        "name": "Œufs",
+        "quantity": 4,
+        "unit": ""
+      },
+      {
+        "name": "Brocolis",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Allumettes bacon",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Mozza",
+        "quantity": 1,
+        "unit": ""
+      }
+    ],
+    "optional": [
+      {
+        "name": "Lait",
+        "quantity": 1,
+        "unit": ""
+      }
+    ]
   }
 ]
