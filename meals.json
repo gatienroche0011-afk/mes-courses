@@ -2594,7 +2594,7 @@
     "servings": 2,
     "desc": "",
     "author": "Gatien et Margot",
-    "authorColor": "#D4605A",
+    "authorColor": "#2ECC71",
     "ingredients": [
       {
         "name": "Poulet",
@@ -2613,6 +2613,11 @@
       },
       {
         "name": "Pain burger",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Cheddar",
         "quantity": 1,
         "unit": ""
       }
@@ -2640,6 +2645,11 @@
       },
       {
         "name": "Roquette",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Cornichon",
         "quantity": 1,
         "unit": ""
       }
