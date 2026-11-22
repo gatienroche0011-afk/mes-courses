@@ -2776,5 +2776,43 @@
         "unit": ""
       }
     ]
+  },
+  {
+    "id": 1795367080838,
+    "name": "Sandwich raclette",
+    "emoji": "🍽️",
+    "cat": "autre",
+    "servings": 2,
+    "desc": "",
+    "author": "Gatien et Margot",
+    "authorColor": "#2ECC71",
+    "ingredients": [
+      {
+        "name": "Bonne baguette",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Patates",
+        "quantity": 3,
+        "unit": ""
+      },
+      {
+        "name": "Rosette",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Fromage raclette",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Cornichon",
+        "quantity": 1,
+        "unit": ""
+      }
+    ],
+    "optional": []
   }
 ]
