@@ -2935,5 +2935,54 @@
         "unit": ""
       }
     ]
+  },
+  {
+    "id": 1795367626190,
+    "name": "One pot crozet",
+    "emoji": "🍽️",
+    "cat": "pâtes",
+    "servings": 2,
+    "desc": "",
+    "author": "Gatien et Margot",
+    "authorColor": "#2ECC71",
+    "ingredients": [
+      {
+        "name": "Crozet",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Épinard",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Champignon",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Comté",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Chorizo",
+        "quantity": 1,
+        "unit": ""
+      }
+    ],
+    "optional": [
+      {
+        "name": "Cube de bouillon",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Crème fraîche",
+        "quantity": 1,
+        "unit": ""
+      }
+    ]
   }
 ]
