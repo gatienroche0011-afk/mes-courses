@@ -2853,5 +2853,48 @@
         "unit": ""
       }
     ]
+  },
+  {
+    "id": 1795367301325,
+    "name": "Shawarma tofu",
+    "emoji": "🍽️",
+    "cat": "wraps",
+    "servings": 2,
+    "desc": "",
+    "author": "Gatien et Margot",
+    "authorColor": "#2ECC71",
+    "ingredients": [
+      {
+        "name": "Wrap",
+        "quantity": 4,
+        "unit": ""
+      },
+      {
+        "name": "Tzatziki",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Tomate cerise",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Tofu",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Roquette",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Œufs",
+        "quantity": 4,
+        "unit": ""
+      }
+    ],
+    "optional": []
   }
 ]
